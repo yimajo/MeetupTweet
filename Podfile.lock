@@ -1,0 +1,27 @@
+PODS:
+  - Himotoki (1.7.0)
+  - MutableDataScanner (1.0.7)
+  - OAuthSwift (0.4.6)
+  - RxCocoa (2.3.1):
+    - RxSwift (~> 2.3.1)
+  - RxSwift (2.3.1)
+  - TwitterAPI (0.1.0):
+    - MutableDataScanner
+    - OAuthSwift
+
+DEPENDENCIES:
+  - Himotoki (~> 1.7)
+  - OAuthSwift (= 0.4.6)
+  - RxCocoa (~> 2.3.0)
+  - RxSwift (~> 2.3.0)
+  - TwitterAPI (= 0.1.0)
+
+SPEC CHECKSUMS:
+  Himotoki: a97b4a5861d6d25fc0746f0e19164eef03c19347
+  MutableDataScanner: bba5d238d7191f0e567c695f833c5d6cebcc093d
+  OAuthSwift: 8c738cc56c942a541f5c6d0362a892cb149d10b1
+  RxCocoa: a2baaf3462b989559a51dce59d78fbebb8fe0afa
+  RxSwift: 829b2843e9eddc77a02cb3f5117f0d55f8f646f1
+  TwitterAPI: adc61bdf90fde855e84c1bc67223c5877f22b464
+
+COCOAPODS: 0.39.0
