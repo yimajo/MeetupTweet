@@ -40,8 +40,6 @@ class CommentFlowPresenter {
     }
     
     func stopSearch() {
-        subscription?.dispose()
-        tweetSearchUseCase.stopStream()
         window.orderOut(nil)
         refreshComments()
     }
@@ -50,6 +48,8 @@ class CommentFlowPresenter {
 private extension CommentFlowPresenter {
 
     func refreshComments() {
+        tweetSearchUseCase.stopStream()
+        subscription?.dispose()
         comments = [:]
         commentViews = []
     }
