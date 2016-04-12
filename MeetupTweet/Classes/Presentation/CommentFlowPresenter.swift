@@ -81,8 +81,6 @@ private extension CommentFlowPresenter {
         let len = windowFrame.width
         let secondDuration = NSTimeInterval(len / v)
 
-        // タイマーで画面の端から端まで移動させる
-        // viewの位置を監視
         NSAnimationContext.runAnimationGroup(
             { context in
                 context.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)

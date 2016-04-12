@@ -18,8 +18,7 @@ class AnnounceUseCase {
         return Observable<Int>
             .interval(interval, scheduler: MainScheduler.instance)
             .map { _ in
-                
                 return Announce(id: NSUUID().UUIDString, text: announceText)
-        }
+            }
     }
 }

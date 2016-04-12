@@ -19,7 +19,6 @@ class TweetSearchViewController: NSViewController {
     @IBOutlet weak var stopButton: NSButton!
     @IBOutlet weak var searchButton: NSButton!
         
-    //    private var oauthSwift: OAuth1Swift?
     var window: NSWindow?
     let disposeBag = DisposeBag()
     var selectedScreenIndex = 0
