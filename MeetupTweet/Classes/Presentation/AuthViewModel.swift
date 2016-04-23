@@ -38,7 +38,11 @@ class AuthViewModel {
             .shareReplay(1)
 
         
-        let apiKeyAndSecret = Observable.combineLatest(consumerKey, consumerSecret) {($0, $1)}
+        let apiKeyAndSecret = Observable
+            .combineLatest(consumerKey, consumerSecret) {
+                ($0.stringByTrimmingCharactersInSet(.whitespaceAndNewlineCharacterSet()),
+                 $1.stringByTrimmingCharactersInSet(.whitespaceAndNewlineCharacterSet()))
+            }
         
         authorized = authrorizeTap.withLatestFrom(apiKeyAndSecret)
             .flatMapLatest { (consumerKey, consumerSecret) -> Observable<Bool>  in
