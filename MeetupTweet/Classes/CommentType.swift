@@ -7,13 +7,13 @@
 //
 import Foundation
 
-enum CommentType {
+enum Comment {
     case Tweet
     case Announce
 }
 
-protocol Comment {
-    func type() -> CommentType
+protocol CommentType {
+    func type() -> Comment
     
     func identifier() -> String
     func message() -> String

@@ -11,7 +11,7 @@ import RxSwift
 
 class AnnounceUseCase {
     
-    class func intervalTextStream(text: String) -> Observable<Comment> {
+    class func intervalTextStream(text: String) -> Observable<CommentType> {
         
         let interval = 60.0
         let announceText = " \(text) のTweetを取得中です"

@@ -22,13 +22,13 @@ class TwitterStraemAPIUseCase {
         self.streamingRequest?.stop()
     }
     
-    func startStream(query: String) -> PublishSubject<Comment> {
+    func startStream(query: String) -> PublishSubject<CommentType> {
         
         if let streamingRequest = streamingRequest {
             streamingRequest.stop()
         }
         
-        let tweetStream = PublishSubject<Comment>()
+        let tweetStream = PublishSubject<CommentType>()
         
         streamingRequest = AppDelegate.sharedInstance.oauthClient!
             .streaming(streamEndpoint, parameters: ["track": query])

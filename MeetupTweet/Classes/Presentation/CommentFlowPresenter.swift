@@ -15,12 +15,11 @@ class CommentFlowPresenter {
     var subscription: Disposable?
     private let tweetSearchUseCase = TwitterStraemAPIUseCase()
     private let disposeBag = DisposeBag()
-    private var comments: [String: (comment: Comment, view: CommentView)] = [:]
+    private var comments: [String: (comment: CommentType, view: CommentView)] = [:]
     private var commentViews: [CommentView?] = []
     private var window: NSWindow = NSWindow()
     
     func searchTweet(search: String, screen: NSScreen) {
-        
         refreshComments()
         window = makeTweetWindow(screen)
 
@@ -54,7 +53,7 @@ private extension CommentFlowPresenter {
         commentViews = []
     }
     
-    func addComment(comment: Comment) {
+    func addComment(comment: CommentType) {
         let view = makeCommentView(comment)
         
         window.contentView?.addSubview(view)
@@ -63,14 +62,14 @@ private extension CommentFlowPresenter {
         startAnimationComment(comment, view: view)
     }
     
-    func removeComment(comment: Comment) {
+    func removeComment(comment: CommentType) {
         if let tweet = comments[comment.identifier()] {
             tweet.view.removeFromSuperview()
             comments[comment.identifier()] = nil
         }
     }
     
-    func startAnimationComment(comment: Comment, view: CommentView) {
+    func startAnimationComment(comment: CommentType, view: CommentView) {
         // TextFieldの移動開始
         let windowFrame = self.window.frame
         
@@ -110,7 +109,7 @@ private extension CommentFlowPresenter {
         )
     }
     
-    func makeCommentView(comment: Comment) -> CommentView {
+    func makeCommentView(comment: CommentType) -> CommentView {
         
         let commentView: CommentView
         switch comment.type() {
