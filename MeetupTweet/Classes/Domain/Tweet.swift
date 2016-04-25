@@ -28,9 +28,9 @@ struct Tweet: Decodable {
     }
 }
 
-extension Tweet: Comment {
-    func type() -> CommentType {
-        return CommentType.Tweet
+extension Tweet: CommentType {
+    func type() -> Comment {
+        return .Tweet
     }
     
     func identifier() -> String {

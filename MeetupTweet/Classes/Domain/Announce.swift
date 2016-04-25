@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct Announce: Comment {
+struct Announce: CommentType {
     let id: String
     let text: String
     
-    func type() -> CommentType {
-        return CommentType.Announce
+    func type() -> Comment {
+        return .Announce
     }
     
     func identifier() -> String {
