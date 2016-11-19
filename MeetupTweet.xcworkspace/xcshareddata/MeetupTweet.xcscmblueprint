@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "333810EFC6F1CAA6B59BF833A0F1BC94716034E8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "CA6C120EFB74BD678A43C8676289514B53412D77" : 9223372036854775807,
+    "333810EFC6F1CAA6B59BF833A0F1BC94716034E8" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "DD6D02B4-3CD4-4E38-9608-AC2052D2EA20",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "CA6C120EFB74BD678A43C8676289514B53412D77" : "TwitterAPI\/",
+    "333810EFC6F1CAA6B59BF833A0F1BC94716034E8" : "MeetupTweet\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MeetupTweet",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MeetupTweet.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:yimajo\/MeetupTweet.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "333810EFC6F1CAA6B59BF833A0F1BC94716034E8"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:yimajo\/TwitterAPI.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CA6C120EFB74BD678A43C8676289514B53412D77"
+    }
+  ]
+}
