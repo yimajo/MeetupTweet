@@ -29,54 +29,54 @@ class TweetSearchViewController: NSViewController {
         
         let tweetPresenter = CommentFlowPresenter()
         
-        searchButton.rx_tap
-            .subscribeNext { [unowned self] in
+        searchButton.rx.tap
+            .subscribe(onNext: { [unowned self] in
                 if let screens = NSScreen.screens() {
                     let screen = screens[self.selectedScreenIndex]
                     tweetPresenter.searchTweet(self.searchField.stringValue, screen: screen)
                 }
-            }
+            })
             .addDisposableTo(disposeBag)
         
-        stopButton.rx_tap
-            .subscribeNext {
+        stopButton.rx.tap
+            .subscribe(onNext: {
                 tweetPresenter.stopSearch()
-            }.addDisposableTo(disposeBag)
+            }).addDisposableTo(disposeBag)
         
-        let searchValid = searchField.rx_text
+        let searchValid = searchField.rx.text.orEmpty
             .map{ text -> Bool in 0 < text.characters.count }
         
         searchValid
-            .bindTo(searchButton.rx_enabled)
+            .bindTo(searchButton.rx.isEnabled)
             .addDisposableTo(disposeBag)
         
-        NSNotificationCenter.defaultCenter().rx_notification(NSApplicationDidChangeScreenParametersNotification)
-            .subscribeNext { [unowned self] _ in
+        NotificationCenter.default.rx.notification(NSNotification.Name.NSApplicationDidChangeScreenParameters)
+            .subscribe(onNext: { [unowned self] _ in
                 self.tableView.reloadData()
-            }
+            })
             .addDisposableTo(disposeBag)
 
     }
 
     override func viewWillAppear() {
         super.viewWillAppear()
-        self.performSegueWithIdentifier("AuthSegueIdentifier", sender: nil)
+        self.performSegue(withIdentifier: "AuthSegueIdentifier", sender: nil)
     }
     
-    override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         
     }
 }
 
 extension TweetSearchViewController: NSTableViewDataSource {
     
-    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+    func numberOfRows(in tableView: NSTableView) -> Int {
         return NSScreen.screens()?.count ?? 0
     }
     
-    func tableView(tableView: NSTableView, viewForTableColumn: NSTableColumn?, row: Int) -> NSView?
+    func tableView(_ tableView: NSTableView, viewFor viewForTableColumn: NSTableColumn?, row: Int) -> NSView?
     {
-        let cell = tableView.makeViewWithIdentifier("Cell", owner: self) as! NSTableCellView
+        let cell = tableView.make(withIdentifier: "Cell", owner: self) as! NSTableCellView
         
         let screen = NSScreen.screens()![row]
         
@@ -86,7 +86,7 @@ extension TweetSearchViewController: NSTableViewDataSource {
 }
 
 extension TweetSearchViewController: NSTableViewDelegate {
-    func tableViewSelectionDidChange(notification: NSNotification) {
+    func tableViewSelectionDidChange(_ notification: Notification) {
         
         selectedScreenIndex = tableView.selectedRow
         
@@ -100,7 +100,7 @@ extension TweetSearchViewController: NSTableViewDelegate {
 
 private extension TweetSearchViewController {
     
-    func selectWindow(index: Int, screen: NSScreen) {
+    func selectWindow(_ index: Int, screen: NSScreen) {
         
         self.window = makeWindow(screen)
         
@@ -128,11 +128,11 @@ private extension TweetSearchViewController {
     }
     
     
-    func makeWindow(screen: NSScreen) -> NSWindow {
+    func makeWindow(_ screen: NSScreen) -> NSWindow {
         
-        let frame = NSRect(origin: CGPointZero, size: screen.frame.size)
+        let frame = NSRect(origin: CGPoint.zero, size: screen.frame.size)
         
-        let window = NSWindow(contentRect: frame, styleMask: NSResizableWindowMask, backing: NSBackingStoreType.Buffered, defer: false, screen: screen)
+        let window = NSWindow(contentRect: frame, styleMask: NSResizableWindowMask, backing: NSBackingStoreType.buffered, defer: false, screen: screen)
         
         window.makeKeyAndOrderFront(nil)
         
@@ -142,20 +142,20 @@ private extension TweetSearchViewController {
         return window
     }
     
-    func clearWindow(window: NSWindow) {
+    func clearWindow(_ window: NSWindow) {
         window.styleMask = NSBorderlessWindowMask
-        window.opaque = false
+        window.isOpaque = false
         window.hasShadow = false
-        window.movable = true
-        window.movableByWindowBackground = true
-        window.releasedWhenClosed = false
+        window.isMovable = true
+        window.isMovableByWindowBackground = true
+        window.isReleasedWhenClosed = false
         
-        window.backgroundColor = NSColor.blackColor()
+        window.backgroundColor = NSColor.black
     }
     
-    func maxWindow(window: NSWindow, screen: NSScreen) {
+    func maxWindow(_ window: NSWindow, screen: NSScreen) {
         let screenRect = screen.frame
         window.setFrame(screenRect, display: true)
-        window.level = Int(CGWindowLevelForKey(.MaximumWindowLevelKey))
+        window.level = Int(CGWindowLevelForKey(.maximumWindow))
     }
 }

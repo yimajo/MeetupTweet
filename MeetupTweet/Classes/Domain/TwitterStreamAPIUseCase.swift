@@ -14,18 +14,18 @@ import TwitterAPI
 
 class TwitterStraemAPIUseCase {
     
-    private let disposeBag = DisposeBag()
+    fileprivate let disposeBag = DisposeBag()
     let streamEndpoint = "https://stream.twitter.com/1.1/statuses/filter.json"
     var streamingRequest: StreamingRequest?
     
     deinit {
-        self.streamingRequest?.stop()
+        _ = self.streamingRequest?.stop()
     }
     
-    func startStream(query: String) -> PublishSubject<CommentType> {
+    func startStream(_ query: String) -> PublishSubject<CommentType> {
         
         if let streamingRequest = streamingRequest {
-            streamingRequest.stop()
+            _ = streamingRequest.stop()
         }
         
         let tweetStream = PublishSubject<CommentType>()
@@ -34,16 +34,16 @@ class TwitterStraemAPIUseCase {
             .streaming(streamEndpoint, parameters: ["track": query])
             .progress({ [unowned self] data -> Void in
                 do {
-                    let json = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                     let tweet: Tweet = try decodeValue(json)
                     tweetStream.onNext(tweet)
 
                 } catch {
-                    self.streamingRequest?.stop()
+                    _ = self.streamingRequest?.stop()
                     tweetStream.onError(error)
                 }
             })
-            .completion({ (responseData: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+            .completion({ (responseData: Data?, response: URLResponse?, error: NSError?) -> Void in
                 if let error = error {
 
                     if error.domain == NSURLErrorDomain && error.code == -999 {
@@ -54,8 +54,7 @@ class TwitterStraemAPIUseCase {
                     return
                 }
                 if let data = responseData {
-                    let out = NSString(data: data, encoding:NSUTF8StringEncoding)
-                    print(out)
+                    _ = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
                 }
                 tweetStream.onCompleted()
             })
@@ -66,7 +65,7 @@ class TwitterStraemAPIUseCase {
     
     func stopStream() {
         if let streamingRequest = streamingRequest {
-            streamingRequest.stop()
+            _ = streamingRequest.stop()
         }
     }
 }

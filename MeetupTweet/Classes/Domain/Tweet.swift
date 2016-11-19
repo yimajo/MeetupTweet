@@ -14,11 +14,11 @@ struct Tweet: Decodable {
     let text: String
     let user: User
     
-    private static var toStringTransformer: Transformer<Int64, String> {
+    fileprivate static var toStringTransformer: Transformer<Int64, String> {
         return Transformer { return String($0) }
     }
     
-    static func decode(e: Extractor) throws -> Tweet {
+    static func decode(_ e: Extractor) throws -> Tweet {
         
         return try Tweet(
             id: toStringTransformer.apply(e <| "id"),
@@ -30,7 +30,7 @@ struct Tweet: Decodable {
 
 extension Tweet: CommentType {
     func type() -> Comment {
-        return .Tweet
+        return .tweet
     }
     
     func identifier() -> String {
@@ -41,7 +41,7 @@ extension Tweet: CommentType {
         return text
     }
     
-    func imageURL() -> NSURL? {
-        return NSURL(string: user.profileImageURLString)
+    func imageURL() -> URL? {
+        return URL(string: user.profileImageURLString)
     }
 }

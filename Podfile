@@ -1,8 +1,10 @@
 platform :osx, '10.10'
 use_frameworks!
 
-pod 'TwitterAPI', '0.1.0'
-pod 'RxCocoa', '~> 2.3.0'
-pod 'RxSwift', '~> 2.3.0'
-pod 'Himotoki', '~> 1.7'
-pod 'OAuthSwift', '0.4.6'
+target 'MeetupTweet' do
+  pod 'MutableDataScanner', git: 'https://github.com/s-aska/MutableDataScanner.git', branch: 'feature/swift-3.0'
+  pod 'TwitterAPI', git: 'https://github.com/yimajo/TwitterAPI.git'
+  pod 'RxCocoa', '~> 3.0'
+  pod 'RxSwift', '~> 3.0'
+  pod 'Himotoki', '~> 3.0'
+end

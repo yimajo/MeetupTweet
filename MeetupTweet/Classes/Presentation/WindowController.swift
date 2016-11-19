@@ -18,7 +18,7 @@ class WindowController: NSWindowController {
 }
 
 extension WindowController: NSWindowDelegate {
-    func windowWillClose(notification: NSNotification) {
-        NSApplication.sharedApplication().terminate(NSApp?.keyWindow!)
+    func windowWillClose(_ notification: Notification) {
+        NSApplication.shared().terminate(NSApp?.keyWindow!)
     }
 }

@@ -10,22 +10,22 @@ import Foundation
 
 struct UserDefaults {
     
-    private static let consumerKeyName = "consumerKey"
-    private static let consumerSecretName = "consumerSecret"
+    fileprivate static let consumerKeyName = "consumerKey"
+    fileprivate static let consumerSecretName = "consumerSecret"
     
-    static func setConsumerKey(consumerKey: String) {
-         NSUserDefaults.standardUserDefaults().setValue(consumerKey, forKey: self.consumerKeyName)
+    static func setConsumerKey(_ consumerKey: String?) {
+         Foundation.UserDefaults.standard.setValue(consumerKey, forKey: self.consumerKeyName)
     }
     
     static func consumerKey() -> String? {
-        return NSUserDefaults.standardUserDefaults().stringForKey(consumerKeyName)
+        return Foundation.UserDefaults.standard.string(forKey: consumerKeyName)
     }
     
-    static func setConsumerSecret(consumerSecret: String) {
-        NSUserDefaults.standardUserDefaults().setValue(consumerSecret, forKey: self.consumerSecretName)
+    static func setConsumerSecret(_ consumerSecret: String?) {
+        Foundation.UserDefaults.standard.setValue(consumerSecret, forKey: self.consumerSecretName)
     }
     
     static func consumerSecret() -> String? {
-        return NSUserDefaults.standardUserDefaults().stringForKey(consumerSecretName)
+        return Foundation.UserDefaults.standard.string(forKey: consumerSecretName)
     }
 }

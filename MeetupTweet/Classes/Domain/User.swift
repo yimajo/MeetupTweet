@@ -12,7 +12,7 @@ import Himotoki
 struct User: Decodable {
     let profileImageURLString: String
     
-    static func decode(e: Extractor) throws -> User {
+    static func decode(_ e: Extractor) throws -> User {
         return try User(
             profileImageURLString: e <| "profile_image_url"
         )
