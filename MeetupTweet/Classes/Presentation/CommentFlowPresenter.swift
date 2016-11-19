@@ -13,13 +13,13 @@ import RxSwift
 class CommentFlowPresenter {
 
     var subscription: Disposable?
-    private let tweetSearchUseCase = TwitterStraemAPIUseCase()
-    private let disposeBag = DisposeBag()
-    private var comments: [String: (comment: CommentType, view: CommentView)] = [:]
-    private var commentViews: [CommentView?] = []
-    private var window: NSWindow = NSWindow()
+    fileprivate let tweetSearchUseCase = TwitterStraemAPIUseCase()
+    fileprivate let disposeBag = DisposeBag()
+    fileprivate var comments: [String: (comment: CommentType, view: CommentView)] = [:]
+    fileprivate var commentViews: [CommentView?] = []
+    fileprivate var window: NSWindow = NSWindow()
     
-    func searchTweet(search: String, screen: NSScreen) {
+    func searchTweet(_ search: String, screen: NSScreen) {
         refreshComments()
         window = makeTweetWindow(screen)
 
@@ -27,13 +27,13 @@ class CommentFlowPresenter {
         
         let tweetStream = tweetSearchUseCase.startStream(search)
             .observeOn(MainScheduler.instance)
-            .startWith(Announce(id: NSUUID().UUIDString, text: startText))
+            .startWith(Announce(id: UUID().uuidString, text: startText))
 
         self.subscription = Observable.of(tweetStream, AnnounceUseCase.intervalTextStream(search))
             .merge()
-            .subscribeNext { [unowned self] comment -> Void in
+            .subscribe(onNext: {  [unowned self] comment in
                 self.addComment(comment)
-            }
+            })
         
         self.subscription?.addDisposableTo(disposeBag)
     }
@@ -53,7 +53,7 @@ private extension CommentFlowPresenter {
         commentViews = []
     }
     
-    func addComment(comment: CommentType) {
+    func addComment(_ comment: CommentType) {
         let view = makeCommentView(comment)
         
         window.contentView?.addSubview(view)
@@ -62,33 +62,34 @@ private extension CommentFlowPresenter {
         startAnimationComment(comment, view: view)
     }
     
-    func removeComment(comment: CommentType) {
+    func removeComment(_ comment: CommentType) {
         if let tweet = comments[comment.identifier()] {
             tweet.view.removeFromSuperview()
             comments[comment.identifier()] = nil
         }
     }
     
-    func startAnimationComment(comment: CommentType, view: CommentView) {
+    func startAnimationComment(_ comment: CommentType, view: CommentView) {
         // TextFieldの移動開始
         let windowFrame = self.window.frame
         
         let v: CGFloat = 200.0
 
-        let firstDuration = NSTimeInterval(view.frame.width / v)
+        let firstDuration = TimeInterval(view.frame.width / v)
 
         let len = windowFrame.width
-        let secondDuration = NSTimeInterval(len / v)
+        let secondDuration = TimeInterval(len / v)
 
         NSAnimationContext.runAnimationGroup(
             { context in
                 context.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
                 context.duration = firstDuration
-                view.animator().frame = CGRectOffset(view.frame, -view.frame.width, 0)
+//                view.animator().frame = CGRectOffset(view.frame, -view.frame.width, 0)
+                view.animator().frame = view.frame.offsetBy(dx: -view.frame.width, dy: 0)
 
             }, completionHandler: { [unowned self] in
 
-                for (index, v) in self.commentViews.enumerate() {
+                for (index, v) in self.commentViews.enumerated() {
                     if v == view {
                         self.commentViews[index] = nil
                         break;
@@ -99,7 +100,7 @@ private extension CommentFlowPresenter {
                     { context in
                         context.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
                         context.duration = secondDuration
-                        view.animator().frame = CGRectOffset(view.frame, -len, 0)
+                        view.animator().frame = view.frame.offsetBy(dx: -len, dy: 0)
                         
                     }, completionHandler: {
                         self.removeComment(comment)
@@ -109,20 +110,20 @@ private extension CommentFlowPresenter {
         )
     }
     
-    func makeCommentView(comment: CommentType) -> CommentView {
+    func makeCommentView(_ comment: CommentType) -> CommentView {
         
         let commentView: CommentView
         switch comment.type() {
-            case .Tweet:
+            case .tweet:
                 commentView = CommentView.newCommentView(comment.message())
                 if let url = comment.imageURL() {
-                    NSURLSession.sharedSession().rx_data(NSURLRequest(URL: url))
-                        .subscribeNext { data in
+                    URLSession.shared.rx.data(request: URLRequest(url: url))
+                        .subscribe(onNext: { data in
                             commentView.imageView.image = NSImage.init(data: data)
-                        }.addDisposableTo(disposeBag)
+                        }).addDisposableTo(disposeBag)
                 }
-            case .Announce:
-                commentView = CommentView.newCommentView(comment.message(), fontColor: NSColor.redColor())
+            case .announce:
+                commentView = CommentView.newCommentView(comment.message(), fontColor: NSColor.red)
                 commentView.imageView.image = NSApp.applicationIconImage
         }
         
@@ -131,7 +132,7 @@ private extension CommentFlowPresenter {
             commentViews.append(commentView)
         } else {
             var add = false
-            for (index, view) in commentViews.enumerate() {
+            for (index, view) in commentViews.enumerated() {
                 if view == nil {
                     commentViews[index] = commentView
                     space = index
@@ -149,29 +150,29 @@ private extension CommentFlowPresenter {
 
         let windowFrame = self.window.frame
         let y = (windowFrame.height - commentView.frame.height) - (CGFloat(space) * commentView.frame.height)
-        commentView.frame.origin = CGPointMake(windowFrame.width, y)
+        commentView.frame.origin = CGPoint(x: windowFrame.width, y: y)
         
         return commentView
     }
     
-    func makeTweetWindow(screen: NSScreen) -> NSWindow {
+    func makeTweetWindow(_ screen: NSScreen) -> NSWindow {
         
         let menuHeight: CGFloat = 23.0
         
-        let size = CGSizeMake(screen.frame.size.width, screen.frame.size.height - menuHeight)
-        let frame = NSRect(origin: CGPointZero, size: size)
+        let size = CGSize(width: screen.frame.size.width, height: screen.frame.size.height - menuHeight)
+        let frame = NSRect(origin: CGPoint.zero, size: size)
         
-        window = NSWindow(contentRect: frame, styleMask: NSResizableWindowMask, backing: .Buffered, defer: false, screen: screen)
+        window = NSWindow(contentRect: frame, styleMask: NSResizableWindowMask, backing: .buffered, defer: false, screen: screen)
 
         window.styleMask = NSBorderlessWindowMask
-        window.opaque = false
+        window.isOpaque = false
         window.hasShadow = false
-        window.movable = true
-        window.movableByWindowBackground = true
-        window.releasedWhenClosed = false
-        window.backgroundColor = NSColor.clearColor()
+        window.isMovable = true
+        window.isMovableByWindowBackground = true
+        window.isReleasedWhenClosed = false
+        window.backgroundColor = NSColor.clear
 
-        window.level = Int(CGWindowLevelForKey(.MaximumWindowLevelKey))
+        window.level = Int(CGWindowLevelForKey(.maximumWindow))
         window.makeKeyAndOrderFront(nil)
 
         return window

@@ -33,30 +33,30 @@ class AuthViewController: NSViewController {
         }
         
         let authViewModel = AuthViewModel.init(
-            consumerKey: consumerKeyTextFeild.rx_text.asObservable(),
-            consumerSecret: consumerSecretTextField.rx_text.asObservable(),
-            authrorizeTap: authorizeButton.rx_tap.asObservable()
+            consumerKey: consumerKeyTextFeild.rx.text.orEmpty.asObservable(),
+            consumerSecret: consumerSecretTextField.rx.text.orEmpty.asObservable(),
+            authrorizeTap: authorizeButton.rx.tap.asObservable()
         )
         
         authViewModel.validated
-            .bindTo(authorizeButton.rx_enabled)
+            .bindTo(authorizeButton.rx.isEnabled)
             .addDisposableTo(disposeBag)
         
         authViewModel.authorized
-            .subscribeNext { [unowned self] authorize in
-                
-                self.dismissController(nil)
-            }
-            .addDisposableTo(disposeBag)
+            .subscribe(onNext: { [unowned self] authorize in
+                self.dismiss(nil)
+            }, onError: { error in
+                print(error)
+            }).addDisposableTo(disposeBag)
     }
 
-    @IBAction func tapHelpButton(sender: AnyObject) {
-        let url = NSURL(string: "https://apps.twitter.com/")!
-        NSWorkspace.sharedWorkspace().openURL(url)
+    @IBAction func tapHelpButton(_ sender: AnyObject) {
+        let url = URL(string: "https://apps.twitter.com/")!
+        NSWorkspace.shared().open(url)
     }
     
-    @IBAction func tapCloseButton(sender: AnyObject) {
-        self.dismissController(nil)
+    @IBAction func tapCloseButton(_ sender: AnyObject) {
+        self.dismiss(nil)
         AppDelegate.sharedInstance.quit()
     }
 }

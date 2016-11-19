@@ -8,8 +8,8 @@
 import Foundation
 
 enum Comment {
-    case Tweet
-    case Announce
+    case tweet
+    case announce
 }
 
 protocol CommentType {
@@ -17,5 +17,5 @@ protocol CommentType {
     
     func identifier() -> String
     func message() -> String
-    func imageURL() -> NSURL?
+    func imageURL() -> URL?
 }

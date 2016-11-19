@@ -15,15 +15,15 @@ class CommentView: NSView {
 
     class var nibName: String { get { return "CommentView" } }
     
-    class func newCommentView(message: String, fontColor: NSColor? = nil) -> CommentView {
+    class func newCommentView(_ message: String, fontColor: NSColor? = nil) -> CommentView {
         
-        var topLevelObjects: NSArray?
-        let nib = NSNib(nibNamed: nibName, bundle: NSBundle.mainBundle())!
-        nib.instantiateWithOwner(nil, topLevelObjects: &topLevelObjects)
+        var topLevelObjects: NSArray? = []
+        let nib = NSNib(nibNamed: nibName, bundle: Bundle.main)!
+        nib.instantiate(withOwner: self, topLevelObjects: &topLevelObjects!)
         
         var view: CommentView!
         
-        for object: AnyObject in topLevelObjects! {
+        for object: Any in topLevelObjects! {
             if let obj = object as? CommentView {
                 view = obj
                 break
@@ -33,9 +33,9 @@ class CommentView: NSView {
         view.messageTextField.stringValue = message
         
         let attributes =  [
-            NSStrokeColorAttributeName: NSColor.blackColor(),
-            NSStrokeWidthAttributeName: NSNumber(float: -4.0),
-            NSForegroundColorAttributeName: fontColor ?? NSColor.whiteColor(),
+            NSStrokeColorAttributeName: NSColor.black,
+            NSStrokeWidthAttributeName: NSNumber(value: -4.0 as Float),
+            NSForegroundColorAttributeName: fontColor ?? NSColor.white,
         ]
         
         let attributedString = NSAttributedString(string: message, attributes: attributes)

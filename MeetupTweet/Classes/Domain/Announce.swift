@@ -13,7 +13,7 @@ struct Announce: CommentType {
     let text: String
     
     func type() -> Comment {
-        return .Announce
+        return .announce
     }
     
     func identifier() -> String {
@@ -24,7 +24,7 @@ struct Announce: CommentType {
         return text
     }
     
-    func imageURL() -> NSURL? {
+    func imageURL() -> URL? {
         return nil
     }
 }

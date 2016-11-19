@@ -10,11 +10,14 @@ import Cocoa
 
 class TextField: NSTextField {
     
-    private let commandKey = NSEventModifierFlags.CommandKeyMask.rawValue
-    private let commandShiftKey = NSEventModifierFlags.CommandKeyMask.rawValue | NSEventModifierFlags.ShiftKeyMask.rawValue
-    override func performKeyEquivalent(event: NSEvent) -> Bool {
-        if event.type == NSEventType.KeyDown {
-            if (event.modifierFlags.rawValue & NSEventModifierFlags.DeviceIndependentModifierFlagsMask.rawValue) == commandKey {
+    fileprivate let commandKey = NSEventModifierFlags.command.rawValue
+    fileprivate let commandShiftKey = NSEventModifierFlags.command.rawValue | NSEventModifierFlags.shift.rawValue
+    
+    override func performKeyEquivalent(with event: NSEvent) -> Bool {
+        if event.type == NSEventType.keyDown {
+            
+            let keyModifier = event.modifierFlags.rawValue & NSEventModifierFlags.deviceIndependentFlagsMask.rawValue
+            if keyModifier == commandKey {                
                 switch event.charactersIgnoringModifiers! {
                 case "x":
                     if NSApp.sendAction(#selector(NSText.cut(_:)), to:nil, from:self) { return true }
@@ -29,6 +32,6 @@ class TextField: NSTextField {
                 }
             }
         }
-        return super.performKeyEquivalent(event)
+        return super.performKeyEquivalent(with: event)
     }
 }

@@ -15,30 +15,31 @@ import RxSwift
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     var oauthClient: OAuthClient?
+    var requestHandle: OAuthSwiftRequestHandle?
     
-    func applicationDidFinishLaunching(notification: NSNotification) {
+    func applicationDidFinishLaunching(_ notification: Notification) {
         
-        NSAppleEventManager.sharedAppleEventManager().setEventHandler(self, andSelector:#selector(AppDelegate.handleGetURLEvent(_:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
+        NSAppleEventManager.shared().setEventHandler(self, andSelector:#selector(AppDelegate.handleGetURLEvent(_:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
     }
     
     func quit() {
-        NSApplication.sharedApplication().terminate(self)
+        NSApplication.shared().terminate(self)
     }
     
     class var sharedInstance: AppDelegate {
-        return NSApplication.sharedApplication().delegate as! AppDelegate
+        return NSApplication.shared().delegate as! AppDelegate
     }
 
-    func handleGetURLEvent(event: NSAppleEventDescriptor!, withReplyEvent: NSAppleEventDescriptor!) {
-        if let urlString = event.paramDescriptorForKeyword(AEKeyword(keyDirectObject))?.stringValue, url = NSURL(string: urlString) {
+    func handleGetURLEvent(_ event: NSAppleEventDescriptor!, withReplyEvent: NSAppleEventDescriptor!) {
+        if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue, let url = URL(string: urlString) {
             if url.host == "oauth-callback" {
-                OAuth1Swift.handleOpenURL(url)
+                OAuth1Swift.handle(url: url)
             }
         }
     }
     
 
-    func authorize(consumerKey consumerKey: String, consumerSecret: String) -> Observable<Bool> {
+    func authorize(consumerKey: String, consumerSecret: String) -> Observable<Bool> {
         
         let oauthSwift = OAuth1Swift(
             consumerKey:     consumerKey,
@@ -48,20 +49,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             accessTokenUrl:  "https://api.twitter.com/oauth/access_token"
         )
 
-        return Observable.create { observer in
-            oauthSwift.authorizeWithCallbackURL(NSURL(string: "meetup-tweet://oauth-callback/twitter")!,
-                success: { credential, response in
-                    
-                    self.oauthClient = OAuthClient(consumerKey: consumerKey, consumerSecret: consumerSecret, accessToken: credential.oauth_token, accessTokenSecret: credential.oauth_token_secret)
-                    
-                    observer.onNext(true)
-                    
-                }, failure: { error in
-                    
-                    observer.onError(error)
-                }
-            )
-            return AnonymousDisposable{ }
+        return Observable.create { [unowned self] observer in
+
+            self.requestHandle = oauthSwift.authorize(withCallbackURL: "meetup-tweet://oauth-callback/twitter", success: { credential, response, parameters in
+            
+                self.oauthClient = OAuthClient(consumerKey: consumerKey, consumerSecret: consumerSecret, accessToken: credential.oauthToken, accessTokenSecret: credential.oauthTokenSecret)
+                
+                observer.onNext(true)
+
+                
+            }, failure: { error in
+                observer.onError(error)
+            })
+            
+
+            return Disposables.create()
         }
     }
 }

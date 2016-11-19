@@ -1,27 +1,44 @@
 PODS:
-  - Himotoki (1.7.0)
+  - Himotoki (3.0.0)
   - MutableDataScanner (1.0.7)
-  - OAuthSwift (0.4.6)
-  - RxCocoa (2.3.1):
-    - RxSwift (~> 2.3.1)
-  - RxSwift (2.3.1)
-  - TwitterAPI (0.1.0):
+  - OAuthSwift (1.0.0)
+  - RxCocoa (3.0.1):
+    - RxSwift (~> 3.0)
+  - RxSwift (3.0.1)
+  - TwitterAPI (0.1.2):
     - MutableDataScanner
-    - OAuthSwift
+    - OAuthSwift (= 1.0.0)
 
 DEPENDENCIES:
-  - Himotoki (~> 1.7)
-  - OAuthSwift (= 0.4.6)
-  - RxCocoa (~> 2.3.0)
-  - RxSwift (~> 2.3.0)
-  - TwitterAPI (= 0.1.0)
+  - Himotoki (~> 3.0)
+  - MutableDataScanner (from `https://github.com/s-aska/MutableDataScanner.git`, branch `feature/swift-3.0`)
+  - RxCocoa (~> 3.0)
+  - RxSwift (~> 3.0)
+  - TwitterAPI (from `https://github.com/yimajo/TwitterAPI.git`)
+
+EXTERNAL SOURCES:
+  MutableDataScanner:
+    :branch: feature/swift-3.0
+    :git: https://github.com/s-aska/MutableDataScanner.git
+  TwitterAPI:
+    :git: https://github.com/yimajo/TwitterAPI.git
+
+CHECKOUT OPTIONS:
+  MutableDataScanner:
+    :commit: 143e10fec558aa8d5a74004cbc46a70594ef9d78
+    :git: https://github.com/s-aska/MutableDataScanner.git
+  TwitterAPI:
+    :commit: 3dd47e1dcbbd30bed046eac3bb27a3fae0e8b7a5
+    :git: https://github.com/yimajo/TwitterAPI.git
 
 SPEC CHECKSUMS:
-  Himotoki: a97b4a5861d6d25fc0746f0e19164eef03c19347
+  Himotoki: df74b01035e86e021b7b04a15b033a7fd189b84f
   MutableDataScanner: bba5d238d7191f0e567c695f833c5d6cebcc093d
-  OAuthSwift: 8c738cc56c942a541f5c6d0362a892cb149d10b1
-  RxCocoa: a2baaf3462b989559a51dce59d78fbebb8fe0afa
-  RxSwift: 829b2843e9eddc77a02cb3f5117f0d55f8f646f1
-  TwitterAPI: adc61bdf90fde855e84c1bc67223c5877f22b464
+  OAuthSwift: dd4f502ffd4f6e122b861b5e4529bf6454a30fe6
+  RxCocoa: 15a52fc590dcc700cb4a690a633b5c5184ce3a78
+  RxSwift: af5680055c4ad04480189c52d28385b1029493a6
+  TwitterAPI: 297a798788eec3c7feb7edc77c23e51dd27934ff
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 7cf808d1fdcaff089e960a0e74ec288336f216e8
+
+COCOAPODS: 1.1.1
