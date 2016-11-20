@@ -18,12 +18,14 @@ class TweetSearchViewController: NSViewController {
     @IBOutlet weak var searchField: NSSearchField!
     @IBOutlet weak var stopButton: NSButton!
     @IBOutlet weak var searchButton: NSButton!
-        
+    @IBOutlet weak var touchBarScrubber: NSScrubber!
+    
     var window: NSWindow?
     let disposeBag = DisposeBag()
     var selectedScreenIndex = 0
+    let tweetSearchUseCase = TwitterStraemAPIUseCase()
+    var tweetSubject: PublishSubject<CommentType>?
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,15 +33,25 @@ class TweetSearchViewController: NSViewController {
         
         searchButton.rx.tap
             .subscribe(onNext: { [unowned self] in
+
+                let query = self.searchField.stringValue
+                self.tweetSubject = self.tweetSearchUseCase.startStream(query)
+                
                 if let screens = NSScreen.screens() {
                     let screen = screens[self.selectedScreenIndex]
-                    tweetPresenter.searchTweet(self.searchField.stringValue, screen: screen)
-                }
+                    
+                    let obserbable = self.tweetSubject!
+                        .observeOn(MainScheduler.instance)
+                        .startWith(Announce(id: UUID().uuidString, text: CommentFlowPresenter.startText(string: query)))
+                    
+                    tweetPresenter.searchTweet(query: query, tweetObservable: obserbable, screen: screen)
+                }                
             })
             .addDisposableTo(disposeBag)
         
         stopButton.rx.tap
-            .subscribe(onNext: {
+            .subscribe(onNext: { [unowned self] in
+                self.tweetSearchUseCase.stopStream()
                 tweetPresenter.stopSearch()
             }).addDisposableTo(disposeBag)
         
@@ -97,6 +109,31 @@ extension TweetSearchViewController: NSTableViewDelegate {
         selectWindow(selectedScreenIndex, screen: screen)
     }
 }
+
+
+extension TweetSearchViewController: NSScrubberDataSource {
+    
+    
+    func numberOfItems(for scrubber: NSScrubber) -> Int {
+        return 50
+    }
+    
+    func scrubber(_ scrubber: NSScrubber, viewForItemAt index: Int) -> NSScrubberItemView {
+        
+        let itemIdentifier = "scrubberItem"
+
+        var item = scrubber.makeItem(withIdentifier: itemIdentifier, owner: scrubber) as? NSScrubberTextItemView
+        
+        if item == nil {
+            item = NSScrubberTextItemView()
+            item?.identifier = itemIdentifier
+        }
+        
+        item?.title = "siri"
+        return item!
+    }
+}
+
 
 private extension TweetSearchViewController {
     

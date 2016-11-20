@@ -13,23 +13,21 @@ import RxSwift
 class CommentFlowPresenter {
 
     var subscription: Disposable?
-    fileprivate let tweetSearchUseCase = TwitterStraemAPIUseCase()
     fileprivate let disposeBag = DisposeBag()
     fileprivate var comments: [String: (comment: CommentType, view: CommentView)] = [:]
     fileprivate var commentViews: [CommentView?] = []
     fileprivate var window: NSWindow = NSWindow()
     
-    func searchTweet(_ search: String, screen: NSScreen) {
+    static func startText(string: String) -> String {
+        return "Twiter Stream APIを\(string)で取得中です"
+    }
+    
+    func searchTweet(query: String, tweetObservable: Observable<CommentType>, screen: NSScreen) {
+
         refreshComments()
         window = makeTweetWindow(screen)
 
-        let startText = "Twiter Stream APIを\(search)で取得中です"
-        
-        let tweetStream = tweetSearchUseCase.startStream(search)
-            .observeOn(MainScheduler.instance)
-            .startWith(Announce(id: UUID().uuidString, text: startText))
-
-        self.subscription = Observable.of(tweetStream, AnnounceUseCase.intervalTextStream(search))
+        self.subscription = Observable.of(tweetObservable, AnnounceUseCase.intervalTextStream(query))
             .merge()
             .subscribe(onNext: {  [unowned self] comment in
                 self.addComment(comment)
@@ -47,7 +45,6 @@ class CommentFlowPresenter {
 private extension CommentFlowPresenter {
 
     func refreshComments() {
-        tweetSearchUseCase.stopStream()
         subscription?.dispose()
         comments = [:]
         commentViews = []
