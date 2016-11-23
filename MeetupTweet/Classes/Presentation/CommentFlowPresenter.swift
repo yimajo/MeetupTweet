@@ -159,9 +159,9 @@ private extension CommentFlowPresenter {
         let size = CGSize(width: screen.frame.size.width, height: screen.frame.size.height - menuHeight)
         let frame = NSRect(origin: CGPoint.zero, size: size)
         
-        window = NSWindow(contentRect: frame, styleMask: NSResizableWindowMask, backing: .buffered, defer: false, screen: screen)
+        window = NSWindow(contentRect: frame, styleMask: NSWindowStyleMask.resizable, backing: .buffered, defer: false, screen: screen)
 
-        window.styleMask = NSBorderlessWindowMask
+        window.styleMask = NSWindowStyleMask.borderless
         window.isOpaque = false
         window.hasShadow = false
         window.isMovable = true
