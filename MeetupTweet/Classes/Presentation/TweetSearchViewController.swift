@@ -18,13 +18,38 @@ class TweetSearchViewController: NSViewController {
     @IBOutlet weak var searchField: NSSearchField!
     @IBOutlet weak var stopButton: NSButton!
     @IBOutlet weak var searchButton: NSButton!
-    @IBOutlet weak var touchBarScrubber: NSScrubber!
+    
+    @IBOutlet weak var touchBarAvatarButton: NSButton!
+    @IBOutlet weak var touchBarTextView: NSTextView!
     
     var window: NSWindow?
     let disposeBag = DisposeBag()
     var selectedScreenIndex = 0
     let tweetSearchUseCase = TwitterStraemAPIUseCase()
-    var tweetSubject: PublishSubject<CommentType>?
+    
+    var tweetSubject: PublishSubject<CommentType>? {
+        didSet {
+            guard let tweetSubject = tweetSubject else {
+                return
+            }
+            
+            tweetSubject
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: { [unowned self] comment in
+                
+                self.touchBarTextView.string = comment.message()
+                    
+                if let url = comment.imageURL() {
+                    URLSession.shared.rx.data(request: URLRequest(url: url))
+                        .subscribe(onNext: { data in
+                            self.touchBarAvatarButton.image = NSImage.init(data: data)
+                        }).addDisposableTo(self.disposeBag)
+                }
+
+                    
+            }).addDisposableTo(disposeBag)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,8 +76,12 @@ class TweetSearchViewController: NSViewController {
         
         stopButton.rx.tap
             .subscribe(onNext: { [unowned self] in
-                self.tweetSearchUseCase.stopStream()
                 tweetPresenter.stopSearch()
+                
+                self.tweetSearchUseCase.stopStream()
+                
+                self.touchBarAvatarButton.image = nil
+                self.touchBarTextView.string = " "
             }).addDisposableTo(disposeBag)
         
         let searchValid = searchField.rx.text.orEmpty
@@ -109,31 +138,6 @@ extension TweetSearchViewController: NSTableViewDelegate {
         selectWindow(selectedScreenIndex, screen: screen)
     }
 }
-
-
-extension TweetSearchViewController: NSScrubberDataSource {
-    
-    
-    func numberOfItems(for scrubber: NSScrubber) -> Int {
-        return 50
-    }
-    
-    func scrubber(_ scrubber: NSScrubber, viewForItemAt index: Int) -> NSScrubberItemView {
-        
-        let itemIdentifier = "scrubberItem"
-
-        var item = scrubber.makeItem(withIdentifier: itemIdentifier, owner: scrubber) as? NSScrubberTextItemView
-        
-        if item == nil {
-            item = NSScrubberTextItemView()
-            item?.identifier = itemIdentifier
-        }
-        
-        item?.title = "siri"
-        return item!
-    }
-}
-
 
 private extension TweetSearchViewController {
     

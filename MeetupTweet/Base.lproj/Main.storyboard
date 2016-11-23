@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="9yO-hj-vsG">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2659" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="9yO-hj-vsG">
     <dependencies>
         <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="7104"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="the Touch Bar" message="Use a version of macOS with Touch Bar support." minToolsVersion="8.1" minSystemVersion="10.12.1" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
     <scenes>
         <!--Tweet Search View Controller-->
@@ -115,11 +117,70 @@
                             </button>
                         </subviews>
                     </view>
+                    <touchBar key="touchBar" id="UWN-w5-nSR">
+                        <touchBarItems>
+                            <touchBarItem id="5Q5-el-6E6">
+                                <viewController key="viewController" id="Mlh-Y2-1t1">
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JtL-B0-MSu">
+                                        <rect key="frame" x="-5" y="-6" width="82" height="30"/>
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eRa-hE-27S">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </buttonCell>
+                                    </button>
+                                </viewController>
+                                <size key="designTimeSize" width="72" height="20"/>
+                            </touchBarItem>
+                            <touchBarItem id="h9Z-ul-4ue">
+                                <viewController key="viewController" id="blE-6V-cVZ">
+                                    <scrollView key="view" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" scrollerKnobStyle="dark" translatesAutoresizingMaskIntoConstraints="NO" id="tIh-BE-aWh">
+                                        <rect key="frame" x="0.0" y="0.0" width="450" height="34"/>
+                                        <clipView key="contentView" copiesOnScroll="NO" id="QvF-N4-E8o">
+                                            <rect key="frame" x="0.0" y="0.0" width="450" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <textView editable="NO" selectable="NO" importsGraphics="NO" richText="NO" horizontallyResizable="YES" verticallyResizable="NO" findStyle="panel" id="DXE-VP-ldR">
+                                                    <rect key="frame" x="0.0" y="0.0" width="450" height="34"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <size key="minSize" width="450" height="34"/>
+                                                    <size key="maxSize" width="463" height="10000000"/>
+                                                    <attributedString key="textStorage">
+                                                        <fragment content=" ">
+                                                            <attributes>
+                                                                <color key="NSColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                                                <font key="NSFont" size="31" name=".HiraKakuInterface-W3"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                </textView>
+                                            </subviews>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </clipView>
+                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="iQT-1c-j0e">
+                                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="7P5-iO-xbU">
+                                            <rect key="frame" x="-100" y="-100" width="16" height="32"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
+                                </viewController>
+                                <size key="designTimeSize" width="450" height="34"/>
+                            </touchBarItem>
+                        </touchBarItems>
+                    </touchBar>
                     <connections>
                         <outlet property="searchButton" destination="ddf-Mn-aXv" id="478-UJ-y8T"/>
                         <outlet property="searchField" destination="viM-r0-Lcr" id="rAk-Es-aSr"/>
                         <outlet property="stopButton" destination="LID-zs-5fH" id="f04-a7-a5z"/>
                         <outlet property="tableView" destination="tFQ-lN-pRu" id="P9e-Gl-s7m"/>
+                        <outlet property="touchBarAvatarButton" destination="JtL-B0-MSu" id="jin-go-DLS"/>
+                        <outlet property="touchBarTextView" destination="DXE-VP-ldR" id="Fti-Is-feE"/>
                         <segue destination="AmD-ro-1ro" kind="sheet" identifier="AuthSegueIdentifier" id="Ykf-aF-LDN"/>
                     </connections>
                 </viewController>
@@ -192,7 +253,7 @@
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mM1-p3-b4A">
                                 <rect key="frame" x="20" y="202" width="320" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="roundRect" title="Twitter API を利用するためkeyとsecretが必要です" bezelStyle="roundedRect" image="B14D1465-8BA9-459B-9230-BD0B0F9B34C9" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PUq-9L-3KB">
+                                <buttonCell key="cell" type="roundRect" title="Twitter API を利用するためkeyとsecretが必要です" bezelStyle="roundedRect" image="8D721F2D-F2E9-4A3E-9825-7DC3A5B77941" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PUq-9L-3KB">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
@@ -269,7 +330,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="B14D1465-8BA9-459B-9230-BD0B0F9B34C9" width="1" height="1">
+        <image name="8D721F2D-F2E9-4A3E-9825-7DC3A5B77941" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
