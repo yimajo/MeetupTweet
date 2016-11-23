@@ -173,7 +173,7 @@ private extension TweetSearchViewController {
         
         let frame = NSRect(origin: CGPoint.zero, size: screen.frame.size)
         
-        let window = NSWindow(contentRect: frame, styleMask: NSResizableWindowMask, backing: NSBackingStoreType.buffered, defer: false, screen: screen)
+        let window = NSWindow(contentRect: frame, styleMask: NSWindowStyleMask.resizable, backing: NSBackingStoreType.buffered, defer: false, screen: screen)
         
         window.makeKeyAndOrderFront(nil)
         
@@ -184,7 +184,7 @@ private extension TweetSearchViewController {
     }
     
     func clearWindow(_ window: NSWindow) {
-        window.styleMask = NSBorderlessWindowMask
+        window.styleMask = NSWindowStyleMask.borderless
         window.isOpaque = false
         window.hasShadow = false
         window.isMovable = true
