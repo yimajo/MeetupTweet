@@ -9,7 +9,7 @@
 import Foundation
 import Himotoki
 
-struct User: Decodable {
+struct User: Himotoki.Decodable {
     let profileImageURLString: String
     
     static func decode(_ e: Extractor) throws -> User {

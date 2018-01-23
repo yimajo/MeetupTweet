@@ -9,7 +9,7 @@
 import Foundation
 import Himotoki
 
-struct Tweet: Decodable {
+struct Tweet: Himotoki.Decodable {
     let id: String
     let text: String
     let user: User
