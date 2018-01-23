@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		098A1CD820E7359D8F1728EA /* Pods_MeetupTweet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77EE9A719F62343B0A0DD2A0 /* Pods_MeetupTweet.framework */; };
 		A523BD361CB8F99100701C9B /* AnnounceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BD351CB8F99100701C9B /* AnnounceUseCase.swift */; };
 		A523BD391CBA5A6800701C9B /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BD381CBA5A6800701C9B /* AuthViewModel.swift */; };
 		A523BD3D1CBA826A00701C9B /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BD3C1CBA826A00701C9B /* TextField.swift */; };
@@ -21,6 +20,11 @@
 		A55664BE1C887F800003A8D5 /* CommentFlowPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55664BD1C887F800003A8D5 /* CommentFlowPresenter.swift */; };
 		A55664C01C887FE60003A8D5 /* TwitterStreamAPIUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55664BF1C887FE60003A8D5 /* TwitterStreamAPIUseCase.swift */; };
 		A55664CE1C892E850003A8D5 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55664CD1C892E850003A8D5 /* Tweet.swift */; };
+		A55EEA9B2017A6C100F39DE1 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55EEA9A2017A6C000F39DE1 /* Himotoki.framework */; };
+		A55EEABA2017A7B300F39DE1 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55EEAB92017A7B300F39DE1 /* RxSwift.framework */; };
+		A55EEABC2017A7FF00F39DE1 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55EEABB2017A7FF00F39DE1 /* RxCocoa.framework */; };
+		A55EEABE2017AA5C00F39DE1 /* MutableDataScanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55EEABD2017AA5C00F39DE1 /* MutableDataScanner.framework */; };
+		A55EEAC02017AA9100F39DE1 /* TwitterAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55EEABF2017AA9100F39DE1 /* TwitterAPI.framework */; };
 		A584722020177C7B007CE1FF /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = A584721F20177C7B007CE1FF /* Window.swift */; };
 		A5E064671C9EBFFF00731D40 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E064661C9EBFFF00731D40 /* CommentView.swift */; };
 		A5E0646A1C9EC03D00731D40 /* CommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E064681C9EC03D00731D40 /* CommentView.xib */; };
@@ -48,6 +52,11 @@
 		A55664BD1C887F800003A8D5 /* CommentFlowPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentFlowPresenter.swift; path = Classes/Presentation/CommentFlowPresenter.swift; sourceTree = "<group>"; };
 		A55664BF1C887FE60003A8D5 /* TwitterStreamAPIUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitterStreamAPIUseCase.swift; path = Classes/Domain/TwitterStreamAPIUseCase.swift; sourceTree = "<group>"; };
 		A55664CD1C892E850003A8D5 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tweet.swift; path = Classes/Domain/Tweet.swift; sourceTree = "<group>"; };
+		A55EEA9A2017A6C000F39DE1 /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/Mac/Himotoki.framework; sourceTree = "<group>"; };
+		A55EEAB92017A7B300F39DE1 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/Mac/RxSwift.framework; sourceTree = "<group>"; };
+		A55EEABB2017A7FF00F39DE1 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/Mac/RxCocoa.framework; sourceTree = "<group>"; };
+		A55EEABD2017AA5C00F39DE1 /* MutableDataScanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MutableDataScanner.framework; path = Carthage/Build/Mac/MutableDataScanner.framework; sourceTree = "<group>"; };
+		A55EEABF2017AA9100F39DE1 /* TwitterAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterAPI.framework; path = Carthage/Build/Mac/TwitterAPI.framework; sourceTree = "<group>"; };
 		A584721F20177C7B007CE1FF /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Window.swift; path = Classes/Presentation/Window.swift; sourceTree = "<group>"; };
 		A5E064661C9EBFFF00731D40 /* CommentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentView.swift; path = Classes/Presentation/CommentView.swift; sourceTree = "<group>"; };
 		A5E064691C9EC03D00731D40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CommentView.xib; sourceTree = "<group>"; };
@@ -62,7 +71,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				098A1CD820E7359D8F1728EA /* Pods_MeetupTweet.framework in Frameworks */,
+				A55EEAC02017AA9100F39DE1 /* TwitterAPI.framework in Frameworks */,
+				A55EEABE2017AA5C00F39DE1 /* MutableDataScanner.framework in Frameworks */,
+				A55EEABC2017A7FF00F39DE1 /* RxCocoa.framework in Frameworks */,
+				A55EEABA2017A7B300F39DE1 /* RxSwift.framework in Frameworks */,
+				A55EEA9B2017A6C100F39DE1 /* Himotoki.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +85,11 @@
 		33063880AFCD06D987A182B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A55EEABF2017AA9100F39DE1 /* TwitterAPI.framework */,
+				A55EEABD2017AA5C00F39DE1 /* MutableDataScanner.framework */,
+				A55EEABB2017A7FF00F39DE1 /* RxCocoa.framework */,
+				A55EEAB92017A7B300F39DE1 /* RxSwift.framework */,
+				A55EEA9A2017A6C000F39DE1 /* Himotoki.framework */,
 				DF44B8349C0E3E369C5AFAE9 /* Pods.framework */,
 				77EE9A719F62343B0A0DD2A0 /* Pods_MeetupTweet.framework */,
 			);
@@ -267,12 +285,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A55664B31C8863030003A8D5 /* Build configuration list for PBXNativeTarget "MeetupTweet" */;
 			buildPhases = (
-				441EDC044245CD16E1A53F65 /* [CP] Check Pods Manifest.lock */,
 				A55664A21C8863030003A8D5 /* Sources */,
 				A55664A31C8863030003A8D5 /* Frameworks */,
 				A55664A41C8863030003A8D5 /* Resources */,
-				BEC0C624CFC35AE57611997F /* [CP] Embed Pods Frameworks */,
-				6B0F0071E903906A956CE7FA /* [CP] Copy Pods Resources */,
+				A55EEA9C2017A6EE00F39DE1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -331,50 +347,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		441EDC044245CD16E1A53F65 /* [CP] Check Pods Manifest.lock */ = {
+		A55EEA9C2017A6EE00F39DE1 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/Mac/Himotoki.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/MutableDataScanner.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/TwitterAPI.framework",
 			);
-			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		6B0F0071E903906A956CE7FA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MeetupTweet/Pods-MeetupTweet-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BEC0C624CFC35AE57611997F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MeetupTweet/Pods-MeetupTweet-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -529,7 +518,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = MeetupTweet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.curiosity.MeetupTweet;
@@ -546,7 +538,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = MeetupTweet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.curiosity.MeetupTweet;
