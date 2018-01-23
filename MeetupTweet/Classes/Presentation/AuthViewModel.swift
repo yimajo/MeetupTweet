@@ -21,13 +21,13 @@ class AuthViewModel {
         
         let validatedConsumerKey = consumerKey
             .map {
-                return (0 < $0.characters.count)
+                return (0 < $0.count)
             }
             .shareReplay(1)
         
         let validatedConsumerSecret = consumerSecret
             .map {
-                return (0 < $0.characters.count)
+                return (0 < $0.count)
             }
             .shareReplay(1)
         

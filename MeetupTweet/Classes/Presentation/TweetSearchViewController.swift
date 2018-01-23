@@ -44,7 +44,7 @@ class TweetSearchViewController: NSViewController {
             }).addDisposableTo(disposeBag)
         
         let searchValid = searchField.rx.text.orEmpty
-            .map{ text -> Bool in 0 < text.characters.count }
+            .map{ text -> Bool in 0 < text.count }
         
         searchValid
             .bindTo(searchButton.rx.isEnabled)
