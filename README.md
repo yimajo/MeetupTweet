@@ -2,8 +2,7 @@
 
 <img src="README_resources/tweet.gif">
 
-## Install
+## Requirements
 
-```
- $ pod install
-```
+- Xcode 9.2
+
