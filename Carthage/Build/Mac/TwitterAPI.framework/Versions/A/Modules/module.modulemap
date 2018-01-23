@@ -1,0 +1,4 @@
+framework module TwitterAPI {
+    header "TwitterAPI-Swift.h"
+    requires objc
+}

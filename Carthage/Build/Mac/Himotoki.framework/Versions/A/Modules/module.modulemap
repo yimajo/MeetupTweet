@@ -1,0 +1,11 @@
+framework module Himotoki {
+  umbrella header "Himotoki.h"
+
+  export *
+  module * { export * }
+}
+
+module Himotoki.Swift {
+    header "Himotoki-Swift.h"
+    requires objc
+}
