@@ -120,7 +120,7 @@ private extension CommentFlowPresenter {
                     URLSession.shared.rx.data(request: URLRequest(url: url))
                         .subscribe(onNext: { data in
                             DispatchQueue.main.async {
-                                commentView.imageView.image = NSImage.init(data: data)
+                                commentView.imageView.image = NSImage(data: data)
                             }
                         }).addDisposableTo(disposeBag)
                 }

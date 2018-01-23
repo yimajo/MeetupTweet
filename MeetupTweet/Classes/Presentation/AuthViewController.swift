@@ -32,7 +32,7 @@ class AuthViewController: NSViewController {
             consumerSecretTextField.stringValue = consumerSecret
         }
         
-        let authViewModel = AuthViewModel.init(
+        let authViewModel = AuthViewModel(
             consumerKey: consumerKeyTextFeild.rx.text.orEmpty.asObservable(),
             consumerSecret: consumerSecretTextField.rx.text.orEmpty.asObservable(),
             authrorizeTap: authorizeButton.rx.tap.asObservable()
