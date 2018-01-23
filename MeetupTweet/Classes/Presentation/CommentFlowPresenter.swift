@@ -119,7 +119,9 @@ private extension CommentFlowPresenter {
                 if let url = comment.imageURL() {
                     URLSession.shared.rx.data(request: URLRequest(url: url))
                         .subscribe(onNext: { data in
-                            commentView.imageView.image = NSImage.init(data: data)
+                            DispatchQueue.main.async {
+                                commentView.imageView.image = NSImage(data: data)
+                            }
                         }).addDisposableTo(disposeBag)
                 }
             case .announce:

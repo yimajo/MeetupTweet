@@ -21,6 +21,7 @@
 		A55664BE1C887F800003A8D5 /* CommentFlowPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55664BD1C887F800003A8D5 /* CommentFlowPresenter.swift */; };
 		A55664C01C887FE60003A8D5 /* TwitterStreamAPIUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55664BF1C887FE60003A8D5 /* TwitterStreamAPIUseCase.swift */; };
 		A55664CE1C892E850003A8D5 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55664CD1C892E850003A8D5 /* Tweet.swift */; };
+		A584722020177C7B007CE1FF /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = A584721F20177C7B007CE1FF /* Window.swift */; };
 		A5E064671C9EBFFF00731D40 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E064661C9EBFFF00731D40 /* CommentView.swift */; };
 		A5E0646A1C9EC03D00731D40 /* CommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E064681C9EC03D00731D40 /* CommentView.xib */; };
 		A5E0646C1C9EF58C00731D40 /* Announce.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E0646B1C9EF58C00731D40 /* Announce.swift */; };
@@ -47,6 +48,7 @@
 		A55664BD1C887F800003A8D5 /* CommentFlowPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentFlowPresenter.swift; path = Classes/Presentation/CommentFlowPresenter.swift; sourceTree = "<group>"; };
 		A55664BF1C887FE60003A8D5 /* TwitterStreamAPIUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitterStreamAPIUseCase.swift; path = Classes/Domain/TwitterStreamAPIUseCase.swift; sourceTree = "<group>"; };
 		A55664CD1C892E850003A8D5 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tweet.swift; path = Classes/Domain/Tweet.swift; sourceTree = "<group>"; };
+		A584721F20177C7B007CE1FF /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Window.swift; path = Classes/Presentation/Window.swift; sourceTree = "<group>"; };
 		A5E064661C9EBFFF00731D40 /* CommentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentView.swift; path = Classes/Presentation/CommentView.swift; sourceTree = "<group>"; };
 		A5E064691C9EC03D00731D40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CommentView.xib; sourceTree = "<group>"; };
 		A5E0646B1C9EF58C00731D40 /* Announce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Announce.swift; path = Classes/Domain/Announce.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				A523BD811CBB649100701C9B /* WindowController.swift */,
+				A584721F20177C7B007CE1FF /* Window.swift */,
 			);
 			name = Window;
 			sourceTree = "<group>";
@@ -287,7 +290,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Yoshinori Imajo";
 				TargetAttributes = {
 					A55664A51C8863030003A8D5 = {
@@ -395,6 +398,7 @@
 				A55664AA1C8863030003A8D5 /* AppDelegate.swift in Sources */,
 				A523BD7F1CBAB51E00701C9B /* UserDefaults.swift in Sources */,
 				A523BD421CBA9A4200701C9B /* TweetSearchViewController.swift in Sources */,
+				A584722020177C7B007CE1FF /* Window.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,14 +432,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -474,14 +484,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -509,7 +525,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 799B4EBB071357763D8F5166 /* Pods-MeetupTweet.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -526,7 +542,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8003F5AA6C371FA9860CC40E /* Pods-MeetupTweet.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
