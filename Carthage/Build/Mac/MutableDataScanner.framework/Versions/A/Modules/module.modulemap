@@ -1,0 +1,11 @@
+framework module MutableDataScanner {
+  umbrella header "MutableDataScanner.h"
+
+  export *
+  module * { export * }
+}
+
+module MutableDataScanner.Swift {
+    header "MutableDataScanner-Swift.h"
+    requires objc
+}

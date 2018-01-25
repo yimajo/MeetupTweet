@@ -25,7 +25,6 @@ Pods/
 .bundle/
 
 # Carthage
-Carthage/Build
 Carthage/Checkouts
 
 # Bundler
