@@ -14,8 +14,21 @@ import TwitterAPI
 
 class AuthViewController: NSViewController {
 
-    @IBOutlet weak var consumerKeyTextFeild: NSTextField!
-    @IBOutlet weak var consumerSecretTextField: NSTextField!
+    @IBOutlet weak var consumerKeyTextFeild: NSTextField! {
+        didSet {
+            if let consumerKey = UserDefaults.consumerKey() {
+                self.consumerKeyTextFeild.stringValue = consumerKey
+            }
+        }
+    }
+    @IBOutlet weak var consumerSecretTextField: NSTextField! {
+        didSet {
+            if let consumerSecret = UserDefaults.consumerSecret() {
+                self.consumerSecretTextField.stringValue = consumerSecret
+            }
+        }
+    }
+
     @IBOutlet weak var authorizeButton: NSButton!
     
 
@@ -23,14 +36,6 @@ class AuthViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let consumerKey = UserDefaults.consumerKey() {
-            consumerKeyTextFeild.stringValue = consumerKey
-        }
-        
-        if let consumerSecret = UserDefaults.consumerSecret() {
-            consumerSecretTextField.stringValue = consumerSecret
-        }
         
         let authViewModel = AuthViewModel(
             consumerKey: consumerKeyTextFeild.rx.text.orEmpty.asObservable(),
