@@ -37,7 +37,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
     }
-    
 
     func authorize(consumerKey: String, consumerSecret: String) -> Observable<Bool> {
         
@@ -57,11 +56,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 
                 observer.onNext(true)
 
-                
             }, failure: { error in
                 observer.onError(error)
             })
-            
 
             return Disposables.create()
         }

@@ -30,7 +30,6 @@ class AuthViewController: NSViewController {
     }
 
     @IBOutlet weak var authorizeButton: NSButton!
-    
 
     let disposeBag = DisposeBag()
 
