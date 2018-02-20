@@ -23,7 +23,6 @@ class TweetSearchViewController: NSViewController {
     let disposeBag = DisposeBag()
     var selectedScreenIndex = 0
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,9 +46,9 @@ class TweetSearchViewController: NSViewController {
             .map{ text -> Bool in 0 < text.count }
         
         searchValid
-            .bindTo(searchButton.rx.isEnabled)
+            .bind(to: searchButton.rx.isEnabled)
             .addDisposableTo(disposeBag)
-        
+
         NotificationCenter.default.rx.notification(NSNotification.Name.NSApplicationDidChangeScreenParameters)
             .subscribe(onNext: { [unowned self] _ in
                 self.tableView.reloadData()
@@ -61,10 +60,6 @@ class TweetSearchViewController: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         self.performSegue(withIdentifier: "AuthSegueIdentifier", sender: nil)
-    }
-    
-    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        
     }
 }
 

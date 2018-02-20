@@ -14,23 +14,27 @@ import TwitterAPI
 
 class AuthViewController: NSViewController {
 
-    @IBOutlet weak var consumerKeyTextFeild: NSTextField!
-    @IBOutlet weak var consumerSecretTextField: NSTextField!
+    @IBOutlet weak var consumerKeyTextFeild: NSTextField! {
+        didSet {
+            if let consumerKey = UserDefaults.consumerKey() {
+                self.consumerKeyTextFeild.stringValue = consumerKey.trimmingCharacters(in: .whitespacesAndNewlines)
+            }
+        }
+    }
+    @IBOutlet weak var consumerSecretTextField: NSTextField! {
+        didSet {
+            if let consumerSecret = UserDefaults.consumerSecret() {
+                self.consumerSecretTextField.stringValue = consumerSecret.trimmingCharacters(in: .whitespacesAndNewlines)
+            }
+        }
+    }
+
     @IBOutlet weak var authorizeButton: NSButton!
-    
 
     let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let consumerKey = UserDefaults.consumerKey() {
-            consumerKeyTextFeild.stringValue = consumerKey
-        }
-        
-        if let consumerSecret = UserDefaults.consumerSecret() {
-            consumerSecretTextField.stringValue = consumerSecret
-        }
         
         let authViewModel = AuthViewModel(
             consumerKey: consumerKeyTextFeild.rx.text.orEmpty.asObservable(),
@@ -39,7 +43,7 @@ class AuthViewController: NSViewController {
         )
         
         authViewModel.validated
-            .bindTo(authorizeButton.rx.isEnabled)
+            .bind(to: authorizeButton.rx.isEnabled)
             .addDisposableTo(disposeBag)
         
         authViewModel.authorized
