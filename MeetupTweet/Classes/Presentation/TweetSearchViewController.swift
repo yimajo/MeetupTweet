@@ -135,13 +135,13 @@ private extension TweetSearchViewController {
         
         window.makeKeyAndOrderFront(nil)
         
-        clearWindow(window)
-        maxWindow(window, screen: screen)
+        setupClearWindow(window)
+        setupMaxWindow(window, screen: screen)
         
         return window
     }
     
-    func clearWindow(_ window: NSWindow) {
+    func setupClearWindow(_ window: NSWindow) {
         window.styleMask = NSBorderlessWindowMask
         window.isOpaque = false
         window.hasShadow = false
@@ -152,7 +152,7 @@ private extension TweetSearchViewController {
         window.backgroundColor = NSColor.black
     }
     
-    func maxWindow(_ window: NSWindow, screen: NSScreen) {
+    func setupMaxWindow(_ window: NSWindow, screen: NSScreen) {
         let screenRect = screen.frame
         window.setFrame(screenRect, display: true)
         window.level = Int(CGWindowLevelForKey(.maximumWindow))
