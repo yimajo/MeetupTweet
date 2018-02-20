@@ -23,7 +23,6 @@ class TweetSearchViewController: NSViewController {
     let disposeBag = DisposeBag()
     var selectedScreenIndex = 0
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
