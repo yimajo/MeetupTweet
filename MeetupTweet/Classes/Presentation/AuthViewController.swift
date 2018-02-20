@@ -17,14 +17,14 @@ class AuthViewController: NSViewController {
     @IBOutlet weak var consumerKeyTextFeild: NSTextField! {
         didSet {
             if let consumerKey = UserDefaults.consumerKey() {
-                self.consumerKeyTextFeild.stringValue = consumerKey
+                self.consumerKeyTextFeild.stringValue = consumerKey.trimmingCharacters(in: .whitespacesAndNewlines)
             }
         }
     }
     @IBOutlet weak var consumerSecretTextField: NSTextField! {
         didSet {
             if let consumerSecret = UserDefaults.consumerSecret() {
-                self.consumerSecretTextField.stringValue = consumerSecret
+                self.consumerSecretTextField.stringValue = consumerSecret.trimmingCharacters(in: .whitespacesAndNewlines)
             }
         }
     }
