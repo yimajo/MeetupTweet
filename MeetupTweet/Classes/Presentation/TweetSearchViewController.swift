@@ -61,10 +61,6 @@ class TweetSearchViewController: NSViewController {
         super.viewWillAppear()
         self.performSegue(withIdentifier: "AuthSegueIdentifier", sender: nil)
     }
-    
-    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        
-    }
 }
 
 extension TweetSearchViewController: NSTableViewDataSource {
