@@ -115,7 +115,9 @@ private extension TweetSearchViewController {
                             window.animator().alphaValue = 0.2
                         }
                     }, completionHandler: { [weak self] in
-                        self?.window = nil
+                        guard let window = self?.window else { return }
+
+                        window.orderOut(nil)
                     }
                 )
             }
