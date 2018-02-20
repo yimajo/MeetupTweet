@@ -48,7 +48,7 @@ class TweetSearchViewController: NSViewController {
         searchValid
             .bind(to: searchButton.rx.isEnabled)
             .addDisposableTo(disposeBag)
-        
+
         NotificationCenter.default.rx.notification(NSNotification.Name.NSApplicationDidChangeScreenParameters)
             .subscribe(onNext: { [unowned self] _ in
                 self.tableView.reloadData()
