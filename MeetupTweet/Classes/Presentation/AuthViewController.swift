@@ -44,7 +44,7 @@ class AuthViewController: NSViewController {
         )
         
         authViewModel.validated
-            .bindTo(authorizeButton.rx.isEnabled)
+            .bind(to: authorizeButton.rx.isEnabled)
             .addDisposableTo(disposeBag)
         
         authViewModel.authorized

@@ -47,7 +47,7 @@ class TweetSearchViewController: NSViewController {
             .map{ text -> Bool in 0 < text.count }
         
         searchValid
-            .bindTo(searchButton.rx.isEnabled)
+            .bind(to: searchButton.rx.isEnabled)
             .addDisposableTo(disposeBag)
         
         NotificationCenter.default.rx.notification(NSNotification.Name.NSApplicationDidChangeScreenParameters)
