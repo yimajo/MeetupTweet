@@ -102,20 +102,24 @@ private extension TweetSearchViewController {
         self.window?.alphaValue = 0.0
         
         NSAnimationContext.runAnimationGroup(
-            { [weak self] context -> Void in
-                if let window = self?.window {
-                    context.duration = 0.25
-                    window.animator().alphaValue = 1.0
-                }
+            { [weak self] context in
+                guard let window = self?.window else { return }
+
+                context.duration = 0.25
+                window.animator().alphaValue = 1.0
+
             }, completionHandler: {
                 NSAnimationContext.runAnimationGroup(
                     { [weak self] context in
-                        if let window = self?.window {
-                            context.duration = 0.25
-                            window.animator().alphaValue = 0.2
-                        }
+                        guard let window = self?.window else { return }
+
+                        context.duration = 0.25
+                        window.animator().alphaValue = 0.2
+
                     }, completionHandler: { [weak self] in
-                        self?.window = nil
+                        guard let window = self?.window else { return }
+
+                        window.orderOut(nil)
                     }
                 )
             }
@@ -131,13 +135,13 @@ private extension TweetSearchViewController {
         
         window.makeKeyAndOrderFront(nil)
         
-        clearWindow(window)
-        maxWindow(window, screen: screen)
+        setupClearWindow(window)
+        setupMaxWindow(window, screen: screen)
         
         return window
     }
     
-    func clearWindow(_ window: NSWindow) {
+    func setupClearWindow(_ window: NSWindow) {
         window.styleMask = NSBorderlessWindowMask
         window.isOpaque = false
         window.hasShadow = false
@@ -148,7 +152,7 @@ private extension TweetSearchViewController {
         window.backgroundColor = NSColor.black
     }
     
-    func maxWindow(_ window: NSWindow, screen: NSScreen) {
+    func setupMaxWindow(_ window: NSWindow, screen: NSScreen) {
         let screenRect = screen.frame
         window.setFrame(screenRect, display: true)
         window.level = Int(CGWindowLevelForKey(.maximumWindow))
