@@ -102,7 +102,7 @@ private extension TweetSearchViewController {
         self.window?.alphaValue = 0.0
         
         NSAnimationContext.runAnimationGroup(
-            { [weak self] context -> Void in
+            { [weak self] context in
                 guard let window = self?.window else { return }
 
                 context.duration = 0.25
