@@ -103,17 +103,19 @@ private extension TweetSearchViewController {
         
         NSAnimationContext.runAnimationGroup(
             { [weak self] context -> Void in
-                if let window = self?.window {
-                    context.duration = 0.25
-                    window.animator().alphaValue = 1.0
-                }
+                guard let window = self?.window else { return }
+
+                context.duration = 0.25
+                window.animator().alphaValue = 1.0
+
             }, completionHandler: {
                 NSAnimationContext.runAnimationGroup(
                     { [weak self] context in
-                        if let window = self?.window {
-                            context.duration = 0.25
-                            window.animator().alphaValue = 0.2
-                        }
+                        guard let window = self?.window else { return }
+
+                        context.duration = 0.25
+                        window.animator().alphaValue = 0.2
+
                     }, completionHandler: { [weak self] in
                         guard let window = self?.window else { return }
 
