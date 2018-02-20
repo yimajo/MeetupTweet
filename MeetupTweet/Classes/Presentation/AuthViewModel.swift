@@ -40,8 +40,8 @@ class AuthViewModel {
         
         let apiKeyAndSecret = Observable
             .combineLatest(consumerKey, consumerSecret) {
-                ($0.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines),
-                 $1.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines))
+                ($0.trimmingCharacters(in: .whitespacesAndNewlines),
+                 $1.trimmingCharacters(in: .whitespacesAndNewlines))
             }
         
         authorized = authrorizeTap.withLatestFrom(apiKeyAndSecret)
