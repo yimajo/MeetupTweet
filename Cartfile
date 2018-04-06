@@ -1,0 +1,3 @@
+github "ikesyo/Himotoki" ~> 3.1
+github "ReactiveX/RxSwift" ~> 3.6
+github "s-aska/TwitterAPI"
