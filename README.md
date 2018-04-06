@@ -4,5 +4,11 @@
 
 ## Requirements
 
-- Xcode 9.2
-- [Your Twitter Consumer Key and Consumer Secret](https://apps.twitter.com/) 
+- [Your Twitter Consumer Key and Consumer Secret](https://apps.twitter.com/)
+- macOS High Sierra
+
+## Develop
+
+- Xcode 9.3
+- Carthage
+
