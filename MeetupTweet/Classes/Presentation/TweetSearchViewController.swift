@@ -95,29 +95,24 @@ private extension TweetSearchViewController {
     
     func selectWindow(_ index: Int, screen: NSScreen) {
         
-        self.window = makeWindow(screen)
-        
-        self.window?.alphaValue = 0.0
-        
-        NSAnimationContext.runAnimationGroup(
-            { [weak self] context in
-                guard let window = self?.window else { return }
+        window = makeWindow(screen)
+
+        let strongWindow = window!
+        strongWindow.alphaValue = 0.0
+        NSAnimationContext.runAnimationGroup({ context in
 
                 context.duration = 0.25
-                window.animator().alphaValue = 1.0
+                strongWindow.animator().alphaValue = 1.0
 
             }, completionHandler: {
-                NSAnimationContext.runAnimationGroup(
-                    { [weak self] context in
-                        guard let window = self?.window else { return }
+                NSAnimationContext.runAnimationGroup({ context in
 
                         context.duration = 0.25
-                        window.animator().alphaValue = 0.2
+                        strongWindow.animator().alphaValue = 0.2
 
-                    }, completionHandler: { [weak self] in
-                        guard let window = self?.window else { return }
+                    }, completionHandler: {
 
-                        window.orderOut(nil)
+                        strongWindow.orderOut(nil)
                     }
                 )
             }
