@@ -163,10 +163,9 @@ private extension CommentFlowPresenter {
         
         let size = CGSize(width: screen.frame.size.width, height: screen.frame.size.height - menuHeight)
         let frame = NSRect(origin: CGPoint.zero, size: size)
-        
-        window = NSWindow(contentRect: frame, styleMask: NSResizableWindowMask, backing: .buffered, defer: false, screen: screen)
 
-        window.styleMask = NSBorderlessWindowMask
+        window = NSWindow(contentRect: frame, styleMask: .resizable, backing: .buffered, defer: false, screen: screen)
+
         window.isOpaque = false
         window.hasShadow = false
         window.isMovable = true
@@ -174,7 +173,7 @@ private extension CommentFlowPresenter {
         window.isReleasedWhenClosed = false
         window.backgroundColor = NSColor.clear
 
-        window.level = Int(CGWindowLevelForKey(.maximumWindow))
+        window.level = NSWindow.Level(Int(CGWindowLevelForKey(.maximumWindow)))
         window.makeKeyAndOrderFront(nil)
 
         return window

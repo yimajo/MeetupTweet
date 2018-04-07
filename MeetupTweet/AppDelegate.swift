@@ -23,14 +23,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func quit() {
-        NSApplication.shared().terminate(self)
+        NSApplication.shared.terminate(self)
     }
     
     class var sharedInstance: AppDelegate {
-        return NSApplication.shared().delegate as! AppDelegate
+        return NSApplication.shared.delegate as! AppDelegate
     }
 
-    func handleGetURLEvent(_ event: NSAppleEventDescriptor!, withReplyEvent: NSAppleEventDescriptor!) {
+    @objc func handleGetURLEvent(_ event: NSAppleEventDescriptor!, withReplyEvent: NSAppleEventDescriptor!) {
         if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue, let url = URL(string: urlString) {
             if url.host == "oauth-callback" {
                 OAuth1Swift.handle(url: url)
