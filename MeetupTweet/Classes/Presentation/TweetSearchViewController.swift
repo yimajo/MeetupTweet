@@ -26,7 +26,7 @@ class TweetSearchViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tweetPresenter = CommentFlowPresenter()
+        let tweetPresenter = NicoNicoCommentFlowViewDataSource()
         
         searchButton.rx.tap
             .subscribe(onNext: { [unowned self] in

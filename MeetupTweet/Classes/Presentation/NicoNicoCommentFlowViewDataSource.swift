@@ -8,9 +8,9 @@
 
 import Foundation
 import RxSwift
-import Cocoa
+import AppKit
 
-class CommentFlowPresenter {
+class NicoNicoCommentFlowViewDataSource {
 
     var subscription: Disposable?
     fileprivate let tweetSearchUseCase = TwitterStraemAPIUseCase()
@@ -44,7 +44,7 @@ class CommentFlowPresenter {
     }
 }
 
-private extension CommentFlowPresenter {
+private extension NicoNicoCommentFlowViewDataSource {
 
     func refreshComments() {
         tweetSearchUseCase.stopStream()
