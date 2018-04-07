@@ -107,18 +107,15 @@ private extension TweetSearchViewController {
             }, completionHandler: {
                 NSAnimationContext.runAnimationGroup({ context in
 
-                        context.duration = 0.25
-                        strongWindow.animator().alphaValue = 0.2
+                    context.duration = 0.25
+                    strongWindow.animator().alphaValue = 0.2
 
-                    }, completionHandler: {
-
-                        strongWindow.orderOut(nil)
-                    }
-                )
+                }, completionHandler: {
+                    strongWindow.orderOut(nil)
+                })
             }
         )
     }
-    
     
     func makeWindow(_ screen: NSScreen) -> NSWindow {
         
