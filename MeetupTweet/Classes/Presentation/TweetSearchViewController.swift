@@ -83,8 +83,6 @@ extension TweetSearchViewController: NSTableViewDelegate {
         
         selectedScreenIndex = tableView.selectedRow
         
-        print(tableView.selectedRow)
-        
         let screen = NSScreen.screens[selectedScreenIndex]
         
         selectWindow(selectedScreenIndex, screen: screen)
