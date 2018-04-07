@@ -56,7 +56,7 @@ class AuthViewController: NSViewController {
 
     @IBAction func tapHelpButton(_ sender: AnyObject) {
         let url = URL(string: "https://apps.twitter.com/")!
-        NSWorkspace.shared().open(url)
+        NSWorkspace.shared.open(url)
     }
     
     @IBAction func tapCloseButton(_ sender: AnyObject) {

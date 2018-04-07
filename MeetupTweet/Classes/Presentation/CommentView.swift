@@ -13,13 +13,13 @@ class CommentView: NSView {
     @IBOutlet weak var imageView: NSImageView!
     @IBOutlet weak var messageTextField: NSTextField!
 
-    class var nibName: String { get { return "CommentView" } }
+    class var nibName: NSNib.Name { return NSNib.Name("CommentView") }
     
     class func newCommentView(_ message: String, fontColor: NSColor? = nil) -> CommentView {
         
         var topLevelObjects: NSArray? = []
         let nib = NSNib(nibNamed: nibName, bundle: Bundle.main)!
-        nib.instantiate(withOwner: self, topLevelObjects: &topLevelObjects!)
+        nib.instantiate(withOwner: self, topLevelObjects: &topLevelObjects)
         
         var view: CommentView!
         
@@ -31,11 +31,11 @@ class CommentView: NSView {
         }
         
         view.messageTextField.stringValue = message
-        
+
         let attributes =  [
-            NSStrokeColorAttributeName: NSColor.black,
-            NSStrokeWidthAttributeName: NSNumber(value: -4.0 as Float),
-            NSForegroundColorAttributeName: fontColor ?? NSColor.white,
+            NSAttributedStringKey.strokeColor: NSColor.black,
+            NSAttributedStringKey.strokeWidth: NSNumber(value: -4.0 as Float),
+            NSAttributedStringKey.foregroundColor: fontColor ?? NSColor.white,
         ]
         
         let attributedString = NSAttributedString(string: message, attributes: attributes)

@@ -6,8 +6,7 @@
 //  Copyright © 2016年 Yoshinori Imajo. All rights reserved.
 //
 
-import Cocoa
-
+import AppKit
 
 class WindowController: NSWindowController {
     
@@ -19,6 +18,6 @@ class WindowController: NSWindowController {
 
 extension WindowController: NSWindowDelegate {
     func windowWillClose(_ notification: Notification) {
-        NSApplication.shared().terminate(NSApp?.keyWindow!)
+        NSApplication.shared.terminate(NSApp?.keyWindow!)
     }
 }

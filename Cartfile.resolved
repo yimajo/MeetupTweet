@@ -1,0 +1,5 @@
+github "ikesyo/Himotoki" "3.1.0"
+github "s-aska/MutableDataScanner" "1.1.0"
+github "OAuthSwift/OAuthSwift" "1.0.0"
+github "ReactiveX/RxSwift" "3.6.1"
+github "s-aska/TwitterAPI" "0.4.0"
