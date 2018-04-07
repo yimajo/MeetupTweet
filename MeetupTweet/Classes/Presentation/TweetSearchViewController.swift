@@ -83,8 +83,6 @@ extension TweetSearchViewController: NSTableViewDelegate {
         
         selectedScreenIndex = tableView.selectedRow
         
-        print(tableView.selectedRow)
-        
         let screen = NSScreen.screens[selectedScreenIndex]
         
         selectWindow(selectedScreenIndex, screen: screen)
@@ -95,35 +93,27 @@ private extension TweetSearchViewController {
     
     func selectWindow(_ index: Int, screen: NSScreen) {
         
-        self.window = makeWindow(screen)
-        
-        self.window?.alphaValue = 0.0
-        
-        NSAnimationContext.runAnimationGroup(
-            { [weak self] context in
-                guard let window = self?.window else { return }
+        window = makeWindow(screen)
+
+        let strongWindow = window!
+        strongWindow.alphaValue = 0.0
+        NSAnimationContext.runAnimationGroup({ context in
 
                 context.duration = 0.25
-                window.animator().alphaValue = 1.0
+                strongWindow.animator().alphaValue = 1.0
 
             }, completionHandler: {
-                NSAnimationContext.runAnimationGroup(
-                    { [weak self] context in
-                        guard let window = self?.window else { return }
+                NSAnimationContext.runAnimationGroup({ context in
 
-                        context.duration = 0.25
-                        window.animator().alphaValue = 0.2
+                    context.duration = 0.25
+                    strongWindow.animator().alphaValue = 0.2
 
-                    }, completionHandler: { [weak self] in
-                        guard let window = self?.window else { return }
-
-                        window.orderOut(nil)
-                    }
-                )
+                }, completionHandler: {
+                    strongWindow.orderOut(nil)
+                })
             }
         )
     }
-    
     
     func makeWindow(_ screen: NSScreen) -> NSWindow {
         
@@ -140,7 +130,6 @@ private extension TweetSearchViewController {
     }
     
     func setupClearWindow(_ window: NSWindow) {
-//        window.styleMask = NSBorderlessWindowMask
         window.isOpaque = false
         window.hasShadow = false
         window.isMovable = true
