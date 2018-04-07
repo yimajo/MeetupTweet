@@ -140,7 +140,6 @@ private extension TweetSearchViewController {
     }
     
     func setupClearWindow(_ window: NSWindow) {
-//        window.styleMask = NSBorderlessWindowMask
         window.isOpaque = false
         window.hasShadow = false
         window.isMovable = true
