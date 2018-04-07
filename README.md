@@ -1,6 +1,6 @@
 # MeetupTweet
 
-<img src="README_resources/tweet.gif">
+<img src="README_resources/tweet.gif" width="100%">
 
 ## Download
 
