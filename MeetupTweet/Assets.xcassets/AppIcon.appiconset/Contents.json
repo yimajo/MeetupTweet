@@ -43,13 +43,13 @@
     {
       "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "クローントゥルーパー_512.png",
+      "filename" : "AppIcon.png",
       "scale" : "1x"
     },
     {
       "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "クローントゥルーパー_512@2x.png",
+      "filename" : "AppStore.png",
       "scale" : "2x"
     }
   ],
