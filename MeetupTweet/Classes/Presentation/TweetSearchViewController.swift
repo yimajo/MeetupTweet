@@ -24,19 +24,19 @@ class TweetSearchViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let tweetPresenter = NicoNicoCommentFlowViewDataSource()
+
+        let niconicoCommentViewDataSource = NicoNicoCommentFlowViewDataSource()
         
         searchButton.rx.tap
             .subscribe(onNext: { [unowned self] in
                 let screen = NSScreen.screens[self.selectedScreenIndex]
-                tweetPresenter.searchTweet(self.searchField.stringValue, screen: screen)
+                niconicoCommentViewDataSource.searchTweet(self.searchField.stringValue, screen: screen)
             })
             .addDisposableTo(disposeBag)
         
         stopButton.rx.tap
             .subscribe(onNext: {
-                tweetPresenter.stopSearch()
+                niconicoCommentViewDataSource.stopSearch()
             }).addDisposableTo(disposeBag)
         
         let searchValid = searchField.rx.text.orEmpty

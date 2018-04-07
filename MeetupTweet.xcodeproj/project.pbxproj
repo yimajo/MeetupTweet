@@ -132,12 +132,12 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		A523BD7C1CBAAC8E00701C9B /* Presenter */ = {
+		A523BD7C1CBAAC8E00701C9B /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
 				A55664BD1C887F800003A8D5 /* NicoNicoCommentFlowViewDataSource.swift */,
 			);
-			name = Presenter;
+			name = DataSource;
 			sourceTree = "<group>";
 		};
 		A523BD7D1CBAAD0700701C9B /* Protocols */ = {
@@ -216,7 +216,7 @@
 				A523BD801CBB647C00701C9B /* Window */,
 				A523BD7B1CBAAC7000701C9B /* Views */,
 				A523BD431CBAA10400701C9B /* ViewControllers */,
-				A523BD7C1CBAAC8E00701C9B /* Presenter */,
+				A523BD7C1CBAAC8E00701C9B /* DataSource */,
 				A523BD7A1CBAAC5A00701C9B /* ViewModels */,
 			);
 			name = Presentation;
