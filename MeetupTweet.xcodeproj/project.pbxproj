@@ -15,6 +15,7 @@
 		A523BD451CBAA12A00701C9B /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BD441CBAA12A00701C9B /* AuthViewController.swift */; };
 		A523BD7F1CBAB51E00701C9B /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BD7E1CBAB51E00701C9B /* UserDefaults.swift */; };
 		A523BD821CBB649100701C9B /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BD811CBB649100701C9B /* WindowController.swift */; };
+		A52F20A72078ABB200FE5858 /* SelectWindowUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52F20A62078ABB200FE5858 /* SelectWindowUseCase.swift */; };
 		A55664AA1C8863030003A8D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55664A91C8863030003A8D5 /* AppDelegate.swift */; };
 		A55664AC1C8863030003A8D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A55664AB1C8863030003A8D5 /* Assets.xcassets */; };
 		A55664BE1C887F800003A8D5 /* NicoNicoCommentFlowViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55664BD1C887F800003A8D5 /* NicoNicoCommentFlowViewDataSource.swift */; };
@@ -43,6 +44,7 @@
 		A523BD441CBAA12A00701C9B /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthViewController.swift; path = Classes/Presentation/AuthViewController.swift; sourceTree = "<group>"; };
 		A523BD7E1CBAB51E00701C9B /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaults.swift; path = Classes/Infra/UserDefaults.swift; sourceTree = "<group>"; };
 		A523BD811CBB649100701C9B /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WindowController.swift; path = Classes/Presentation/WindowController.swift; sourceTree = "<group>"; };
+		A52F20A62078ABB200FE5858 /* SelectWindowUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectWindowUseCase.swift; path = Classes/Domain/SelectWindowUseCase.swift; sourceTree = "<group>"; };
 		A55664A61C8863030003A8D5 /* MeetupTweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetupTweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A55664A91C8863030003A8D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A55664AB1C8863030003A8D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			children = (
 				A55664BF1C887FE60003A8D5 /* TwitterStreamAPIUseCase.swift */,
 				A523BD351CB8F99100701C9B /* AnnounceUseCase.swift */,
+				A52F20A62078ABB200FE5858 /* SelectWindowUseCase.swift */,
 			);
 			name = UseCase;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				A55664C01C887FE60003A8D5 /* TwitterStreamAPIUseCase.swift in Sources */,
 				A55664BE1C887F800003A8D5 /* NicoNicoCommentFlowViewDataSource.swift in Sources */,
 				A5E0646C1C9EF58C00731D40 /* Announce.swift in Sources */,
+				A52F20A72078ABB200FE5858 /* SelectWindowUseCase.swift in Sources */,
 				A5FB70441CB11B5E0097042F /* User.swift in Sources */,
 				A55664CE1C892E850003A8D5 /* Tweet.swift in Sources */,
 				A523BD391CBA5A6800701C9B /* AuthViewModel.swift in Sources */,
