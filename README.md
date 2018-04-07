@@ -13,6 +13,6 @@
 
 ## Develop
 
-- Xcode 9.3
+- Xcode 9.3 + Swift4.1
 - Carthage
 
