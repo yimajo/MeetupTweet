@@ -11,7 +11,12 @@ import Foundation
 struct Announce: CommentType {
     let id: String
     let text: String
-    
+
+    init(search: String) {
+        id = Announce.createId()
+        text = Announce.meessage(search)
+    }
+
     func type() -> Comment {
         return .announce
     }
@@ -26,5 +31,16 @@ struct Announce: CommentType {
     
     func imageURL() -> URL? {
         return nil
+    }
+}
+
+private extension Announce {
+
+    static func meessage(_ search: String) -> String {
+        return "Twiter Stream APIを\(search)で取得中です"
+    }
+
+    static func createId() -> String {
+        return UUID().uuidString
     }
 }

@@ -23,11 +23,9 @@ class NicoNicoCommentFlowViewDataSource {
         refreshComments()
         window = makeTweetWindow(screen)
 
-        let startText = "Twiter Stream APIを\(search)で取得中です"
-        
         let tweetStream = tweetSearchUseCase.startStream(search)
             .observeOn(MainScheduler.instance)
-            .startWith(Announce(id: UUID().uuidString, text: startText))
+            .startWith(Announce(search: search))
 
         self.subscription = Observable.of(tweetStream, AnnounceUseCase.intervalTextStream(search))
             .merge()
