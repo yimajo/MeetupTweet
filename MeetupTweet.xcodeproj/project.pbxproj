@@ -18,6 +18,7 @@
 		A52F20A72078ABB200FE5858 /* SelectWindowUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52F20A62078ABB200FE5858 /* SelectWindowUseCase.swift */; };
 		A52F20AC2079A7DF00FE5858 /* MultiCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52F20AA2079A7DF00FE5858 /* MultiCommentView.xib */; };
 		A52F20AE2079A87800FE5858 /* MultiCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52F20AD2079A87800FE5858 /* MultiCommentView.swift */; };
+		A52F20B12079C62F00FE5858 /* FlowWindowDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52F20B02079C62F00FE5858 /* FlowWindowDataSource.swift */; };
 		A55664AA1C8863030003A8D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55664A91C8863030003A8D5 /* AppDelegate.swift */; };
 		A55664AC1C8863030003A8D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A55664AB1C8863030003A8D5 /* Assets.xcassets */; };
 		A55664BE1C887F800003A8D5 /* NicoNicoCommentFlowViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55664BD1C887F800003A8D5 /* NicoNicoCommentFlowViewDataSource.swift */; };
@@ -49,6 +50,7 @@
 		A52F20A62078ABB200FE5858 /* SelectWindowUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectWindowUseCase.swift; path = Classes/Domain/SelectWindowUseCase.swift; sourceTree = "<group>"; };
 		A52F20AB2079A7DF00FE5858 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MultiCommentView.xib; sourceTree = "<group>"; };
 		A52F20AD2079A87800FE5858 /* MultiCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MultiCommentView.swift; path = Classes/Presentation/MultiCommentView.swift; sourceTree = "<group>"; };
+		A52F20B02079C62F00FE5858 /* FlowWindowDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlowWindowDataSource.swift; path = Classes/Presentation/FlowWindowDataSource.swift; sourceTree = "<group>"; };
 		A55664A61C8863030003A8D5 /* MeetupTweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetupTweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A55664A91C8863030003A8D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A55664AB1C8863030003A8D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -140,7 +142,7 @@
 		A523BD7C1CBAAC8E00701C9B /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
-				A55664BD1C887F800003A8D5 /* NicoNicoCommentFlowViewDataSource.swift */,
+				A52F20AF2079C60F00FE5858 /* FlowWindowDataSource */,
 			);
 			name = DataSource;
 			sourceTree = "<group>";
@@ -177,6 +179,14 @@
 				A52F20AA2079A7DF00FE5858 /* MultiCommentView.xib */,
 			);
 			name = xib;
+			sourceTree = "<group>";
+		};
+		A52F20AF2079C60F00FE5858 /* FlowWindowDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				A52F20B02079C62F00FE5858 /* FlowWindowDataSource.swift */,
+			);
+			name = FlowWindowDataSource;
 			sourceTree = "<group>";
 		};
 		A556649D1C8863030003A8D5 = {
@@ -382,6 +392,7 @@
 				A5FB70441CB11B5E0097042F /* User.swift in Sources */,
 				A55664CE1C892E850003A8D5 /* Tweet.swift in Sources */,
 				A523BD391CBA5A6800701C9B /* AuthViewModel.swift in Sources */,
+				A52F20B12079C62F00FE5858 /* FlowWindowDataSource.swift in Sources */,
 				A5E064671C9EBFFF00731D40 /* CommentView.swift in Sources */,
 				A523BD451CBAA12A00701C9B /* AuthViewController.swift in Sources */,
 				A523BD361CB8F99100701C9B /* AnnounceUseCase.swift in Sources */,
