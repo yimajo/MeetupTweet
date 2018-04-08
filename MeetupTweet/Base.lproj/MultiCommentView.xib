@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="HdT-jO-Ite" customClass="MultiCommentView" customModule="MeetupTweet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J2P-do-07r">
+                    <rect key="frame" x="3" y="18" width="42" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="42" id="TFT-dJ-pZL"/>
+                        <constraint firstAttribute="width" constant="42" id="a4u-zt-tSB"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="f8s-3F-Nkm"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mWU-k3-mmz">
+                    <rect key="frame" x="58" y="0.0" width="324" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Okm-SW-LoA"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="320" id="sve-Hz-MZu"/>
+                    </constraints>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Label" id="5Ik-KB-pS0">
+                        <font key="font" metaFont="system" size="20"/>
+                        <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9lZ-wR-058">
+                    <rect key="frame" x="58" y="30" width="52" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="320" id="OXj-Ln-oMc"/>
+                        <constraint firstAttribute="height" constant="30" id="txs-lo-DJI"/>
+                    </constraints>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Label" id="W5U-vV-JT0">
+                        <font key="font" metaFont="system" size="20"/>
+                        <color key="textColor" name="systemYellowColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="mWU-k3-mmz" secondAttribute="trailing" constant="13" id="4w5-no-2aF"/>
+                <constraint firstItem="9lZ-wR-058" firstAttribute="leading" secondItem="J2P-do-07r" secondAttribute="trailing" constant="15" id="JD8-tq-d6g"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9lZ-wR-058" secondAttribute="trailing" constant="20" symbolic="YES" id="JiM-B1-9fa"/>
+                <constraint firstItem="mWU-k3-mmz" firstAttribute="top" secondItem="9lZ-wR-058" secondAttribute="bottom" id="K26-fy-MCv"/>
+                <constraint firstItem="mWU-k3-mmz" firstAttribute="leading" secondItem="J2P-do-07r" secondAttribute="trailing" constant="15" id="aXl-jd-1Xm"/>
+                <constraint firstItem="J2P-do-07r" firstAttribute="top" secondItem="HdT-jO-Ite" secondAttribute="top" id="icR-6i-eK6"/>
+                <constraint firstItem="J2P-do-07r" firstAttribute="leading" secondItem="HdT-jO-Ite" secondAttribute="leading" constant="3" id="kEn-f4-oLc"/>
+                <constraint firstItem="9lZ-wR-058" firstAttribute="top" secondItem="HdT-jO-Ite" secondAttribute="top" id="oXA-QA-hzZ"/>
+                <constraint firstAttribute="bottom" secondItem="mWU-k3-mmz" secondAttribute="bottom" id="qdQ-Rh-TNX"/>
+            </constraints>
+            <connections>
+                <outlet property="imageView" destination="J2P-do-07r" id="2fi-3U-eNw"/>
+                <outlet property="messageTextField" destination="mWU-k3-mmz" id="ew7-4i-I5Q"/>
+            </connections>
+            <point key="canvasLocation" x="224.5" y="507"/>
+        </customView>
+    </objects>
+</document>

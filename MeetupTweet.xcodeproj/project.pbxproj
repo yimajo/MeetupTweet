@@ -16,6 +16,8 @@
 		A523BD7F1CBAB51E00701C9B /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BD7E1CBAB51E00701C9B /* UserDefaults.swift */; };
 		A523BD821CBB649100701C9B /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BD811CBB649100701C9B /* WindowController.swift */; };
 		A52F20A72078ABB200FE5858 /* SelectWindowUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52F20A62078ABB200FE5858 /* SelectWindowUseCase.swift */; };
+		A52F20AC2079A7DF00FE5858 /* MultiCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52F20AA2079A7DF00FE5858 /* MultiCommentView.xib */; };
+		A52F20AE2079A87800FE5858 /* MultiCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52F20AD2079A87800FE5858 /* MultiCommentView.swift */; };
 		A55664AA1C8863030003A8D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55664A91C8863030003A8D5 /* AppDelegate.swift */; };
 		A55664AC1C8863030003A8D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A55664AB1C8863030003A8D5 /* Assets.xcassets */; };
 		A55664BE1C887F800003A8D5 /* NicoNicoCommentFlowViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55664BD1C887F800003A8D5 /* NicoNicoCommentFlowViewDataSource.swift */; };
@@ -45,6 +47,8 @@
 		A523BD7E1CBAB51E00701C9B /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaults.swift; path = Classes/Infra/UserDefaults.swift; sourceTree = "<group>"; };
 		A523BD811CBB649100701C9B /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WindowController.swift; path = Classes/Presentation/WindowController.swift; sourceTree = "<group>"; };
 		A52F20A62078ABB200FE5858 /* SelectWindowUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectWindowUseCase.swift; path = Classes/Domain/SelectWindowUseCase.swift; sourceTree = "<group>"; };
+		A52F20AB2079A7DF00FE5858 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MultiCommentView.xib; sourceTree = "<group>"; };
+		A52F20AD2079A87800FE5858 /* MultiCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MultiCommentView.swift; path = Classes/Presentation/MultiCommentView.swift; sourceTree = "<group>"; };
 		A55664A61C8863030003A8D5 /* MeetupTweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetupTweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A55664A91C8863030003A8D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A55664AB1C8863030003A8D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 			children = (
 				A523BD3C1CBA826A00701C9B /* TextField.swift */,
 				A5E064661C9EBFFF00731D40 /* CommentView.swift */,
+				A52F20AD2079A87800FE5858 /* MultiCommentView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				A5E064681C9EC03D00731D40 /* CommentView.xib */,
+				A52F20AA2079A7DF00FE5858 /* MultiCommentView.xib */,
 			);
 			name = xib;
 			sourceTree = "<group>";
@@ -331,6 +337,7 @@
 			files = (
 				A523BD401CBA970300701C9B /* Main.storyboard in Resources */,
 				A5E0646A1C9EC03D00731D40 /* CommentView.xib in Resources */,
+				A52F20AC2079A7DF00FE5858 /* MultiCommentView.xib in Resources */,
 				A55664AC1C8863030003A8D5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,6 +373,7 @@
 			files = (
 				A5E0646E1C9F022F00731D40 /* CommentType.swift in Sources */,
 				A523BD821CBB649100701C9B /* WindowController.swift in Sources */,
+				A52F20AE2079A87800FE5858 /* MultiCommentView.swift in Sources */,
 				A523BD3D1CBA826A00701C9B /* TextField.swift in Sources */,
 				A55664C01C887FE60003A8D5 /* TwitterStreamAPIUseCase.swift in Sources */,
 				A55664BE1C887F800003A8D5 /* NicoNicoCommentFlowViewDataSource.swift in Sources */,
@@ -393,6 +401,14 @@
 				A523BD3F1CBA970300701C9B /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A52F20AA2079A7DF00FE5858 /* MultiCommentView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A52F20AB2079A7DF00FE5858 /* Base */,
+			);
+			name = MultiCommentView.xib;
 			sourceTree = "<group>";
 		};
 		A5E064681C9EC03D00731D40 /* CommentView.xib */ = {
