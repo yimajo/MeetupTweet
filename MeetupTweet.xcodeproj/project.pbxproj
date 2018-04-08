@@ -16,6 +16,7 @@
 		A523BD7F1CBAB51E00701C9B /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BD7E1CBAB51E00701C9B /* UserDefaults.swift */; };
 		A523BD821CBB649100701C9B /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BD811CBB649100701C9B /* WindowController.swift */; };
 		A52F20A72078ABB200FE5858 /* SelectWindowUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52F20A62078ABB200FE5858 /* SelectWindowUseCase.swift */; };
+		A52F20A92078BCA500FE5858 /* YouTubeCommentFlowWindowDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52F20A82078BCA500FE5858 /* YouTubeCommentFlowWindowDataSource.swift */; };
 		A52F20AC2079A7DF00FE5858 /* MultiCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52F20AA2079A7DF00FE5858 /* MultiCommentView.xib */; };
 		A52F20AE2079A87800FE5858 /* MultiCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52F20AD2079A87800FE5858 /* MultiCommentView.swift */; };
 		A52F20B12079C62F00FE5858 /* FlowWindowDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52F20B02079C62F00FE5858 /* FlowWindowDataSource.swift */; };
@@ -48,6 +49,7 @@
 		A523BD7E1CBAB51E00701C9B /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaults.swift; path = Classes/Infra/UserDefaults.swift; sourceTree = "<group>"; };
 		A523BD811CBB649100701C9B /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WindowController.swift; path = Classes/Presentation/WindowController.swift; sourceTree = "<group>"; };
 		A52F20A62078ABB200FE5858 /* SelectWindowUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectWindowUseCase.swift; path = Classes/Domain/SelectWindowUseCase.swift; sourceTree = "<group>"; };
+		A52F20A82078BCA500FE5858 /* YouTubeCommentFlowWindowDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = YouTubeCommentFlowWindowDataSource.swift; path = Classes/Presentation/YouTubeCommentFlowWindowDataSource.swift; sourceTree = "<group>"; };
 		A52F20AB2079A7DF00FE5858 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MultiCommentView.xib; sourceTree = "<group>"; };
 		A52F20AD2079A87800FE5858 /* MultiCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MultiCommentView.swift; path = Classes/Presentation/MultiCommentView.swift; sourceTree = "<group>"; };
 		A52F20B02079C62F00FE5858 /* FlowWindowDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlowWindowDataSource.swift; path = Classes/Presentation/FlowWindowDataSource.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				A52F20B02079C62F00FE5858 /* FlowWindowDataSource.swift */,
+				A52F20A82078BCA500FE5858 /* YouTubeCommentFlowWindowDataSource.swift */,
 			);
 			name = FlowWindowDataSource;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				A523BD3D1CBA826A00701C9B /* TextField.swift in Sources */,
 				A55664C01C887FE60003A8D5 /* TwitterStreamAPIUseCase.swift in Sources */,
 				A55664BE1C887F800003A8D5 /* NicoNicoCommentFlowViewDataSource.swift in Sources */,
+				A52F20A92078BCA500FE5858 /* YouTubeCommentFlowWindowDataSource.swift in Sources */,
 				A5E0646C1C9EF58C00731D40 /* Announce.swift in Sources */,
 				A52F20A72078ABB200FE5858 /* SelectWindowUseCase.swift in Sources */,
 				A5FB70441CB11B5E0097042F /* User.swift in Sources */,
