@@ -35,6 +35,9 @@ class TweetSearchViewController: NSViewController {
 
         searchButton.rx.tap
             .subscribe(onNext: { [unowned self] in
+                self.commentFlowWindowDataSource?.stop()
+                self.commentFlowWindowDataSource = nil
+
                 self.search()
             })
             .addDisposableTo(disposeBag)
