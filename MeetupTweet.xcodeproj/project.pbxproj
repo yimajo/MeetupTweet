@@ -22,7 +22,7 @@
 		A52F20B12079C62F00FE5858 /* FlowWindowDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52F20B02079C62F00FE5858 /* FlowWindowDataSource.swift */; };
 		A55664AA1C8863030003A8D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55664A91C8863030003A8D5 /* AppDelegate.swift */; };
 		A55664AC1C8863030003A8D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A55664AB1C8863030003A8D5 /* Assets.xcassets */; };
-		A55664BE1C887F800003A8D5 /* NicoNicoCommentFlowWindowDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55664BD1C887F800003A8D5 /* NicoNicoCommentFlowWindowDataSource.swift */; };
+		A55664BE1C887F800003A8D5 /* NicoNicoCommentFlowViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55664BD1C887F800003A8D5 /* NicoNicoCommentFlowViewDataSource.swift */; };
 		A55664C01C887FE60003A8D5 /* TwitterStreamAPIUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55664BF1C887FE60003A8D5 /* TwitterStreamAPIUseCase.swift */; };
 		A55664CE1C892E850003A8D5 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55664CD1C892E850003A8D5 /* Tweet.swift */; };
 		A55EEA9B2017A6C100F39DE1 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55EEA9A2017A6C000F39DE1 /* Himotoki.framework */; };
@@ -57,7 +57,7 @@
 		A55664A91C8863030003A8D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A55664AB1C8863030003A8D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A55664B01C8863030003A8D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A55664BD1C887F800003A8D5 /* NicoNicoCommentFlowWindowDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NicoNicoCommentFlowWindowDataSource.swift; path = Classes/Presentation/NicoNicoCommentFlowWindowDataSource.swift; sourceTree = "<group>"; };
+		A55664BD1C887F800003A8D5 /* NicoNicoCommentFlowViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NicoNicoCommentFlowViewDataSource.swift; path = Classes/Presentation/NicoNicoCommentFlowViewDataSource.swift; sourceTree = "<group>"; };
 		A55664BF1C887FE60003A8D5 /* TwitterStreamAPIUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitterStreamAPIUseCase.swift; path = Classes/Domain/TwitterStreamAPIUseCase.swift; sourceTree = "<group>"; };
 		A55664CD1C892E850003A8D5 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tweet.swift; path = Classes/Domain/Tweet.swift; sourceTree = "<group>"; };
 		A55EEA9A2017A6C000F39DE1 /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/Mac/Himotoki.framework; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 			children = (
 				A52F20B02079C62F00FE5858 /* FlowWindowDataSource.swift */,
 				A52F20A82078BCA500FE5858 /* YouTubeCommentFlowWindowDataSource.swift */,
-				A55664BD1C887F800003A8D5 /* NicoNicoCommentFlowWindowDataSource.swift */,
+				A55664BD1C887F800003A8D5 /* NicoNicoCommentFlowViewDataSource.swift */,
 			);
 			name = FlowWindowDataSource;
 			sourceTree = "<group>";
@@ -391,7 +391,7 @@
 				A523BD3D1CBA826A00701C9B /* TextField.swift in Sources */,
 				A55664C01C887FE60003A8D5 /* TwitterStreamAPIUseCase.swift in Sources */,
 				A52F20A92078BCA500FE5858 /* YouTubeCommentFlowWindowDataSource.swift in Sources */,
-				A55664BE1C887F800003A8D5 /* NicoNicoCommentFlowWindowDataSource.swift in Sources */,
+				A55664BE1C887F800003A8D5 /* NicoNicoCommentFlowViewDataSource.swift in Sources */,
 				A5E0646C1C9EF58C00731D40 /* Announce.swift in Sources */,
 				A52F20A72078ABB200FE5858 /* SelectWindowUseCase.swift in Sources */,
 				A5FB70441CB11B5E0097042F /* User.swift in Sources */,
