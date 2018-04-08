@@ -14,6 +14,11 @@ import TwitterAPI
 
 class TweetSearchViewController: NSViewController {
 
+    enum FlowStyle: Int {
+        case youtube = 1
+        case niconico
+    }
+
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var searchField: NSSearchField!
     @IBOutlet weak var stopButton: NSButton!
@@ -21,22 +26,23 @@ class TweetSearchViewController: NSViewController {
 
     let disposeBag = DisposeBag()
     var selectedScreenIndex = 0
+    var flowStyle = FlowStyle.youtube
+
+    private var commentFlowWindowDataSource: FlowWindowDataSource?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let niconicoCommentViewDataSource = NicoNicoCommentFlowViewDataSource()
-        
         searchButton.rx.tap
             .subscribe(onNext: { [unowned self] in
-                let screen = NSScreen.screens[self.selectedScreenIndex]
-                niconicoCommentViewDataSource.searchTweet(self.searchField.stringValue, screen: screen)
+                self.search()
             })
             .addDisposableTo(disposeBag)
         
         stopButton.rx.tap
-            .subscribe(onNext: {
-                niconicoCommentViewDataSource.stopSearch()
+            .subscribe(onNext: { [unowned self] in
+                self.commentFlowWindowDataSource?.stop()
+                self.commentFlowWindowDataSource = nil
             }).addDisposableTo(disposeBag)
         
         let searchValid = searchField.rx.text.orEmpty
@@ -57,6 +63,18 @@ class TweetSearchViewController: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
         self.performSegue(withIdentifier: NSStoryboardSegue.Identifier("AuthSegueIdentifier"), sender: nil)
+    }
+}
+
+extension TweetSearchViewController {
+
+    @IBAction func touchRadioButton(_ matrix: NSMatrix) {
+
+        guard let flowStyle = FlowStyle(rawValue: matrix.selectedCell()!.tag) else {
+            return
+        }
+
+        self.flowStyle = flowStyle
     }
 }
 
@@ -84,5 +102,21 @@ extension TweetSearchViewController: NSTableViewDelegate {
         
         let screen = NSScreen.screens[selectedScreenIndex]
         SelectWindowUseCase(screen: screen).perform()
+    }
+}
+
+private extension TweetSearchViewController {
+    func search() {
+        guard 0 < searchField.stringValue.count else { return }
+
+        switch flowStyle {
+        case .youtube:
+            commentFlowWindowDataSource = YouTubeCommentFlowWindowDataSource()
+        case .niconico:
+            commentFlowWindowDataSource = NicoNicoCommentFlowWindowDataSource()
+        }
+
+        let screen = NSScreen.screens[selectedScreenIndex]
+        commentFlowWindowDataSource!.search(searchField.stringValue, screen: screen)
     }
 }

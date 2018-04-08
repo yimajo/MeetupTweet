@@ -10,16 +10,16 @@ import Foundation
 import RxSwift
 import AppKit
 
-class NicoNicoCommentFlowViewDataSource {
+class NicoNicoCommentFlowWindowDataSource: FlowWindowDataSource {
 
     var subscription: Disposable?
     fileprivate let tweetSearchUseCase = TwitterStraemAPIUseCase()
     fileprivate let disposeBag = DisposeBag()
     fileprivate var comments: [String: (comment: CommentType, view: CommentView)] = [:]
     fileprivate var commentViews: [CommentView?] = []
-    fileprivate var window: NSWindow = NSWindow()
+    fileprivate var window: NSWindow?
     
-    func searchTweet(_ search: String, screen: NSScreen) {
+    func search(_ search: String, screen: NSScreen) {
         refreshComments()
         window = makeTweetWindow(screen)
 
@@ -36,13 +36,13 @@ class NicoNicoCommentFlowViewDataSource {
         self.subscription?.addDisposableTo(disposeBag)
     }
     
-    func stopSearch() {
-        window.orderOut(nil)
+    func stop() {
+        window?.orderOut(nil)
         refreshComments()
     }
 }
 
-private extension NicoNicoCommentFlowViewDataSource {
+private extension NicoNicoCommentFlowWindowDataSource {
 
     func refreshComments() {
         tweetSearchUseCase.stopStream()
@@ -52,7 +52,9 @@ private extension NicoNicoCommentFlowViewDataSource {
     }
     
     func addComment(_ comment: CommentType) {
-        let view = makeCommentView(comment)
+        guard let window = window else { return }
+
+        let view = makeCommentView(comment, from: window)
         
         window.contentView?.addSubview(view)
         comments[comment.identifier()] = (comment: comment, view: view)
@@ -68,8 +70,10 @@ private extension NicoNicoCommentFlowViewDataSource {
     }
     
     func startAnimationComment(_ comment: CommentType, view: CommentView) {
+        guard let window = window else { return }
+
         // TextFieldの移動開始
-        let windowFrame = self.window.frame
+        let windowFrame = window.frame
         
         let v: CGFloat = 200.0
 
@@ -82,10 +86,11 @@ private extension NicoNicoCommentFlowViewDataSource {
             { context in
                 context.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
                 context.duration = firstDuration
-//                view.animator().frame = CGRectOffset(view.frame, -view.frame.width, 0)
                 view.animator().frame = view.frame.offsetBy(dx: -view.frame.width, dy: 0)
 
-            }, completionHandler: { [unowned self] in
+            }, completionHandler: { [weak self] in
+
+                guard let `self` = self else { return }
 
                 for (index, v) in self.commentViews.enumerated() {
                     if v == view {
@@ -94,22 +99,20 @@ private extension NicoNicoCommentFlowViewDataSource {
                     }
                 }
 
-                NSAnimationContext.runAnimationGroup(
-                    { context in
+                NSAnimationContext.runAnimationGroup({ context in
                         context.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
                         context.duration = secondDuration
                         view.animator().frame = view.frame.offsetBy(dx: -len, dy: 0)
                         
-                    }, completionHandler: {
-                        self.removeComment(comment)
-                    }
-                )
+                    }, completionHandler: { [weak self] in
+                        self?.removeComment(comment)
+                })
             }
         )
     }
     
-    func makeCommentView(_ comment: CommentType) -> CommentView {
-        
+    func makeCommentView(_ comment: CommentType, from window: NSWindow) -> CommentView {
+
         let commentView: CommentView
         switch comment.type() {
             case .tweet:
@@ -148,7 +151,7 @@ private extension NicoNicoCommentFlowViewDataSource {
         
         commentView.layoutSubtreeIfNeeded()
 
-        let windowFrame = self.window.frame
+        let windowFrame = window.frame
         let y = (windowFrame.height - commentView.frame.height) - (CGFloat(space) * commentView.frame.height)
         commentView.frame.origin = CGPoint(x: windowFrame.width, y: y)
         
@@ -162,7 +165,7 @@ private extension NicoNicoCommentFlowViewDataSource {
         let size = CGSize(width: screen.frame.size.width, height: screen.frame.size.height - menuHeight)
         let frame = NSRect(origin: CGPoint.zero, size: size)
 
-        window = NSWindow(contentRect: frame, styleMask: .resizable, backing: .buffered, defer: false, screen: screen)
+        let window = NSWindow(contentRect: frame, styleMask: .resizable, backing: .buffered, defer: false, screen: screen)
 
         window.isOpaque = false
         window.hasShadow = false
