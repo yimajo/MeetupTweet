@@ -16,7 +16,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var oauthClient: OAuthClient?
     var requestHandle: OAuthSwiftRequestHandle?
-    
+
+    private let callBackHost = "meetup-tweet"
+
     func applicationDidFinishLaunching(_ notification: Notification) {
         
         NSAppleEventManager.shared().setEventHandler(self, andSelector:#selector(AppDelegate.handleGetURLEvent(_:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
@@ -31,10 +33,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc func handleGetURLEvent(_ event: NSAppleEventDescriptor!, withReplyEvent: NSAppleEventDescriptor!) {
-        if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue, let url = URL(string: urlString) {
-            if url.host == "oauth-callback" {
-                OAuth1Swift.handle(url: url)
-            }
+        if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue,
+            let url = URL(string: urlString),
+            url.scheme == callBackHost {
+
+            OAuth1Swift.handle(url: url)
         }
     }
 
@@ -50,7 +53,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         return Observable.create { [unowned self] observer in
 
-            self.requestHandle = oauthSwift.authorize(withCallbackURL: "meetup-tweet://oauth-callback/twitter", success: { credential, response, parameters in
+            self.requestHandle = oauthSwift.authorize(withCallbackURL: "\(self.callBackHost)://", success: { credential, response, parameters in
             
                 self.oauthClient = OAuthClient(consumerKey: consumerKey, consumerSecret: consumerSecret, accessToken: credential.oauthToken, accessTokenSecret: credential.oauthTokenSecret)
                 
