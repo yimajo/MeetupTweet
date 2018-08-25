@@ -14,9 +14,8 @@ import RxSwift
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    var oauthClient: OAuthClient?
-    var requestHandle: OAuthSwiftRequestHandle?
-
+    private(set) var oauthClient: OAuthClient?
+    private var requestHandle: OAuthSwiftRequestHandle?
     private let callBackHost = "meetup-tweet"
 
     func applicationDidFinishLaunching(_ notification: Notification) {
