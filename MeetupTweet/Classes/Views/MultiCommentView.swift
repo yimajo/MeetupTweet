@@ -36,4 +36,8 @@ class MultiCommentView: NSView {
 
         return view
     }
+
+    func changeFontSizeLarge() {
+        messageTextField.font = NSFont.systemFont(ofSize: 30)
+    }
 }

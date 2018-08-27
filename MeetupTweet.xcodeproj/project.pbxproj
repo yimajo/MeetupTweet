@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A523BD361CB8F99100701C9B /* AnnounceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BD351CB8F99100701C9B /* AnnounceUseCase.swift */; };
-		A523BD391CBA5A6800701C9B /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BD381CBA5A6800701C9B /* AuthViewModel.swift */; };
 		A523BD3D1CBA826A00701C9B /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BD3C1CBA826A00701C9B /* TextField.swift */; };
 		A523BD401CBA970300701C9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A523BD3E1CBA970300701C9B /* Main.storyboard */; };
 		A523BD421CBA9A4200701C9B /* TweetSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BD411CBA9A4200701C9B /* TweetSearchViewController.swift */; };
@@ -36,28 +35,29 @@
 		A5E0646A1C9EC03D00731D40 /* CommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E064681C9EC03D00731D40 /* CommentView.xib */; };
 		A5E0646C1C9EF58C00731D40 /* Announce.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E0646B1C9EF58C00731D40 /* Announce.swift */; };
 		A5E0646E1C9F022F00731D40 /* CommentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E0646D1C9F022F00731D40 /* CommentType.swift */; };
+		A5F9D0502133B0C500DE2C45 /* TVCommentFlowDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F9D04F2133B0C500DE2C45 /* TVCommentFlowDataSource.swift */; };
+		A5F9D0522133B64400DE2C45 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F9D0512133B64400DE2C45 /* AuthViewModel.swift */; };
 		A5FB70441CB11B5E0097042F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FB70431CB11B5E0097042F /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A523BD351CB8F99100701C9B /* AnnounceUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnnounceUseCase.swift; path = Classes/Domain/AnnounceUseCase.swift; sourceTree = "<group>"; };
-		A523BD381CBA5A6800701C9B /* AuthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthViewModel.swift; path = Classes/Presentation/AuthViewModel.swift; sourceTree = "<group>"; };
-		A523BD3C1CBA826A00701C9B /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = Classes/Presentation/TextField.swift; sourceTree = "<group>"; };
+		A523BD3C1CBA826A00701C9B /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = Classes/Views/TextField.swift; sourceTree = "<group>"; };
 		A523BD3F1CBA970300701C9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A523BD411CBA9A4200701C9B /* TweetSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TweetSearchViewController.swift; path = Classes/Presentation/TweetSearchViewController.swift; sourceTree = "<group>"; };
-		A523BD441CBAA12A00701C9B /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthViewController.swift; path = Classes/Presentation/AuthViewController.swift; sourceTree = "<group>"; };
+		A523BD411CBA9A4200701C9B /* TweetSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TweetSearchViewController.swift; path = Classes/ViewControllers/TweetSearchViewController.swift; sourceTree = "<group>"; };
+		A523BD441CBAA12A00701C9B /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthViewController.swift; path = Classes/ViewControllers/AuthViewController.swift; sourceTree = "<group>"; };
 		A523BD7E1CBAB51E00701C9B /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaults.swift; path = Classes/Infra/UserDefaults.swift; sourceTree = "<group>"; };
-		A523BD811CBB649100701C9B /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WindowController.swift; path = Classes/Presentation/WindowController.swift; sourceTree = "<group>"; };
+		A523BD811CBB649100701C9B /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WindowController.swift; path = Classes/Window/WindowController.swift; sourceTree = "<group>"; };
 		A52F20A62078ABB200FE5858 /* SelectWindowUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectWindowUseCase.swift; path = Classes/Domain/SelectWindowUseCase.swift; sourceTree = "<group>"; };
-		A52F20A82078BCA500FE5858 /* YouTubeCommentFlowWindowDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = YouTubeCommentFlowWindowDataSource.swift; path = Classes/Presentation/YouTubeCommentFlowWindowDataSource.swift; sourceTree = "<group>"; };
+		A52F20A82078BCA500FE5858 /* YouTubeCommentFlowWindowDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = YouTubeCommentFlowWindowDataSource.swift; path = Classes/DataSource/YouTubeCommentFlowWindowDataSource.swift; sourceTree = "<group>"; };
 		A52F20AB2079A7DF00FE5858 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MultiCommentView.xib; sourceTree = "<group>"; };
-		A52F20AD2079A87800FE5858 /* MultiCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MultiCommentView.swift; path = Classes/Presentation/MultiCommentView.swift; sourceTree = "<group>"; };
-		A52F20B02079C62F00FE5858 /* FlowWindowDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlowWindowDataSource.swift; path = Classes/Presentation/FlowWindowDataSource.swift; sourceTree = "<group>"; };
+		A52F20AD2079A87800FE5858 /* MultiCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MultiCommentView.swift; path = Classes/Views/MultiCommentView.swift; sourceTree = "<group>"; };
+		A52F20B02079C62F00FE5858 /* FlowWindowDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlowWindowDataSource.swift; path = Classes/DataSource/FlowWindowDataSource.swift; sourceTree = "<group>"; };
 		A55664A61C8863030003A8D5 /* MeetupTweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetupTweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A55664A91C8863030003A8D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A55664AB1C8863030003A8D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A55664B01C8863030003A8D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A55664BD1C887F800003A8D5 /* NicoNicoCommentFlowViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NicoNicoCommentFlowViewDataSource.swift; path = Classes/Presentation/NicoNicoCommentFlowViewDataSource.swift; sourceTree = "<group>"; };
+		A55664BD1C887F800003A8D5 /* NicoNicoCommentFlowViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NicoNicoCommentFlowViewDataSource.swift; path = Classes/DataSource/NicoNicoCommentFlowViewDataSource.swift; sourceTree = "<group>"; };
 		A55664BF1C887FE60003A8D5 /* TwitterStreamAPIUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitterStreamAPIUseCase.swift; path = Classes/Domain/TwitterStreamAPIUseCase.swift; sourceTree = "<group>"; };
 		A55664CD1C892E850003A8D5 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tweet.swift; path = Classes/Domain/Tweet.swift; sourceTree = "<group>"; };
 		A55EEA9A2017A6C000F39DE1 /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/Mac/Himotoki.framework; sourceTree = "<group>"; };
@@ -66,11 +66,13 @@
 		A55EEABD2017AA5C00F39DE1 /* MutableDataScanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MutableDataScanner.framework; path = Carthage/Build/Mac/MutableDataScanner.framework; sourceTree = "<group>"; };
 		A55EEABF2017AA9100F39DE1 /* TwitterAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterAPI.framework; path = Carthage/Build/Mac/TwitterAPI.framework; sourceTree = "<group>"; };
 		A55EEAC12017B0BC00F39DE1 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/Mac/OAuthSwift.framework; sourceTree = "<group>"; };
-		A584721F20177C7B007CE1FF /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Window.swift; path = Classes/Presentation/Window.swift; sourceTree = "<group>"; };
-		A5E064661C9EBFFF00731D40 /* CommentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentView.swift; path = Classes/Presentation/CommentView.swift; sourceTree = "<group>"; };
+		A584721F20177C7B007CE1FF /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Window.swift; path = Classes/Window/Window.swift; sourceTree = "<group>"; };
+		A5E064661C9EBFFF00731D40 /* CommentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentView.swift; path = Classes/Views/CommentView.swift; sourceTree = "<group>"; };
 		A5E064691C9EC03D00731D40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CommentView.xib; sourceTree = "<group>"; };
 		A5E0646B1C9EF58C00731D40 /* Announce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Announce.swift; path = Classes/Domain/Announce.swift; sourceTree = "<group>"; };
 		A5E0646D1C9F022F00731D40 /* CommentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentType.swift; path = Classes/CommentType.swift; sourceTree = "<group>"; };
+		A5F9D04F2133B0C500DE2C45 /* TVCommentFlowDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TVCommentFlowDataSource.swift; path = Classes/DataSource/TVCommentFlowDataSource.swift; sourceTree = "<group>"; };
+		A5F9D0512133B64400DE2C45 /* AuthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthViewModel.swift; path = Classes/ViewModels/AuthViewModel.swift; sourceTree = "<group>"; };
 		A5FB70431CB11B5E0097042F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Classes/Domain/User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,7 +128,7 @@
 		A523BD7A1CBAAC5A00701C9B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				A523BD381CBA5A6800701C9B /* AuthViewModel.swift */,
+				A5F9D0512133B64400DE2C45 /* AuthViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				A52F20B02079C62F00FE5858 /* FlowWindowDataSource.swift */,
+				A5F9D04F2133B0C500DE2C45 /* TVCommentFlowDataSource.swift */,
 				A52F20A82078BCA500FE5858 /* YouTubeCommentFlowWindowDataSource.swift */,
 				A55664BD1C887F800003A8D5 /* NicoNicoCommentFlowViewDataSource.swift */,
 			);
@@ -214,7 +217,11 @@
 			isa = PBXGroup;
 			children = (
 				A5FB70451CB130C70097042F /* Resources */,
-				A55664B71C886D0F0003A8D5 /* Presentation */,
+				A523BD801CBB647C00701C9B /* Window */,
+				A523BD7B1CBAAC7000701C9B /* Views */,
+				A523BD431CBAA10400701C9B /* ViewControllers */,
+				A523BD7C1CBAAC8E00701C9B /* DataSource */,
+				A523BD7A1CBAAC5A00701C9B /* ViewModels */,
 				A55664B81C8873970003A8D5 /* Domain */,
 				A55664B61C886CF80003A8D5 /* Infra */,
 				A55664A91C8863030003A8D5 /* AppDelegate.swift */,
@@ -228,18 +235,6 @@
 				A523BD7E1CBAB51E00701C9B /* UserDefaults.swift */,
 			);
 			name = Infra;
-			sourceTree = "<group>";
-		};
-		A55664B71C886D0F0003A8D5 /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				A523BD801CBB647C00701C9B /* Window */,
-				A523BD7B1CBAAC7000701C9B /* Views */,
-				A523BD431CBAA10400701C9B /* ViewControllers */,
-				A523BD7C1CBAAC8E00701C9B /* DataSource */,
-				A523BD7A1CBAAC5A00701C9B /* ViewModels */,
-			);
-			name = Presentation;
 			sourceTree = "<group>";
 		};
 		A55664B81C8873970003A8D5 /* Domain */ = {
@@ -396,14 +391,15 @@
 				A52F20A72078ABB200FE5858 /* SelectWindowUseCase.swift in Sources */,
 				A5FB70441CB11B5E0097042F /* User.swift in Sources */,
 				A55664CE1C892E850003A8D5 /* Tweet.swift in Sources */,
-				A523BD391CBA5A6800701C9B /* AuthViewModel.swift in Sources */,
 				A52F20B12079C62F00FE5858 /* FlowWindowDataSource.swift in Sources */,
 				A5E064671C9EBFFF00731D40 /* CommentView.swift in Sources */,
 				A523BD451CBAA12A00701C9B /* AuthViewController.swift in Sources */,
 				A523BD361CB8F99100701C9B /* AnnounceUseCase.swift in Sources */,
 				A55664AA1C8863030003A8D5 /* AppDelegate.swift in Sources */,
 				A523BD7F1CBAB51E00701C9B /* UserDefaults.swift in Sources */,
+				A5F9D0522133B64400DE2C45 /* AuthViewModel.swift in Sources */,
 				A523BD421CBA9A4200701C9B /* TweetSearchViewController.swift in Sources */,
+				A5F9D0502133B0C500DE2C45 /* TVCommentFlowDataSource.swift in Sources */,
 				A584722020177C7B007CE1FF /* Window.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

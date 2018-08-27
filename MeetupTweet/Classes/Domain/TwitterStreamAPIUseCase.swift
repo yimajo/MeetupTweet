@@ -29,13 +29,14 @@ class TwitterStraemAPIUseCase {
         }
         
         let tweetStream = PublishSubject<CommentType>()
-        
+
         streamingRequest = AppDelegate.sharedInstance.oauthClient!
             .streaming(streamEndpoint, parameters: ["track": query])
             .progress({ [unowned self] data -> Void in
                 do {
                     let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                     let tweet: Tweet = try decodeValue(json)
+                    
                     tweetStream.onNext(tweet)
 
                 } catch {
