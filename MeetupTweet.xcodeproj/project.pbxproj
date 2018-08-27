@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A523BD361CB8F99100701C9B /* AnnounceUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BD351CB8F99100701C9B /* AnnounceUseCase.swift */; };
-		A523BD391CBA5A6800701C9B /* ViewModels in Sources */ = {isa = PBXBuildFile; fileRef = A523BD381CBA5A6800701C9B /* ViewModels */; };
 		A523BD3D1CBA826A00701C9B /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BD3C1CBA826A00701C9B /* TextField.swift */; };
 		A523BD401CBA970300701C9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A523BD3E1CBA970300701C9B /* Main.storyboard */; };
 		A523BD421CBA9A4200701C9B /* TweetSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A523BD411CBA9A4200701C9B /* TweetSearchViewController.swift */; };
@@ -36,12 +35,12 @@
 		A5E0646A1C9EC03D00731D40 /* CommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E064681C9EC03D00731D40 /* CommentView.xib */; };
 		A5E0646C1C9EF58C00731D40 /* Announce.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E0646B1C9EF58C00731D40 /* Announce.swift */; };
 		A5E0646E1C9F022F00731D40 /* CommentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E0646D1C9F022F00731D40 /* CommentType.swift */; };
+		A5F9D0522133B64400DE2C45 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F9D0512133B64400DE2C45 /* AuthViewModel.swift */; };
 		A5FB70441CB11B5E0097042F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FB70431CB11B5E0097042F /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A523BD351CB8F99100701C9B /* AnnounceUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnnounceUseCase.swift; path = Classes/Domain/AnnounceUseCase.swift; sourceTree = "<group>"; };
-		A523BD381CBA5A6800701C9B /* ViewModels */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = ViewModels; path = Classes/ViewModels; sourceTree = "<group>"; };
 		A523BD3C1CBA826A00701C9B /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = Classes/Views/TextField.swift; sourceTree = "<group>"; };
 		A523BD3F1CBA970300701C9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A523BD411CBA9A4200701C9B /* TweetSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TweetSearchViewController.swift; path = Classes/ViewControllers/TweetSearchViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +70,7 @@
 		A5E064691C9EC03D00731D40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CommentView.xib; sourceTree = "<group>"; };
 		A5E0646B1C9EF58C00731D40 /* Announce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Announce.swift; path = Classes/Domain/Announce.swift; sourceTree = "<group>"; };
 		A5E0646D1C9F022F00731D40 /* CommentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentType.swift; path = Classes/CommentType.swift; sourceTree = "<group>"; };
+		A5F9D0512133B64400DE2C45 /* AuthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthViewModel.swift; path = Classes/ViewModels/AuthViewModel.swift; sourceTree = "<group>"; };
 		A5FB70431CB11B5E0097042F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Classes/Domain/User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,7 +126,7 @@
 		A523BD7A1CBAAC5A00701C9B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				A523BD381CBA5A6800701C9B /* ViewModels */,
+				A5F9D0512133B64400DE2C45 /* AuthViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -388,13 +388,13 @@
 				A52F20A72078ABB200FE5858 /* SelectWindowUseCase.swift in Sources */,
 				A5FB70441CB11B5E0097042F /* User.swift in Sources */,
 				A55664CE1C892E850003A8D5 /* Tweet.swift in Sources */,
-				A523BD391CBA5A6800701C9B /* ViewModels in Sources */,
 				A52F20B12079C62F00FE5858 /* FlowWindowDataSource.swift in Sources */,
 				A5E064671C9EBFFF00731D40 /* CommentView.swift in Sources */,
 				A523BD451CBAA12A00701C9B /* AuthViewController.swift in Sources */,
 				A523BD361CB8F99100701C9B /* AnnounceUseCase.swift in Sources */,
 				A55664AA1C8863030003A8D5 /* AppDelegate.swift in Sources */,
 				A523BD7F1CBAB51E00701C9B /* UserDefaults.swift in Sources */,
+				A5F9D0522133B64400DE2C45 /* AuthViewModel.swift in Sources */,
 				A523BD421CBA9A4200701C9B /* TweetSearchViewController.swift in Sources */,
 				A584722020177C7B007CE1FF /* Window.swift in Sources */,
 			);
