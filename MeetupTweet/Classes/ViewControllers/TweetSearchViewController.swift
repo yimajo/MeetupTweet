@@ -15,8 +15,9 @@ import TwitterAPI
 class TweetSearchViewController: NSViewController {
 
     enum FlowStyle: Int {
-        case youtube = 1
+        case youtube = 1 // View Tag
         case niconico
+        case tv
     }
 
     @IBOutlet weak var tableView: NSTableView!
@@ -117,6 +118,8 @@ private extension TweetSearchViewController {
             commentFlowWindowDataSource = YouTubeCommentFlowWindowDataSource()
         case .niconico:
             commentFlowWindowDataSource = NicoNicoCommentFlowWindowDataSource()
+        case .tv:
+            commentFlowWindowDataSource = TVCommentFlowDataSource()
         }
 
         let screen = NSScreen.screens[selectedScreenIndex]

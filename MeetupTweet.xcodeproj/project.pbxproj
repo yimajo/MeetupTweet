@@ -35,6 +35,7 @@
 		A5E0646A1C9EC03D00731D40 /* CommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E064681C9EC03D00731D40 /* CommentView.xib */; };
 		A5E0646C1C9EF58C00731D40 /* Announce.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E0646B1C9EF58C00731D40 /* Announce.swift */; };
 		A5E0646E1C9F022F00731D40 /* CommentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E0646D1C9F022F00731D40 /* CommentType.swift */; };
+		A5F9D0502133B0C500DE2C45 /* TVCommentFlowDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F9D04F2133B0C500DE2C45 /* TVCommentFlowDataSource.swift */; };
 		A5F9D0522133B64400DE2C45 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F9D0512133B64400DE2C45 /* AuthViewModel.swift */; };
 		A5FB70441CB11B5E0097042F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FB70431CB11B5E0097042F /* User.swift */; };
 /* End PBXBuildFile section */
@@ -70,6 +71,7 @@
 		A5E064691C9EC03D00731D40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CommentView.xib; sourceTree = "<group>"; };
 		A5E0646B1C9EF58C00731D40 /* Announce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Announce.swift; path = Classes/Domain/Announce.swift; sourceTree = "<group>"; };
 		A5E0646D1C9F022F00731D40 /* CommentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentType.swift; path = Classes/CommentType.swift; sourceTree = "<group>"; };
+		A5F9D04F2133B0C500DE2C45 /* TVCommentFlowDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TVCommentFlowDataSource.swift; path = Classes/DataSource/TVCommentFlowDataSource.swift; sourceTree = "<group>"; };
 		A5F9D0512133B64400DE2C45 /* AuthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthViewModel.swift; path = Classes/ViewModels/AuthViewModel.swift; sourceTree = "<group>"; };
 		A5FB70431CB11B5E0097042F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Classes/Domain/User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				A52F20B02079C62F00FE5858 /* FlowWindowDataSource.swift */,
+				A5F9D04F2133B0C500DE2C45 /* TVCommentFlowDataSource.swift */,
 				A52F20A82078BCA500FE5858 /* YouTubeCommentFlowWindowDataSource.swift */,
 				A55664BD1C887F800003A8D5 /* NicoNicoCommentFlowViewDataSource.swift */,
 			);
@@ -396,6 +399,7 @@
 				A523BD7F1CBAB51E00701C9B /* UserDefaults.swift in Sources */,
 				A5F9D0522133B64400DE2C45 /* AuthViewModel.swift in Sources */,
 				A523BD421CBA9A4200701C9B /* TweetSearchViewController.swift in Sources */,
+				A5F9D0502133B0C500DE2C45 /* TVCommentFlowDataSource.swift in Sources */,
 				A584722020177C7B007CE1FF /* Window.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
