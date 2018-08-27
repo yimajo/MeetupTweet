@@ -76,10 +76,10 @@ private extension YouTubeCommentFlowWindowDataSource {
     func makeMultiCommentView(_ comment: CommentType) -> MultiCommentView {
 
         let commentView: MultiCommentView
-        switch comment.type() {
+        switch comment.type {
         case .tweet:
-            commentView = MultiCommentView.makeView(comment.message(), name: comment.name)
-            if let url = comment.imageURL() {
+            commentView = MultiCommentView.makeView(comment.message, name: comment.name)
+            if let url = comment.imageURL {
                 URLSession.shared.rx.data(request: URLRequest(url: url))
                     .subscribe(onNext: { data in
                         DispatchQueue.main.async {
@@ -88,7 +88,7 @@ private extension YouTubeCommentFlowWindowDataSource {
                     }).addDisposableTo(disposeBag)
             }
         case .announce:
-            commentView = MultiCommentView.makeView(comment.message(), name: comment.name, fontColor: NSColor.red)
+            commentView = MultiCommentView.makeView(comment.message, name: comment.name, fontColor: NSColor.red)
             commentView.imageView.image = NSApp.applicationIconImage
         }
 
