@@ -26,6 +26,7 @@ class NicoNicoCommentFlowWindowDataSource: FlowWindowDataSource {
         let tweetStream = tweetSearchUseCase.startStream(search)
             .observeOn(MainScheduler.instance)
             .startWith(Announce(search: search))
+            .filter { !$0.message.hasPrefix("RT") }
 
         self.subscription = Observable.of(tweetStream, AnnounceUseCase.intervalTextStream(search))
             .merge()

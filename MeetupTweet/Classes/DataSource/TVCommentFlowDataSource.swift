@@ -32,6 +32,7 @@ class TVCommentFlowDataSource: FlowWindowDataSource {
         let tweetSearchSequence = tweetSearchUseCase.startStream(search)
             .observeOn(MainScheduler.instance)
             .startWith(Announce(search: search))
+            .filter { !$0.message.hasPrefix("RT") }
 
         let announceSequence = AnnounceUseCase.intervalTextStream(search)
         let tweetSequence = Observable.of(tweetSearchSequence, announceSequence).merge()

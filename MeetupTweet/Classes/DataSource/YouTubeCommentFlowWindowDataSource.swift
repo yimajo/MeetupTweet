@@ -30,6 +30,7 @@ class YouTubeCommentFlowWindowDataSource: FlowWindowDataSource {
         let tweetStream = tweetSearchUseCase.startStream(search)
             .observeOn(MainScheduler.instance)
             .startWith(Announce(search: search))
+            .filter { !$0.message.hasPrefix("RT") }
 
         subscription = Observable.of(tweetStream, AnnounceUseCase.intervalTextStream(search))
             .merge()
