@@ -112,6 +112,7 @@ private extension TVCommentFlowDataSource {
 
         commentView.frame.origin = CGPoint(x: 0, y: commentTopSpacing)
         commentView.frame.size.width = commentViewWidth
+        commentView.changeFontSizeLarge()
         return commentView
     }
 
