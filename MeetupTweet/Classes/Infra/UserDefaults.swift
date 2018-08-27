@@ -12,7 +12,9 @@ struct UserDefaults {
     
     fileprivate static let consumerKeyName = "consumerKey"
     fileprivate static let consumerSecretName = "consumerSecret"
-    
+    private static let tokenKeyName = "tokenKey"
+    private static let tokenSecretName = "tokenSecret"
+
     static func setConsumerKey(_ consumerKey: String?) {
          Foundation.UserDefaults.standard.setValue(consumerKey, forKey: self.consumerKeyName)
     }
@@ -27,5 +29,21 @@ struct UserDefaults {
     
     static func consumerSecret() -> String? {
         return Foundation.UserDefaults.standard.string(forKey: consumerSecretName)
+    }
+
+    static func setToken(_ token: String) {
+        Foundation.UserDefaults.standard.setValue(token, forKey: tokenKeyName)
+    }
+
+    static func setTokenSecret(_ tokenSecret: String) {
+        Foundation.UserDefaults.standard.setValue(tokenSecret, forKey: tokenSecretName)
+    }
+
+    static func token() -> String? {
+        return Foundation.UserDefaults.standard.string(forKey: tokenKeyName)
+    }
+
+    static func tokenSecret() -> String? {
+        return Foundation.UserDefaults.standard.string(forKey: tokenSecretName)
     }
 }

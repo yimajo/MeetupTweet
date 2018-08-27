@@ -62,11 +62,15 @@ class TweetSearchViewController: NSViewController {
             })
             .addDisposableTo(disposeBag)
 
+        AppDelegate.sharedInstance.applyToken()
     }
 
     override func viewWillAppear() {
         super.viewWillAppear()
-        self.performSegue(withIdentifier: NSStoryboardSegue.Identifier("AuthSegueIdentifier"), sender: nil)
+
+        if AppDelegate.sharedInstance.oauthClient == nil {
+            performSegue(withIdentifier: NSStoryboardSegue.Identifier("AuthSegueIdentifier"), sender: nil)
+        }
     }
 }
 
