@@ -32,6 +32,10 @@ struct Announce: CommentType {
     func imageURL() -> URL? {
         return nil
     }
+
+    var name: String {
+        return "アナウンス"
+    }
 }
 
 private extension Announce {

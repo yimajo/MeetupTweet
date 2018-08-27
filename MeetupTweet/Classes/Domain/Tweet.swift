@@ -44,4 +44,8 @@ extension Tweet: CommentType {
     func imageURL() -> URL? {
         return URL(string: user.profileImageURLString)
     }
+
+    var name: String {
+        return user.screenName
+    }
 }

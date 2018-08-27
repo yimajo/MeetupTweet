@@ -18,4 +18,5 @@ protocol CommentType {
     func identifier() -> String
     func message() -> String
     func imageURL() -> URL?
+    var name: String { get }
 }

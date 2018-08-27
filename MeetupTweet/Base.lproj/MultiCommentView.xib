@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -60,6 +60,7 @@
             <connections>
                 <outlet property="imageView" destination="J2P-do-07r" id="2fi-3U-eNw"/>
                 <outlet property="messageTextField" destination="mWU-k3-mmz" id="ew7-4i-I5Q"/>
+                <outlet property="nameTextField" destination="9lZ-wR-058" id="NJV-hD-pfI"/>
             </connections>
             <point key="canvasLocation" x="224.5" y="507"/>
         </customView>
