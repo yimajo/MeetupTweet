@@ -10,10 +10,12 @@ import Foundation
 import Himotoki
 
 struct User: Himotoki.Decodable {
+    let screenName: String
     let profileImageURLString: String
     
     static func decode(_ e: Extractor) throws -> User {
         return try User(
+            screenName: e <| "screen_name",
             profileImageURLString: e <| "profile_image_url"
         )
     }

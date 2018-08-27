@@ -13,9 +13,10 @@ enum Comment {
 }
 
 protocol CommentType {
-    func type() -> Comment
+    var type: Comment { get }
     
-    func identifier() -> String
-    func message() -> String
-    func imageURL() -> URL?
+    var identifier: String { get }
+    var message: String { get }
+    var imageURL: URL? { get }
+    var name: String { get }
 }

@@ -57,15 +57,15 @@ private extension NicoNicoCommentFlowWindowDataSource {
         let view = makeCommentView(comment, from: window)
         
         window.contentView?.addSubview(view)
-        comments[comment.identifier()] = (comment: comment, view: view)
+        comments[comment.identifier] = (comment: comment, view: view)
 
         startAnimationComment(comment, view: view)
     }
     
     func removeComment(_ comment: CommentType) {
-        if let tweet = comments[comment.identifier()] {
+        if let tweet = comments[comment.identifier] {
             tweet.view.removeFromSuperview()
-            comments[comment.identifier()] = nil
+            comments[comment.identifier] = nil
         }
     }
     
@@ -114,10 +114,10 @@ private extension NicoNicoCommentFlowWindowDataSource {
     func makeCommentView(_ comment: CommentType, from window: NSWindow) -> CommentView {
 
         let commentView: CommentView
-        switch comment.type() {
+        switch comment.type {
             case .tweet:
-                commentView = CommentView.newCommentView(comment.message())
-                if let url = comment.imageURL() {
+                commentView = CommentView.newCommentView(comment.message)
+                if let url = comment.imageURL {
                     URLSession.shared.rx.data(request: URLRequest(url: url))
                         .subscribe(onNext: { data in
                             DispatchQueue.main.async {
@@ -126,7 +126,7 @@ private extension NicoNicoCommentFlowWindowDataSource {
                         }).addDisposableTo(disposeBag)
                 }
             case .announce:
-                commentView = CommentView.newCommentView(comment.message(), fontColor: NSColor.red)
+                commentView = CommentView.newCommentView(comment.message, fontColor: NSColor.red)
                 commentView.imageView.image = NSApp.applicationIconImage
         }
         

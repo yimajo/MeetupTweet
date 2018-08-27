@@ -29,19 +29,23 @@ struct Tweet: Himotoki.Decodable {
 }
 
 extension Tweet: CommentType {
-    func type() -> Comment {
+    var type: Comment {
         return .tweet
     }
-    
-    func identifier() -> String {
+
+    var identifier: String {
         return id
     }
     
-    func message() -> String {
+    var message: String {
         return text
     }
     
-    func imageURL() -> URL? {
+    var imageURL: URL? {
         return URL(string: user.profileImageURLString)
+    }
+
+    var name: String {
+        return user.screenName
     }
 }

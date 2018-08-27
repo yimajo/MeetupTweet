@@ -11,11 +11,12 @@ import AppKit
 class MultiCommentView: NSView {
 
     @IBOutlet weak var imageView: NSImageView!
+    @IBOutlet weak var nameTextField: NSTextField!
     @IBOutlet weak var messageTextField: NSTextField!
 
     class var nibName: NSNib.Name { return NSNib.Name("MultiCommentView") }
 
-    class func makeView(_ message: String, fontColor: NSColor? = nil) -> MultiCommentView {
+    class func makeView(_ message: String, name: String, fontColor: NSColor? = nil) -> MultiCommentView {
 
         var topLevelObjects: NSArray? = []
         let nib = NSNib(nibNamed: nibName, bundle: Bundle.main)!
@@ -30,6 +31,7 @@ class MultiCommentView: NSView {
             }
         }
 
+        view.nameTextField.stringValue = name
         view.messageTextField.stringValue = message
 
         return view

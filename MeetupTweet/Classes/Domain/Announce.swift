@@ -17,20 +17,24 @@ struct Announce: CommentType {
         text = Announce.meessage(search)
     }
 
-    func type() -> Comment {
+    var type: Comment {
         return .announce
     }
     
-    func identifier() -> String {
+    var identifier: String {
         return id
     }
     
-    func message() -> String {
+    var message: String {
         return text
     }
     
-    func imageURL() -> URL? {
+    var imageURL: URL? {
         return nil
+    }
+
+    var name: String {
+        return "アナウンス"
     }
 }
 
