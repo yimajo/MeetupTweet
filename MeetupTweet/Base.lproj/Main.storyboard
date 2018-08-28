@@ -302,6 +302,13 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="osT-xY-EjA"/>
+                                        <menuItem title="Show Login" id="xyw-7a-v39">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <segue destination="AmD-ro-1ro" kind="modal" id="U9R-h4-M9D"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="fnu-PY-yUN"/>
                                         <menuItem title="Preferences…" keyEquivalent="," id="hWp-Qc-U1e"/>
                                         <menuItem isSeparatorItem="YES" id="vbj-5j-zMV"/>
                                         <menuItem title="Quit" keyEquivalent="q" id="Ib2-2u-3oL">
@@ -376,4 +383,7 @@ AAAAAAAAAAAAAAAACnA
 </mutableData>
         </image>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ykf-aF-LDN"/>
+    </inferredMetricsTieBreakers>
 </document>

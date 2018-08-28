@@ -53,8 +53,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return Observable.create { [unowned self] observer in
 
             self.requestHandle = oauthSwift.authorize(withCallbackURL: "\(self.callBackHost)://", success: { credential, response, parameters in
-            
-                self.oauthClient = OAuthClient(consumerKey: consumerKey, consumerSecret: consumerSecret, accessToken: credential.oauthToken, accessTokenSecret: credential.oauthTokenSecret)
+
+                UserDefaults.setToken(credential.oauthToken)
+                UserDefaults.setTokenSecret(credential.oauthTokenSecret)
+
+                self.oauthClient = OAuthClient(
+                    consumerKey: consumerKey,
+                    consumerSecret: consumerSecret,
+                    accessToken: credential.oauthToken,
+                    accessTokenSecret: credential.oauthTokenSecret
+                )
                 
                 observer.onNext(true)
 
@@ -64,5 +72,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
             return Disposables.create()
         }
+    }
+
+    func applyToken() {
+        guard let consumerKey = UserDefaults.consumerKey(),
+            let consumerSecret = UserDefaults.consumerSecret(),
+            let token = UserDefaults.token(),
+            let tokenSecret = UserDefaults.tokenSecret() else {
+
+            return
+        }
+
+        self.oauthClient = OAuthClient(
+            consumerKey: consumerKey,
+            consumerSecret: consumerSecret,
+            accessToken: token,
+            accessTokenSecret: tokenSecret
+        )
+
     }
 }

@@ -35,22 +35,22 @@ class AuthViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let authViewModel = AuthViewModel(
             consumerKey: consumerKeyTextFeild.rx.text.orEmpty.asObservable(),
             consumerSecret: consumerSecretTextField.rx.text.orEmpty.asObservable(),
             authrorizeTap: authorizeButton.rx.tap.asObservable()
         )
-        
+
         authViewModel.validated
             .bind(to: authorizeButton.rx.isEnabled)
             .addDisposableTo(disposeBag)
-        
+
         authViewModel.authorized
             .subscribe(onNext: { [unowned self] authorize in
                 self.dismiss(nil)
-            }, onError: { error in
-                print(error)
+                }, onError: { error in
+                    print(error)
             }).addDisposableTo(disposeBag)
     }
 
