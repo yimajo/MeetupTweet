@@ -1,4 +1,4 @@
 framework module OAuthSwift {
-    header "OAuthSwift-Swift.h"
-    requires objc
+  header "OAuthSwift-Swift.h"
+  requires objc
 }
