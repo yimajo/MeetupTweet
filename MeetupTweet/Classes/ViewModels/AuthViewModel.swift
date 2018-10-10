@@ -20,9 +20,9 @@ class AuthViewModel {
     init(consumerKey: Observable<String>, consumerSecret: Observable<String>, authrorizeTap: Observable<()>) {
         
         let validatedConsumerKey = consumerKey
-            .shareReplay(1)
-        
             .map { 0 < $0.count }
+            .share(replay: 1)
+
         let validatedConsumerSecret = consumerSecret
             .map { 0 < $0.count }
             .share(replay: 1)
@@ -31,14 +31,15 @@ class AuthViewModel {
                                              validatedConsumerSecret) {
                 $0 && $1
             }
+            .share(replay: 1)
             .distinctUntilChanged()
-            .shareReplay(1)
 
         
         let apiKeyAndSecret = Observable.combineLatest(consumerKey, consumerSecret) {
                 ($0.trimmingCharacters(in: .whitespacesAndNewlines),
                  $1.trimmingCharacters(in: .whitespacesAndNewlines))
             }
+            .share(replay: 1)
         
         authorized = authrorizeTap.withLatestFrom(apiKeyAndSecret)
             .flatMapLatest { key, secret -> Observable<Bool>  in
@@ -49,6 +50,6 @@ class AuthViewModel {
                                                             consumerSecret: secret)
                 
             }
-            .shareReplay(1)
+            .share(replay: 1)
     }
 }

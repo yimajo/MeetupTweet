@@ -34,7 +34,7 @@ class NicoNicoCommentFlowWindowDataSource: FlowWindowDataSource {
                 self.addComment(comment)
             })
         
-        self.subscription?.addDisposableTo(disposeBag)
+        self.subscription?.disposed(by: disposeBag)
     }
     
     func stop() {
@@ -124,7 +124,8 @@ private extension NicoNicoCommentFlowWindowDataSource {
                             DispatchQueue.main.async {
                                 commentView.imageView.image = NSImage(data: data)
                             }
-                        }).addDisposableTo(disposeBag)
+                        })
+                        .disposed(by: disposeBag)
                 }
             case .announce:
                 commentView = CommentView.newCommentView(comment.message, fontColor: NSColor.red)
