@@ -8,7 +8,7 @@
 
 import Foundation
 import RxSwift
-
+import RxSwiftExt
 import OAuthSwift
 import TwitterAPI
 
@@ -16,7 +16,8 @@ class AuthViewModel {
     
     let validated: Observable<Bool>
     let authorized: Observable<Bool>
-    
+    let errorMessage: Observable<String>
+
     init(consumerKey: Observable<String>, consumerSecret: Observable<String>, authrorizeTap: Observable<()>) {
         
         let validatedConsumerKey = consumerKey
@@ -41,15 +42,21 @@ class AuthViewModel {
             }
             .share(replay: 1)
         
-        authorized = authrorizeTap.withLatestFrom(apiKeyAndSecret)
-            .flatMapLatest { key, secret -> Observable<Bool>  in
+        let result = authrorizeTap.withLatestFrom(apiKeyAndSecret)
+            .flatMapLatest { key, secret -> Observable<Event<Bool>>  in
                 UserDefaults.setConsumerKey(key)
                 UserDefaults.setConsumerSecret(secret)
 
-                return AppDelegate.sharedInstance.authorize(consumerKey: key,
-                                                            consumerSecret: secret)
-                
+                return AppDelegate.sharedInstance
+                    .authorize(consumerKey: key, consumerSecret: secret)
+                    .materialize()
             }
+            .share(replay: 1)
+
+        authorized = result.elements().share(replay: 1)
+
+        errorMessage = result.errors()
+            .map { $0.localizedDescription }
             .share(replay: 1)
     }
 }

@@ -49,8 +49,12 @@ class AuthViewController: NSViewController {
         authViewModel.authorized
             .subscribe(onNext: { [unowned self] authorize in
                 self.dismiss(nil)
-                }, onError: { error in
-                    print(error)
+            })
+            .disposed(by: disposeBag)
+
+        authViewModel.errorMessage
+            .subscribe(onNext: {
+                print("error: ", $0)
             })
             .disposed(by: disposeBag)
     }
