@@ -44,14 +44,15 @@ class AuthViewController: NSViewController {
 
         authViewModel.validated
             .bind(to: authorizeButton.rx.isEnabled)
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
 
         authViewModel.authorized
             .subscribe(onNext: { [unowned self] authorize in
                 self.dismiss(nil)
                 }, onError: { error in
                     print(error)
-            }).addDisposableTo(disposeBag)
+            })
+            .disposed(by: disposeBag)
     }
 
     @IBAction func tapHelpButton(_ sender: AnyObject) {
