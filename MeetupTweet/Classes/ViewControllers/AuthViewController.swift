@@ -47,7 +47,7 @@ class AuthViewController: NSViewController {
             .disposed(by: disposeBag)
 
         authViewModel.authorized
-            .subscribe(onNext: { [unowned self] authorize in
+            .drive(onNext: { [unowned self] authorize in
                 self.dismiss(nil)
             })
             .disposed(by: disposeBag)

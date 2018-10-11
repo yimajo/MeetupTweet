@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 import RxSwiftExt
 import OAuthSwift
 import TwitterAPI
@@ -15,8 +16,8 @@ import TwitterAPI
 class AuthViewModel {
     
     let validated: Observable<Bool>
-    let authorized: Observable<Bool>
     let errorMessage: Observable<String>
+    let authorized: Driver<Bool>
 
     init(consumerKey: Observable<String>, consumerSecret: Observable<String>, authrorizeTap: Observable<()>) {
         
@@ -53,7 +54,9 @@ class AuthViewModel {
             }
             .share(replay: 1)
 
-        authorized = result.elements().share(replay: 1)
+        authorized = result
+            .elements()
+            .asDriver(onErrorDriveWith: .never())
 
         errorMessage = result.errors()
             .map { $0.localizedDescription }
