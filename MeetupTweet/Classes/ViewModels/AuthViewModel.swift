@@ -16,8 +16,8 @@ import TwitterAPI
 class AuthViewModel {
     
     let validated: Observable<Bool>
-    let errorMessage: Observable<String>
     let authorized: Driver<Bool>
+    let errorMessage: Driver<Error>
 
     init(consumerKey: Observable<String>, consumerSecret: Observable<String>, authrorizeTap: Observable<()>) {
         
@@ -59,7 +59,6 @@ class AuthViewModel {
             .asDriver(onErrorDriveWith: .never())
 
         errorMessage = result.errors()
-            .map { $0.localizedDescription }
-            .share(replay: 1)
+            .asDriver(onErrorDriveWith: .never())
     }
 }

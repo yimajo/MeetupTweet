@@ -53,8 +53,14 @@ class AuthViewController: NSViewController {
             .disposed(by: disposeBag)
 
         authViewModel.errorMessage
-            .subscribe(onNext: {
-                print("error: ", $0)
+            .drive(onNext: { [unowned self] in
+                let info = self.configureAlertInfo(from: $0)
+
+                let alert = NSAlert()
+                alert.messageText = info.title
+                alert.informativeText = info.text
+                alert.addButton(withTitle: "OK")
+                alert.runModal()
             })
             .disposed(by: disposeBag)
     }
