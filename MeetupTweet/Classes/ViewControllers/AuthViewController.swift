@@ -72,7 +72,7 @@ class AuthViewController: NSViewController {
     
     @IBAction func tapCloseButton(_ sender: AnyObject) {
         self.dismiss(nil)
-        AppDelegate.sharedInstance.quit()
+        AppDelegate.shared.quit()
     }
 }
 
@@ -83,7 +83,7 @@ private extension AuthViewController {
             switch error {
             case .requestError(error: _):
                 let title = "API Key, Secretに関するエラー"
-                let text = "存在しないAPI Key, Secretを入力しているか、もしくは、あなたのTwitter DeveloperのApp設定にてCallbackURLに\(AppDelegate.sharedInstance.callBackHost)://が追加されていない可能性があります。CallbackURLはブラウザ認証後にこのアプリを起動するためのURLスキーマです。"
+                let text = "存在しないAPI Key, Secretを入力しているか、もしくは、あなたのTwitter DeveloperのApp設定にてCallbackURLに\(AppDelegate.shared.callBackHost)://が追加されていない可能性があります。CallbackURLはブラウザ認証後にこのアプリを起動するためのURLスキーマです。"
 
                 return (title: title, text: text)
             default:

@@ -48,7 +48,7 @@ class AuthViewModel {
                 UserDefaults.setConsumerKey(key)
                 UserDefaults.setConsumerSecret(secret)
 
-                return AppDelegate.sharedInstance
+                return AppDelegate.shared
                     .authorize(consumerKey: key, consumerSecret: secret)
                     .materialize()
             }

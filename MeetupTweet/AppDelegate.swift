@@ -27,7 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSApplication.shared.terminate(self)
     }
     
-    class var sharedInstance: AppDelegate {
+    class var shared: AppDelegate {
         return NSApplication.shared.delegate as! AppDelegate
     }
 
