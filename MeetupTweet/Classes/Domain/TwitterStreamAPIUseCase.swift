@@ -19,7 +19,7 @@ class TwitterStraemAPIUseCase {
     var streamingRequest: StreamingRequest?
     
     deinit {
-        _ = self.streamingRequest?.stop()
+        _ = streamingRequest?.stop()
     }
     
     func startStream(_ query: String) -> PublishSubject<CommentType> {

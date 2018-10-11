@@ -83,7 +83,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
 
-        self.oauthClient = OAuthClient(
+        oauthClient = OAuthClient(
             consumerKey: consumerKey,
             consumerSecret: consumerSecret,
             accessToken: token,

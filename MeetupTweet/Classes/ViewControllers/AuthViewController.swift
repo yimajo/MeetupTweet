@@ -17,14 +17,14 @@ class AuthViewController: NSViewController {
     @IBOutlet weak var consumerKeyTextFeild: NSTextField! {
         didSet {
             if let consumerKey = UserDefaults.consumerKey() {
-                self.consumerKeyTextFeild.stringValue = consumerKey.trimmingCharacters(in: .whitespacesAndNewlines)
+                consumerKeyTextFeild.stringValue = consumerKey.trimmingCharacters(in: .whitespacesAndNewlines)
             }
         }
     }
     @IBOutlet weak var consumerSecretTextField: NSTextField! {
         didSet {
             if let consumerSecret = UserDefaults.consumerSecret() {
-                self.consumerSecretTextField.stringValue = consumerSecret.trimmingCharacters(in: .whitespacesAndNewlines)
+                consumerSecretTextField.stringValue = consumerSecret.trimmingCharacters(in: .whitespacesAndNewlines)
             }
         }
     }
@@ -71,7 +71,7 @@ class AuthViewController: NSViewController {
     }
     
     @IBAction func tapCloseButton(_ sender: AnyObject) {
-        self.dismiss(nil)
+        dismiss(nil)
         AppDelegate.shared.quit()
     }
 }

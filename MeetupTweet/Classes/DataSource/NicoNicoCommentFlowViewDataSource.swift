@@ -28,13 +28,13 @@ class NicoNicoCommentFlowWindowDataSource: FlowWindowDataSource {
             .startWith(Announce(search: search))
             .filter { !$0.message.hasPrefix("RT") }
 
-        self.subscription = Observable.of(tweetStream, AnnounceUseCase.intervalTextStream(search))
+        subscription = Observable.of(tweetStream, AnnounceUseCase.intervalTextStream(search))
             .merge()
             .subscribe(onNext: {  [unowned self] comment in
                 self.addComment(comment)
             })
         
-        self.subscription?.disposed(by: disposeBag)
+        subscription?.disposed(by: disposeBag)
     }
     
     func stop() {

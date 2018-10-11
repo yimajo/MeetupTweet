@@ -57,7 +57,7 @@ private extension YouTubeCommentFlowWindowDataSource {
     }
 
     func addComment(_ comment: CommentType) {
-        let view = self.makeMultiCommentView(comment)
+        let view = makeMultiCommentView(comment)
         stackView.addView(view, in: .bottom)
         removeCommentIfOverHeight()
     }
