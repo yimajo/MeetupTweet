@@ -69,3 +69,23 @@ class AuthViewController: NSViewController {
         AppDelegate.sharedInstance.quit()
     }
 }
+
+private extension AuthViewController {
+    func configureAlertInfo(from error: Error) -> (title: String, text: String) {
+
+        if let error = error as? OAuthSwiftError {
+            switch error {
+            case .requestError(error: _):
+                let title = "API Key, Secretに関するエラー"
+                let text = "存在しないAPI Key, Secretを入力しているか、もしくは、あなたのTwitter DeveloperのApp設定にてCallbackURLに\(AppDelegate.sharedInstance.callBackHost)://が追加されていない可能性があります。CallbackURLはブラウザ認証後にこのアプリを起動するためのURLスキーマです。"
+
+                return (title: title, text: text)
+            default:
+                return (title: "認証に関するエラー", text: error.description)
+            }
+        }
+
+        return (title: "原因不明のエラー",
+                text: "このアプリケーションは実行するmacに対応していない可能性があります")
+    }
+}
