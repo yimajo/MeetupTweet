@@ -31,6 +31,7 @@
 		A55EEAC02017AA9100F39DE1 /* TwitterAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55EEABF2017AA9100F39DE1 /* TwitterAPI.framework */; };
 		A55EEAC22017B0BD00F39DE1 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55EEAC12017B0BC00F39DE1 /* OAuthSwift.framework */; };
 		A584722020177C7B007CE1FF /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = A584721F20177C7B007CE1FF /* Window.swift */; };
+		A5CC387B216E600500BFC636 /* RxSwiftExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CC387A216E600500BFC636 /* RxSwiftExt.framework */; };
 		A5E064671C9EBFFF00731D40 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E064661C9EBFFF00731D40 /* CommentView.swift */; };
 		A5E0646A1C9EC03D00731D40 /* CommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E064681C9EC03D00731D40 /* CommentView.xib */; };
 		A5E0646C1C9EF58C00731D40 /* Announce.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E0646B1C9EF58C00731D40 /* Announce.swift */; };
@@ -67,6 +68,7 @@
 		A55EEABF2017AA9100F39DE1 /* TwitterAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterAPI.framework; path = Carthage/Build/Mac/TwitterAPI.framework; sourceTree = "<group>"; };
 		A55EEAC12017B0BC00F39DE1 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/Mac/OAuthSwift.framework; sourceTree = "<group>"; };
 		A584721F20177C7B007CE1FF /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Window.swift; path = Classes/Window/Window.swift; sourceTree = "<group>"; };
+		A5CC387A216E600500BFC636 /* RxSwiftExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwiftExt.framework; path = Carthage/Build/Mac/RxSwiftExt.framework; sourceTree = "<group>"; };
 		A5E064661C9EBFFF00731D40 /* CommentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentView.swift; path = Classes/Views/CommentView.swift; sourceTree = "<group>"; };
 		A5E064691C9EC03D00731D40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CommentView.xib; sourceTree = "<group>"; };
 		A5E0646B1C9EF58C00731D40 /* Announce.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Announce.swift; path = Classes/Domain/Announce.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5CC387B216E600500BFC636 /* RxSwiftExt.framework in Frameworks */,
 				A55EEAC22017B0BD00F39DE1 /* OAuthSwift.framework in Frameworks */,
 				A55EEAC02017AA9100F39DE1 /* TwitterAPI.framework in Frameworks */,
 				A55EEABE2017AA5C00F39DE1 /* MutableDataScanner.framework in Frameworks */,
@@ -96,6 +99,7 @@
 		33063880AFCD06D987A182B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5CC387A216E600500BFC636 /* RxSwiftExt.framework */,
 				A55EEAC12017B0BC00F39DE1 /* OAuthSwift.framework */,
 				A55EEABF2017AA9100F39DE1 /* TwitterAPI.framework */,
 				A55EEABD2017AA5C00F39DE1 /* MutableDataScanner.framework */,
@@ -366,6 +370,7 @@
 				"$(SRCROOT)/Carthage/Build/Mac/MutableDataScanner.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/TwitterAPI.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/OAuthSwift.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/RxSwiftExt.framework",
 			);
 			outputPaths = (
 			);

@@ -16,7 +16,7 @@ struct UserDefaults {
     private static let tokenSecretName = "tokenSecret"
 
     static func setConsumerKey(_ consumerKey: String?) {
-         Foundation.UserDefaults.standard.setValue(consumerKey, forKey: self.consumerKeyName)
+         Foundation.UserDefaults.standard.setValue(consumerKey, forKey: consumerKeyName)
     }
     
     static func consumerKey() -> String? {
@@ -24,7 +24,7 @@ struct UserDefaults {
     }
     
     static func setConsumerSecret(_ consumerSecret: String?) {
-        Foundation.UserDefaults.standard.setValue(consumerSecret, forKey: self.consumerSecretName)
+        Foundation.UserDefaults.standard.setValue(consumerSecret, forKey: consumerSecretName)
     }
     
     static func consumerSecret() -> String? {

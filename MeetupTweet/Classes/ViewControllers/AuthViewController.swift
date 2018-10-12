@@ -17,14 +17,14 @@ class AuthViewController: NSViewController {
     @IBOutlet weak var consumerKeyTextFeild: NSTextField! {
         didSet {
             if let consumerKey = UserDefaults.consumerKey() {
-                self.consumerKeyTextFeild.stringValue = consumerKey.trimmingCharacters(in: .whitespacesAndNewlines)
+                consumerKeyTextFeild.stringValue = consumerKey.trimmingCharacters(in: .whitespacesAndNewlines)
             }
         }
     }
     @IBOutlet weak var consumerSecretTextField: NSTextField! {
         didSet {
             if let consumerSecret = UserDefaults.consumerSecret() {
-                self.consumerSecretTextField.stringValue = consumerSecret.trimmingCharacters(in: .whitespacesAndNewlines)
+                consumerSecretTextField.stringValue = consumerSecret.trimmingCharacters(in: .whitespacesAndNewlines)
             }
         }
     }
@@ -44,14 +44,25 @@ class AuthViewController: NSViewController {
 
         authViewModel.validated
             .bind(to: authorizeButton.rx.isEnabled)
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
 
         authViewModel.authorized
-            .subscribe(onNext: { [unowned self] authorize in
+            .drive(onNext: { [unowned self] authorize in
                 self.dismiss(nil)
-                }, onError: { error in
-                    print(error)
-            }).addDisposableTo(disposeBag)
+            })
+            .disposed(by: disposeBag)
+
+        authViewModel.errorMessage
+            .drive(onNext: { [unowned self] in
+                let info = self.configureAlertInfo(from: $0)
+
+                let alert = NSAlert()
+                alert.messageText = info.title
+                alert.informativeText = info.text
+                alert.addButton(withTitle: "OK")
+                alert.runModal()
+            })
+            .disposed(by: disposeBag)
     }
 
     @IBAction func tapHelpButton(_ sender: AnyObject) {
@@ -60,7 +71,27 @@ class AuthViewController: NSViewController {
     }
     
     @IBAction func tapCloseButton(_ sender: AnyObject) {
-        self.dismiss(nil)
-        AppDelegate.sharedInstance.quit()
+        dismiss(nil)
+        AppDelegate.shared.quit()
+    }
+}
+
+private extension AuthViewController {
+    func configureAlertInfo(from error: Error) -> (title: String, text: String) {
+
+        if let error = error as? OAuthSwiftError {
+            switch error {
+            case .requestError(error: _):
+                let title = "API Key, Secretに関するエラー"
+                let text = "存在しないAPI Key, Secretを入力しているか、もしくは、あなたのTwitter DeveloperのApp設定にてCallbackURLに\(AppDelegate.shared.callBackHost)://が追加されていない可能性があります。CallbackURLはブラウザ認証後にこのアプリを起動するためのURLスキーマです。"
+
+                return (title: title, text: text)
+            default:
+                return (title: "認証に関するエラー", text: error.description)
+            }
+        }
+
+        return (title: "原因不明のエラー",
+                text: "このアプリケーションは実行するmacに対応していない可能性があります")
     }
 }

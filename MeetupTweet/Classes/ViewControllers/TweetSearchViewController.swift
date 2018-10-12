@@ -41,34 +41,35 @@ class TweetSearchViewController: NSViewController {
 
                 self.search()
             })
-            .addDisposableTo(disposeBag)
-        
+            .disposed(by: disposeBag)
+
         stopButton.rx.tap
             .subscribe(onNext: { [unowned self] in
                 self.commentFlowWindowDataSource?.stop()
                 self.commentFlowWindowDataSource = nil
-            }).addDisposableTo(disposeBag)
-        
+            })
+            .disposed(by: disposeBag)
+
         let searchValid = searchField.rx.text.orEmpty
             .map{ text -> Bool in 0 < text.count }
         
         searchValid
             .bind(to: searchButton.rx.isEnabled)
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
 
         NotificationCenter.default.rx.notification(NSApplication.didChangeScreenParametersNotification)
             .subscribe(onNext: { [unowned self] _ in
                 self.tableView.reloadData()
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
 
-        AppDelegate.sharedInstance.applyToken()
+        AppDelegate.shared.applyToken()
     }
 
     override func viewWillAppear() {
         super.viewWillAppear()
 
-        if AppDelegate.sharedInstance.oauthClient == nil {
+        if AppDelegate.shared.oauthClient == nil {
             performSegue(withIdentifier: NSStoryboardSegue.Identifier("AuthSegueIdentifier"), sender: nil)
         }
     }

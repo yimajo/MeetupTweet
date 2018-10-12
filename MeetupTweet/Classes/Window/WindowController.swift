@@ -12,7 +12,7 @@ class WindowController: NSWindowController {
     
     override func windowDidLoad() {
         super.windowDidLoad()
-        self.window!.delegate = self
+        window!.delegate = self
     }
 }
 

@@ -8,49 +8,57 @@
 
 import Foundation
 import RxSwift
-
+import RxCocoa
+import RxSwiftExt
 import OAuthSwift
 import TwitterAPI
 
 class AuthViewModel {
     
     let validated: Observable<Bool>
-    let authorized: Observable<Bool>
-    
-    init(consumerKey: Observable<String>, consumerSecret: Observable<String>, authrorizeTap: Observable<Void>) {
+    let authorized: Driver<Bool>
+    let errorMessage: Driver<Error>
+
+    init(consumerKey: Observable<String>, consumerSecret: Observable<String>, authrorizeTap: Observable<()>) {
         
         let validatedConsumerKey = consumerKey
-            .map {
-                return (0 < $0.count)
-            }
-            .shareReplay(1)
-        
+            .map { 0 < $0.count }
+            .share(replay: 1)
+
         let validatedConsumerSecret = consumerSecret
-            .map {
-                return (0 < $0.count)
+            .map { 0 < $0.count }
+            .share(replay: 1)
+
+        validated = Observable.combineLatest(validatedConsumerKey,
+                                             validatedConsumerSecret) {
+                $0 && $1
             }
-            .shareReplay(1)
-        
-        validated = Observable.combineLatest(validatedConsumerKey, validatedConsumerSecret) { consumerKey, consumerSecret in
-                return consumerKey && consumerSecret
-            }
+            .share(replay: 1)
             .distinctUntilChanged()
-            .shareReplay(1)
 
         
-        let apiKeyAndSecret = Observable
-            .combineLatest(consumerKey, consumerSecret) {
+        let apiKeyAndSecret = Observable.combineLatest(consumerKey, consumerSecret) {
                 ($0.trimmingCharacters(in: .whitespacesAndNewlines),
                  $1.trimmingCharacters(in: .whitespacesAndNewlines))
             }
+            .share(replay: 1)
         
-        authorized = authrorizeTap.withLatestFrom(apiKeyAndSecret)
-            .flatMapLatest { (consumerKey, consumerSecret) -> Observable<Bool>  in
-                UserDefaults.setConsumerKey(consumerKey)
-                UserDefaults.setConsumerSecret(consumerSecret)
-                return AppDelegate.sharedInstance.authorize(consumerKey: consumerKey, consumerSecret: consumerSecret)
-                
+        let result = authrorizeTap.withLatestFrom(apiKeyAndSecret)
+            .flatMapLatest { key, secret -> Observable<Event<Bool>>  in
+                UserDefaults.setConsumerKey(key)
+                UserDefaults.setConsumerSecret(secret)
+
+                return AppDelegate.shared
+                    .authorize(consumerKey: key, consumerSecret: secret)
+                    .materialize()
             }
-            .shareReplay(1)
+            .share(replay: 1)
+
+        authorized = result
+            .elements()
+            .asDriver(onErrorDriveWith: .never())
+
+        errorMessage = result.errors()
+            .asDriver(onErrorDriveWith: .never())
     }
 }

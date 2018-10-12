@@ -1,3 +1,4 @@
-github "ikesyo/Himotoki" ~> 3.1
-github "ReactiveX/RxSwift" ~> 3.6
+github "ikesyo/Himotoki"
+github "ReactiveX/RxSwift"
 github "s-aska/TwitterAPI"
+gitHub "RxSwiftCommunity/RxSwiftExt"

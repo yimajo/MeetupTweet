@@ -38,7 +38,7 @@ class YouTubeCommentFlowWindowDataSource: FlowWindowDataSource {
                 self.addComment(comment)
             })
 
-        subscription?.addDisposableTo(disposeBag)
+        subscription?.disposed(by: disposeBag)
     }
 
     func stop() {
@@ -57,7 +57,7 @@ private extension YouTubeCommentFlowWindowDataSource {
     }
 
     func addComment(_ comment: CommentType) {
-        let view = self.makeMultiCommentView(comment)
+        let view = makeMultiCommentView(comment)
         stackView.addView(view, in: .bottom)
         removeCommentIfOverHeight()
     }
@@ -86,7 +86,8 @@ private extension YouTubeCommentFlowWindowDataSource {
                         DispatchQueue.main.async {
                             commentView.imageView.image = NSImage(data: data)
                         }
-                    }).addDisposableTo(disposeBag)
+                    })
+                    .disposed(by: disposeBag)
             }
         case .announce:
             commentView = MultiCommentView.makeView(comment.message, name: comment.name, fontColor: NSColor.red)

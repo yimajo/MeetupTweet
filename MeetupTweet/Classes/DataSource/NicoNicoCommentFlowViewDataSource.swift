@@ -28,13 +28,13 @@ class NicoNicoCommentFlowWindowDataSource: FlowWindowDataSource {
             .startWith(Announce(search: search))
             .filter { !$0.message.hasPrefix("RT") }
 
-        self.subscription = Observable.of(tweetStream, AnnounceUseCase.intervalTextStream(search))
+        subscription = Observable.of(tweetStream, AnnounceUseCase.intervalTextStream(search))
             .merge()
             .subscribe(onNext: {  [unowned self] comment in
                 self.addComment(comment)
             })
         
-        self.subscription?.addDisposableTo(disposeBag)
+        subscription?.disposed(by: disposeBag)
     }
     
     func stop() {
@@ -124,7 +124,8 @@ private extension NicoNicoCommentFlowWindowDataSource {
                             DispatchQueue.main.async {
                                 commentView.imageView.image = NSImage(data: data)
                             }
-                        }).addDisposableTo(disposeBag)
+                        })
+                        .disposed(by: disposeBag)
                 }
             case .announce:
                 commentView = CommentView.newCommentView(comment.message, fontColor: NSColor.red)

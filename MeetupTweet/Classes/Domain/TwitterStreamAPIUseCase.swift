@@ -19,7 +19,7 @@ class TwitterStraemAPIUseCase {
     var streamingRequest: StreamingRequest?
     
     deinit {
-        _ = self.streamingRequest?.stop()
+        _ = streamingRequest?.stop()
     }
     
     func startStream(_ query: String) -> PublishSubject<CommentType> {
@@ -30,7 +30,7 @@ class TwitterStraemAPIUseCase {
         
         let tweetStream = PublishSubject<CommentType>()
 
-        streamingRequest = AppDelegate.sharedInstance.oauthClient!
+        streamingRequest = AppDelegate.shared.oauthClient!
             .streaming(streamEndpoint, parameters: ["track": query])
             .progress({ [unowned self] data -> Void in
                 do {

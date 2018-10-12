@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private(set) var oauthClient: OAuthClient?
     private var requestHandle: OAuthSwiftRequestHandle?
-    private let callBackHost = "meetup-tweet"
+    let callBackHost = "meetup-tweet"
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         
@@ -27,7 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSApplication.shared.terminate(self)
     }
     
-    class var sharedInstance: AppDelegate {
+    class var shared: AppDelegate {
         return NSApplication.shared.delegate as! AppDelegate
     }
 
@@ -83,7 +83,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
 
-        self.oauthClient = OAuthClient(
+        oauthClient = OAuthClient(
             consumerKey: consumerKey,
             consumerSecret: consumerSecret,
             accessToken: token,
