@@ -65,6 +65,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 )
                 
                 observer.onNext(true)
+                observer.onCompleted()
 
             }, failure: { error in
                 observer.onError(error)
