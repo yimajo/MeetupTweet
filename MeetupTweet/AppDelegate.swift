@@ -15,7 +15,6 @@ import RxSwift
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     private(set) var oauthClient: OAuthClient?
-    private var requestHandle: OAuthSwiftRequestHandle?
     let callBackHost = "meetup-tweet"
 
     func applicationDidFinishLaunching(_ notification: Notification) {
@@ -52,7 +51,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         return Observable.create { [unowned self] observer in
 
-            self.requestHandle = oauthSwift.authorize(withCallbackURL: "\(self.callBackHost)://", success: { credential, response, parameters in
+            let requestHandle = oauthSwift.authorize(withCallbackURL: "\(self.callBackHost)://", success: { credential, response, parameters in
 
                 UserDefaults.setToken(credential.oauthToken)
                 UserDefaults.setTokenSecret(credential.oauthTokenSecret)
@@ -65,12 +64,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 )
                 
                 observer.onNext(true)
+                observer.onCompleted()
 
             }, failure: { error in
                 observer.onError(error)
             })
 
-            return Disposables.create()
+            return Disposables.create(with: requestHandle!.cancel)
         }
     }
 
