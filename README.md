@@ -1,4 +1,5 @@
-# MeetupTweet
+# MeetupTweet [![Build Status](https://app.bitrise.io/app/5f4542f5300d05f5/status.svg?token=blL94wzurEw5SAkG-VJP_A&branch=master)](https://app.bitrise.io/app/5f4542f5300d05f5)
+
 
 <img src="README_resources/tweet.gif" width="100%">
 
