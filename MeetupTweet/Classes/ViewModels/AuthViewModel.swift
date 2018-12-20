@@ -19,7 +19,10 @@ class AuthViewModel {
     let authorized: Driver<Bool>
     let errorMessage: Driver<Error>
 
-    init(consumerKey: Observable<String>, consumerSecret: Observable<String>, authrorizeTap: Observable<()>) {
+    init(consumerKey: Observable<String>,
+         consumerSecret: Observable<String>,
+         authrorizeTap: Observable<()>,
+         twitterAuth: Auth) {
         
         let validatedConsumerKey = consumerKey
             .map { 0 < $0.count }
@@ -47,7 +50,7 @@ class AuthViewModel {
                 UserDefaults.setConsumerKey(key)
                 UserDefaults.setConsumerSecret(secret)
 
-                return AppDelegate.shared
+                return twitterAuth
                     .authorize(consumerKey: key, consumerSecret: secret)
                     .materialize()
             }
