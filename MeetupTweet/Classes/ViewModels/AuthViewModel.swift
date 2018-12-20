@@ -34,7 +34,6 @@ class AuthViewModel {
                 $0 && $1
             }
             .share(replay: 1)
-            .distinctUntilChanged()
 
         
         let apiKeyAndSecret = Observable.combineLatest(consumerKey, consumerSecret) {
