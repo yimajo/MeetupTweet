@@ -30,6 +30,7 @@
 		A559931321BA45AC003E45F7 /* TwitterAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A559931221BA45AC003E45F7 /* TwitterAuth.swift */; };
 		A55EDB8721CBBCE100F44AD2 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55EDB8621CBBCE000F44AD2 /* Quick.framework */; };
 		A55EDB8B21CBBDA600F44AD2 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55EDB8A21CBBDA600F44AD2 /* Nimble.framework */; };
+		A55EDB8D21CC8B2400F44AD2 /* MockAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55EDB8C21CC8B2400F44AD2 /* MockAuth.swift */; };
 		A55EEA9B2017A6C100F39DE1 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55EEA9A2017A6C000F39DE1 /* Himotoki.framework */; };
 		A55EEABA2017A7B300F39DE1 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55EEAB92017A7B300F39DE1 /* RxSwift.framework */; };
 		A55EEABC2017A7FF00F39DE1 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55EEABB2017A7FF00F39DE1 /* RxCocoa.framework */; };
@@ -85,6 +86,7 @@
 		A559931221BA45AC003E45F7 /* TwitterAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TwitterAuth.swift; path = Classes/Domain/TwitterAuth.swift; sourceTree = "<group>"; };
 		A55EDB8621CBBCE000F44AD2 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/Mac/Quick.framework; sourceTree = "<group>"; };
 		A55EDB8A21CBBDA600F44AD2 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/Mac/Nimble.framework; sourceTree = "<group>"; };
+		A55EDB8C21CC8B2400F44AD2 /* MockAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuth.swift; sourceTree = "<group>"; };
 		A55EEA9A2017A6C000F39DE1 /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/Mac/Himotoki.framework; sourceTree = "<group>"; };
 		A55EEAB92017A7B300F39DE1 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/Mac/RxSwift.framework; sourceTree = "<group>"; };
 		A55EEABB2017A7FF00F39DE1 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/Mac/RxCocoa.framework; sourceTree = "<group>"; };
