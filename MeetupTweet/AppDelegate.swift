@@ -14,8 +14,6 @@ import RxSwift
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    private(set) var oauthClient: OAuthClient?
-
     func applicationDidFinishLaunching(_ notification: Notification) {
         
         NSAppleEventManager.shared().setEventHandler(self, andSelector:#selector(AppDelegate.handleGetURLEvent(_:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
@@ -36,23 +34,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
             OAuth1Swift.handle(url: url)
         }
-    }
-
-    func applyToken() {
-        guard let consumerKey = UserDefaults.consumerKey(),
-            let consumerSecret = UserDefaults.consumerSecret(),
-            let token = UserDefaults.token(),
-            let tokenSecret = UserDefaults.tokenSecret() else {
-
-            return
-        }
-
-        oauthClient = OAuthClient(
-            consumerKey: consumerKey,
-            consumerSecret: consumerSecret,
-            accessToken: token,
-            accessTokenSecret: tokenSecret
-        )
-
     }
 }
