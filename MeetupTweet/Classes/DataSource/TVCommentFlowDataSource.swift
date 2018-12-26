@@ -9,11 +9,12 @@
 import Foundation
 import AppKit
 import RxSwift
+import TwitterAPI
 
 class TVCommentFlowDataSource: FlowWindowDataSource {
     private(set) var subscription: Disposable?
 
-    private let tweetSearchUseCase = TwitterStraemAPIUseCase()
+    private let tweetSearchUseCase: TwitterStraemAPIUseCase
     private var window: NSWindow?
     private var commentView: MultiCommentView?
     private var containerView: ContentView?
@@ -21,6 +22,10 @@ class TVCommentFlowDataSource: FlowWindowDataSource {
     private var disposeBag: DisposeBag!
     private var comments: [String: (comment: CommentType, view: MultiCommentView)] = [:]
     private var waitingCommentsQueue: [CommentType] = []
+
+    init(oauthClient: OAuthClient) {
+        self.tweetSearchUseCase = TwitterStraemAPIUseCase(oauthClient: oauthClient)
+    }
 
     func search(_ search: String, screen: NSScreen) {
         disposeBag = DisposeBag()

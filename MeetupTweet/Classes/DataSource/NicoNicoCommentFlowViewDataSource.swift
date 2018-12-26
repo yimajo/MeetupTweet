@@ -9,16 +9,22 @@
 import Foundation
 import RxSwift
 import AppKit
+import OAuthSwift
+import TwitterAPI
 
 class NicoNicoCommentFlowWindowDataSource: FlowWindowDataSource {
 
     var subscription: Disposable?
-    fileprivate let tweetSearchUseCase = TwitterStraemAPIUseCase()
+    fileprivate let tweetSearchUseCase: TwitterStraemAPIUseCase
     fileprivate let disposeBag = DisposeBag()
     fileprivate var comments: [String: (comment: CommentType, view: CommentView)] = [:]
     fileprivate var commentViews: [CommentView?] = []
     fileprivate var window: NSWindow?
-    
+
+    init(oauthClient: OAuthClient) {
+        self.tweetSearchUseCase = TwitterStraemAPIUseCase(oauthClient: oauthClient)
+    }
+
     func search(_ search: String, screen: NSScreen) {
         refreshComments()
         window = makeTweetWindow(screen)

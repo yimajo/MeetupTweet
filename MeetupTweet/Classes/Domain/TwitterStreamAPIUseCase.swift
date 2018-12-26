@@ -17,9 +17,15 @@ class TwitterStraemAPIUseCase {
     fileprivate let disposeBag = DisposeBag()
     let streamEndpoint = "https://stream.twitter.com/1.1/statuses/filter.json"
     var streamingRequest: StreamingRequest?
-    
+
+    let oauthClient: OAuthClient
+
     deinit {
         _ = streamingRequest?.stop()
+    }
+
+    init(oauthClient: OAuthClient) {
+        self.oauthClient = oauthClient
     }
     
     func startStream(_ query: String) -> PublishSubject<CommentType> {
@@ -30,7 +36,7 @@ class TwitterStraemAPIUseCase {
         
         let tweetStream = PublishSubject<CommentType>()
 
-        streamingRequest = AppDelegate.shared.oauthClient!
+        streamingRequest = oauthClient
             .streaming(streamEndpoint, parameters: ["track": query])
             .progress({ [unowned self] data -> Void in
                 do {

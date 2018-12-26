@@ -116,15 +116,23 @@ extension TweetSearchViewController: NSTableViewDelegate {
 
 private extension TweetSearchViewController {
     func search() {
-        guard 0 < searchField.stringValue.count else { return }
+        guard let oauthClient = TwitterAuth.shared.oauthClient,
+            0 < searchField.stringValue.count else {
+
+            return
+        }
 
         switch flowStyle {
         case .youtube:
-            commentFlowWindowDataSource = YouTubeCommentFlowWindowDataSource()
+            commentFlowWindowDataSource = YouTubeCommentFlowWindowDataSource(
+                oauthClient: oauthClient
+            )
         case .niconico:
-            commentFlowWindowDataSource = NicoNicoCommentFlowWindowDataSource()
+            commentFlowWindowDataSource = NicoNicoCommentFlowWindowDataSource(
+                oauthClient: oauthClient
+            )
         case .tv:
-            commentFlowWindowDataSource = TVCommentFlowDataSource()
+            commentFlowWindowDataSource = TVCommentFlowDataSource(oauthClient: oauthClient)
         }
 
         let screen = NSScreen.screens[selectedScreenIndex]
