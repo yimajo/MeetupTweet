@@ -54,6 +54,14 @@ class TwitterAuth: Auth {
             return Disposables.create(with: requestHandle!.cancel)
         }
     }
+
+    func resumeTwitterAuth() {
+        if oauthClient == nil {
+            oauthClient = TwitterAPIKeysAndTokensStore.resumeOAuthClient()
+        }
+    }
+}
+
 struct TwitterAPIKeysAndTokensStore {
 
     static func save(consumerKey: String,
