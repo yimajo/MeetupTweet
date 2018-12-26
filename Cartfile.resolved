@@ -1,6 +1,8 @@
 github "ikesyo/Himotoki" "3.2.0"
 github "s-aska/MutableDataScanner" "1.1.0"
+github "Quick/Nimble" "v7.3.1"
 github "OAuthSwift/OAuthSwift" "1.0.0"
+github "Quick/Quick" "v1.3.2"
 github "ReactiveX/RxSwift" "4.3.1"
 github "RxSwiftCommunity/RxSwiftExt" "3.3.0"
 github "s-aska/TwitterAPI" "0.4.0"
