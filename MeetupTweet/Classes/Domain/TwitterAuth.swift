@@ -13,17 +13,23 @@ import TwitterAPI
 import RxSwift
 
 protocol Auth {
-    func authorize(consumerKey: String, consumerSecret: String) -> Observable<Bool>
+    func authorize(consumerKey: String, consumerSecret: String) -> Observable<OAuthSwiftCredential>
+
+    func setOAuthClient(oauthClient: OAuthClient)
 }
 
 class TwitterAuth: Auth {
     static let shared = TwitterAuth()
-    private(set) var oauthClient: OAuthClient?
     static let callBackHost = "meetup-tweet"
+    var oauthClient: OAuthClient?
 
     private init() {}
 
-    func authorize(consumerKey: String, consumerSecret: String) -> Observable<Bool> {
+    func setOAuthClient(oauthClient: OAuthClient) {
+        self.oauthClient = oauthClient
+    }
+
+    func authorize(consumerKey: String, consumerSecret: String) -> Observable<OAuthSwiftCredential> {
 
         let oauthSwift = OAuth1Swift(
             consumerKey:     consumerKey,
@@ -38,13 +44,7 @@ class TwitterAuth: Auth {
             let requestHandle = oauthSwift.authorize(withCallbackURL: "\(type(of: self).callBackHost)://",
                                                      success: { credential, response, parameters in
 
-                TwitterAPIKeysAndTokensStore.save(consumerKey: consumerKey,
-                                                  consumerSecret: consumerSecret,
-                                                  credential: credential)
-
-                self.oauthClient = TwitterAPIKeysAndTokensStore.resumeOAuthClient()
-
-                observer.onNext(true)
+                observer.onNext(credential)
                 observer.onCompleted()
 
             }, failure: { error in
@@ -64,13 +64,12 @@ class TwitterAuth: Auth {
 
 struct TwitterAPIKeysAndTokensStore {
 
-    static func save(consumerKey: String,
-                     consumerSecret: String,
-                     credential: OAuthSwiftCredential) {
-
+    static func save(consumerKey: String, consumerSecret: String) {
         UserDefaults.setConsumerKey(consumerKey)
         UserDefaults.setConsumerSecret(consumerSecret)
+    }
 
+    static func save(credential: OAuthSwiftCredential) {
         UserDefaults.setToken(credential.oauthToken)
         UserDefaults.setTokenSecret(credential.oauthTokenSecret)
     }
@@ -79,7 +78,8 @@ struct TwitterAPIKeysAndTokensStore {
         guard let consumerKey = UserDefaults.consumerKey(),
             let consumerSecret = UserDefaults.consumerSecret(),
             let token = UserDefaults.token(),
-            let tokenSecret = UserDefaults.tokenSecret() else {
+            let tokenSecret = UserDefaults.tokenSecret(),
+            !token.isEmpty, !tokenSecret.isEmpty else {
 
             return nil
         }

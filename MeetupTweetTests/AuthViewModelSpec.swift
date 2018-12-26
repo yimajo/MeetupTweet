@@ -11,6 +11,8 @@ import RxSwift
 import RxTest
 import Quick
 import Nimble
+import OAuthSwift
+import TwitterAPI
 
 @testable import MeetupTweet
 
@@ -53,14 +55,17 @@ class AuthViewModelSpec: QuickSpec {
                 context("認可されている") {
 
                     beforeEach {
-                        print(consumerKey)
+                        let credential = OAuthSwiftCredential(consumerKey: "testConsumerKey",
+                                                              consumerSecret: "testConsumerSecret")
+                        credential.oauthToken = "testToken"
+                        credential.oauthTokenSecret = "testTokenSecret"
 
-                        let mockAuthSequence = Observable.of(true)
+                        let mockAuth = MockAuth(sequence: Observable.just(credential))
 
                         let viewModel = AuthViewModel(consumerKey: consumerKey.asObservable(),
                                                       consumerSecret: consumerSecret.asObservable(),
                                                       authrorizeTap: authroizeTap.asObservable(),
-                                                      twitterAuth: MockAuth(sequence: mockAuthSequence))
+                                                      twitterAuth: mockAuth)
 
                         validationObserver = scheduler.createObserver(Bool.self)
                         authObserver = scheduler.createObserver(Bool.self)
@@ -93,12 +98,15 @@ class AuthViewModelSpec: QuickSpec {
                 context("認可されていない") {
 
                     beforeEach {
-                        let mockAuthSequence = Observable.of(false)
+                        let credential = OAuthSwiftCredential(consumerKey: "testConsumerKey",
+                                                              consumerSecret: "testConsumerSecret")
+
+                        let mockAuth = MockAuth(sequence: Observable.just(credential))
 
                         let viewModel = AuthViewModel(consumerKey: consumerKey.asObservable(),
                                                       consumerSecret: consumerSecret.asObservable(),
                                                       authrorizeTap: authroizeTap.asObservable(),
-                                                      twitterAuth: MockAuth(sequence: mockAuthSequence))
+                                                      twitterAuth: mockAuth)
 
                         authObserver = scheduler.createObserver(Bool.self)
 

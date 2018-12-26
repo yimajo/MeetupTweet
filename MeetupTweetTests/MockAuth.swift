@@ -8,17 +8,21 @@
 
 import Foundation
 import RxSwift
+import OAuthSwift
+import TwitterAPI
 
 @testable import MeetupTweet
 
 class MockAuth: Auth {
-    let sequence: Observable<Bool>
+    let sequence: Observable<OAuthSwiftCredential>
 
-    init(sequence: Observable<Bool>) {
+    init(sequence: Observable<OAuthSwiftCredential>) {
         self.sequence = sequence
     }
 
-    func authorize(consumerKey: String, consumerSecret: String) -> Observable<Bool> {
+    func authorize(consumerKey: String, consumerSecret: String) -> Observable<OAuthSwiftCredential> {
         return sequence
     }
+
+    func setOAuthClient(oauthClient: OAuthClient) { }
 }

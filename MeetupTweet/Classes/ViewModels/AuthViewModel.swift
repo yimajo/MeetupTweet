@@ -46,16 +46,31 @@ class AuthViewModel {
             .share(replay: 1)
         
         let result = authrorizeTap.withLatestFrom(apiKeyAndSecret)
-            .flatMapLatest { key, secret -> Observable<Event<Bool>>  in
-                return twitterAuth
-                    .authorize(consumerKey: key, consumerSecret: secret)
-                    .materialize()
+            .do(onNext: { key, secret in
+                TwitterAPIKeysAndTokensStore.save(consumerKey: key,
+                                                  consumerSecret: secret)
+            })
+            .flatMapLatest { key, secret -> Observable<OAuthSwiftCredential> in
+                return twitterAuth.authorize(consumerKey: key, consumerSecret: secret)
             }
+            .materialize()
             .share(replay: 1)
 
         authorized = result
             .elements()
-            .asDriver(onErrorDriveWith: .never())
+            .do(onNext: { credential in
+                TwitterAPIKeysAndTokensStore.save(credential: credential)
+            })
+            .flatMapLatest { _ -> Observable<Bool>  in
+                if let oauthClient = TwitterAPIKeysAndTokensStore.resumeOAuthClient() {
+                    twitterAuth.setOAuthClient(oauthClient: oauthClient)
+
+                    return Observable.just(true)
+                } else {
+                    return Observable.just(false)
+                }
+            }
+            .asDriver(onErrorJustReturn: false)
 
         errorMessage = result.errors()
             .asDriver(onErrorDriveWith: .never())
