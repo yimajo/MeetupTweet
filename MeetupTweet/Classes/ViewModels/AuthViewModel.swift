@@ -47,9 +47,6 @@ class AuthViewModel {
         
         let result = authrorizeTap.withLatestFrom(apiKeyAndSecret)
             .flatMapLatest { key, secret -> Observable<Event<Bool>>  in
-                UserDefaults.setConsumerKey(key)
-                UserDefaults.setConsumerSecret(secret)
-
                 return twitterAuth
                     .authorize(consumerKey: key, consumerSecret: secret)
                     .materialize()

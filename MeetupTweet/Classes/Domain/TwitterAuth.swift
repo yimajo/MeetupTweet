@@ -38,15 +38,11 @@ class TwitterAuth: Auth {
             let requestHandle = oauthSwift.authorize(withCallbackURL: "\(type(of: self).callBackHost)://",
                                                      success: { credential, response, parameters in
 
-                UserDefaults.setToken(credential.oauthToken)
-                UserDefaults.setTokenSecret(credential.oauthTokenSecret)
+                TwitterAPIKeysAndTokensStore.save(consumerKey: consumerKey,
+                                                  consumerSecret: consumerSecret,
+                                                  credential: credential)
 
-                self.oauthClient = OAuthClient(
-                    consumerKey: consumerKey,
-                    consumerSecret: consumerSecret,
-                    accessToken: credential.oauthToken,
-                    accessTokenSecret: credential.oauthTokenSecret
-                )
+                self.oauthClient = TwitterAPIKeysAndTokensStore.resumeOAuthClient()
 
                 observer.onNext(true)
                 observer.onCompleted()
@@ -57,5 +53,34 @@ class TwitterAuth: Auth {
 
             return Disposables.create(with: requestHandle!.cancel)
         }
+    }
+struct TwitterAPIKeysAndTokensStore {
+
+    static func save(consumerKey: String,
+                     consumerSecret: String,
+                     credential: OAuthSwiftCredential) {
+
+        UserDefaults.setConsumerKey(consumerKey)
+        UserDefaults.setConsumerSecret(consumerSecret)
+
+        UserDefaults.setToken(credential.oauthToken)
+        UserDefaults.setTokenSecret(credential.oauthTokenSecret)
+    }
+
+    static func resumeOAuthClient() -> OAuthClient? {
+        guard let consumerKey = UserDefaults.consumerKey(),
+            let consumerSecret = UserDefaults.consumerSecret(),
+            let token = UserDefaults.token(),
+            let tokenSecret = UserDefaults.tokenSecret() else {
+
+            return nil
+        }
+
+        return OAuthClient(
+            consumerKey: consumerKey,
+            consumerSecret: consumerSecret,
+            accessToken: token,
+            accessTokenSecret: tokenSecret
+        )
     }
 }
