@@ -19,7 +19,7 @@ protocol Auth {
 class TwitterAuth: Auth {
     static let shared = TwitterAuth()
     private(set) var oauthClient: OAuthClient?
-    let callBackHost = "meetup-tweet"
+    static let callBackHost = "meetup-tweet"
 
     private init() {}
 
@@ -35,7 +35,7 @@ class TwitterAuth: Auth {
 
         return Observable.create { [unowned self] observer in
 
-            let requestHandle = oauthSwift.authorize(withCallbackURL: "\(self.callBackHost)://",
+            let requestHandle = oauthSwift.authorize(withCallbackURL: "\(type(of: self).callBackHost)://",
                                                      success: { credential, response, parameters in
 
                 UserDefaults.setToken(credential.oauthToken)

@@ -15,7 +15,6 @@ import RxSwift
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     private(set) var oauthClient: OAuthClient?
-    let callBackHost = "meetup-tweet"
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         
@@ -33,7 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func handleGetURLEvent(_ event: NSAppleEventDescriptor!, withReplyEvent: NSAppleEventDescriptor!) {
         if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue,
             let url = URL(string: urlString),
-            url.scheme == callBackHost {
+            url.scheme == TwitterAuth.callBackHost {
 
             OAuth1Swift.handle(url: url)
         }
