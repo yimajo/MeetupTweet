@@ -24,6 +24,13 @@
 		A55664BE1C887F800003A8D5 /* NicoNicoCommentFlowViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55664BD1C887F800003A8D5 /* NicoNicoCommentFlowViewDataSource.swift */; };
 		A55664C01C887FE60003A8D5 /* TwitterStreamAPIUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55664BF1C887FE60003A8D5 /* TwitterStreamAPIUseCase.swift */; };
 		A55664CE1C892E850003A8D5 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55664CD1C892E850003A8D5 /* Tweet.swift */; };
+		A559930A21BA1510003E45F7 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A559930921BA1510003E45F7 /* RxTest.framework */; };
+		A559930C21BA1526003E45F7 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A559930B21BA1526003E45F7 /* RxBlocking.framework */; };
+		A559931321BA45AC003E45F7 /* TwitterAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A559931221BA45AC003E45F7 /* TwitterAuth.swift */; };
+		A55EDB8721CBBCE100F44AD2 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55EDB8621CBBCE000F44AD2 /* Quick.framework */; };
+		A55EDB8921CBBD0300F44AD2 /* AuthViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55EDB8821CBBD0300F44AD2 /* AuthViewModelSpec.swift */; };
+		A55EDB8B21CBBDA600F44AD2 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55EDB8A21CBBDA600F44AD2 /* Nimble.framework */; };
+		A55EDB8D21CC8B2400F44AD2 /* MockAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55EDB8C21CC8B2400F44AD2 /* MockAuth.swift */; };
 		A55EEA9B2017A6C100F39DE1 /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55EEA9A2017A6C000F39DE1 /* Himotoki.framework */; };
 		A55EEABA2017A7B300F39DE1 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55EEAB92017A7B300F39DE1 /* RxSwift.framework */; };
 		A55EEABC2017A7FF00F39DE1 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A55EEABB2017A7FF00F39DE1 /* RxCocoa.framework */; };
@@ -40,6 +47,16 @@
 		A5F9D0522133B64400DE2C45 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F9D0512133B64400DE2C45 /* AuthViewModel.swift */; };
 		A5FB70441CB11B5E0097042F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FB70431CB11B5E0097042F /* User.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A559930421BA1463003E45F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A556649E1C8863030003A8D5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A55664A51C8863030003A8D5;
+			remoteInfo = MeetupTweet;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		A523BD351CB8F99100701C9B /* AnnounceUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnnounceUseCase.swift; path = Classes/Domain/AnnounceUseCase.swift; sourceTree = "<group>"; };
@@ -61,6 +78,15 @@
 		A55664BD1C887F800003A8D5 /* NicoNicoCommentFlowViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NicoNicoCommentFlowViewDataSource.swift; path = Classes/DataSource/NicoNicoCommentFlowViewDataSource.swift; sourceTree = "<group>"; };
 		A55664BF1C887FE60003A8D5 /* TwitterStreamAPIUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwitterStreamAPIUseCase.swift; path = Classes/Domain/TwitterStreamAPIUseCase.swift; sourceTree = "<group>"; };
 		A55664CD1C892E850003A8D5 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tweet.swift; path = Classes/Domain/Tweet.swift; sourceTree = "<group>"; };
+		A55992FF21BA1463003E45F7 /* MeetupTweetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetupTweetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A559930321BA1463003E45F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A559930921BA1510003E45F7 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/Mac/RxTest.framework; sourceTree = "<group>"; };
+		A559930B21BA1526003E45F7 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/Mac/RxBlocking.framework; sourceTree = "<group>"; };
+		A559931221BA45AC003E45F7 /* TwitterAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TwitterAuth.swift; path = Classes/Domain/TwitterAuth.swift; sourceTree = "<group>"; };
+		A55EDB8621CBBCE000F44AD2 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/Mac/Quick.framework; sourceTree = "<group>"; };
+		A55EDB8821CBBD0300F44AD2 /* AuthViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModelSpec.swift; sourceTree = "<group>"; };
+		A55EDB8A21CBBDA600F44AD2 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/Mac/Nimble.framework; sourceTree = "<group>"; };
+		A55EDB8C21CC8B2400F44AD2 /* MockAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuth.swift; sourceTree = "<group>"; };
 		A55EEA9A2017A6C000F39DE1 /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/Mac/Himotoki.framework; sourceTree = "<group>"; };
 		A55EEAB92017A7B300F39DE1 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/Mac/RxSwift.framework; sourceTree = "<group>"; };
 		A55EEABB2017A7FF00F39DE1 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/Mac/RxCocoa.framework; sourceTree = "<group>"; };
@@ -93,12 +119,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A55992FC21BA1463003E45F7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A55EDB8B21CBBDA600F44AD2 /* Nimble.framework in Frameworks */,
+				A55EDB8721CBBCE100F44AD2 /* Quick.framework in Frameworks */,
+				A559930C21BA1526003E45F7 /* RxBlocking.framework in Frameworks */,
+				A559930A21BA1510003E45F7 /* RxTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		33063880AFCD06D987A182B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A55EDB8A21CBBDA600F44AD2 /* Nimble.framework */,
+				A55EDB8621CBBCE000F44AD2 /* Quick.framework */,
+				A559930B21BA1526003E45F7 /* RxBlocking.framework */,
+				A559930921BA1510003E45F7 /* RxTest.framework */,
 				A5CC387A216E600500BFC636 /* RxSwiftExt.framework */,
 				A55EEAC12017B0BC00F39DE1 /* OAuthSwift.framework */,
 				A55EEABF2017AA9100F39DE1 /* TwitterAPI.framework */,
@@ -204,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				A55664A81C8863030003A8D5 /* MeetupTweet */,
+				A559930021BA1463003E45F7 /* MeetupTweetTests */,
 				A55664A71C8863030003A8D5 /* Products */,
 				33063880AFCD06D987A182B4 /* Frameworks */,
 			);
@@ -213,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				A55664A61C8863030003A8D5 /* MeetupTweet.app */,
+				A55992FF21BA1463003E45F7 /* MeetupTweetTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -247,8 +290,19 @@
 				A523BD341CB8F96200701C9B /* UseCase */,
 				A523BD7D1CBAAD0700701C9B /* Protocols */,
 				A5FB704A1CB150270097042F /* Entities */,
+				A559931221BA45AC003E45F7 /* TwitterAuth.swift */,
 			);
 			name = Domain;
+			sourceTree = "<group>";
+		};
+		A559930021BA1463003E45F7 /* MeetupTweetTests */ = {
+			isa = PBXGroup;
+			children = (
+				A559930321BA1463003E45F7 /* Info.plist */,
+				A55EDB8C21CC8B2400F44AD2 /* MockAuth.swift */,
+				A55EDB8821CBBD0300F44AD2 /* AuthViewModelSpec.swift */,
+			);
+			path = MeetupTweetTests;
 			sourceTree = "<group>";
 		};
 		A5FB70451CB130C70097042F /* Resources */ = {
@@ -309,19 +363,44 @@
 			productReference = A55664A61C8863030003A8D5 /* MeetupTweet.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A55992FE21BA1463003E45F7 /* MeetupTweetTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A559930821BA1463003E45F7 /* Build configuration list for PBXNativeTarget "MeetupTweetTests" */;
+			buildPhases = (
+				A55992FB21BA1463003E45F7 /* Sources */,
+				A55992FC21BA1463003E45F7 /* Frameworks */,
+				A55992FD21BA1463003E45F7 /* Resources */,
+				A559930D21BA1556003E45F7 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A559930521BA1463003E45F7 /* PBXTargetDependency */,
+			);
+			name = MeetupTweetTests;
+			productName = MeetupTweetTests;
+			productReference = A55992FF21BA1463003E45F7 /* MeetupTweetTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		A556649E1C8863030003A8D5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Yoshinori Imajo";
 				TargetAttributes = {
 					A55664A51C8863030003A8D5 = {
 						CreatedOnToolsVersion = 7.2.1;
 						LastSwiftMigration = 0810;
+					};
+					A55992FE21BA1463003E45F7 = {
+						CreatedOnToolsVersion = 10.1;
+						DevelopmentTeam = 6T6D4T4X29;
+						ProvisioningStyle = Automatic;
+						TestTargetID = A55664A51C8863030003A8D5;
 					};
 				};
 			};
@@ -339,6 +418,7 @@
 			projectRoot = "";
 			targets = (
 				A55664A51C8863030003A8D5 /* MeetupTweet */,
+				A55992FE21BA1463003E45F7 /* MeetupTweetTests */,
 			);
 		};
 /* End PBXProject section */
@@ -355,9 +435,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A55992FD21BA1463003E45F7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		A559930D21BA1556003E45F7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/Mac/RxBlocking.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/RxTest.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/Quick.framework",
+				"$(SRCROOT)/Carthage/Build/Mac/Nimble.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n\n";
+		};
 		A55EEA9C2017A6EE00F39DE1 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -398,6 +506,7 @@
 				A55664CE1C892E850003A8D5 /* Tweet.swift in Sources */,
 				A52F20B12079C62F00FE5858 /* FlowWindowDataSource.swift in Sources */,
 				A5E064671C9EBFFF00731D40 /* CommentView.swift in Sources */,
+				A559931321BA45AC003E45F7 /* TwitterAuth.swift in Sources */,
 				A523BD451CBAA12A00701C9B /* AuthViewController.swift in Sources */,
 				A523BD361CB8F99100701C9B /* AnnounceUseCase.swift in Sources */,
 				A55664AA1C8863030003A8D5 /* AppDelegate.swift in Sources */,
@@ -409,7 +518,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A55992FB21BA1463003E45F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A55EDB8D21CC8B2400F44AD2 /* MockAuth.swift in Sources */,
+				A55EDB8921CBBD0300F44AD2 /* AuthViewModelSpec.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A559930521BA1463003E45F7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A55664A51C8863030003A8D5 /* MeetupTweet */;
+			targetProxy = A559930421BA1463003E45F7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A523BD3E1CBA970300701C9B /* Main.storyboard */ = {
@@ -579,6 +705,70 @@
 			};
 			name = Release;
 		};
+		A559930621BA1463003E45F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 6T6D4T4X29;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = MeetupTweetTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.curiosity.MeetupTweetTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeetupTweet.app/Contents/MacOS/MeetupTweet";
+			};
+			name = Debug;
+		};
+		A559930721BA1463003E45F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 6T6D4T4X29;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = MeetupTweetTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.curiosity.MeetupTweetTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeetupTweet.app/Contents/MacOS/MeetupTweet";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -596,6 +786,15 @@
 			buildConfigurations = (
 				A55664B41C8863030003A8D5 /* Debug */,
 				A55664B51C8863030003A8D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A559930821BA1463003E45F7 /* Build configuration list for PBXNativeTarget "MeetupTweetTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A559930621BA1463003E45F7 /* Debug */,
+				A559930721BA1463003E45F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

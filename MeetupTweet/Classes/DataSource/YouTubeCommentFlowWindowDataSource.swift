@@ -8,17 +8,22 @@
 
 import AppKit
 import RxSwift
+import TwitterAPI
 
 class YouTubeCommentFlowWindowDataSource: FlowWindowDataSource {
 
     var subscription: Disposable?
 
-    private let tweetSearchUseCase = TwitterStraemAPIUseCase()
+    private let tweetSearchUseCase: TwitterStraemAPIUseCase
     private var window: NSWindow?
     private var stackView: NSStackView!
     private var disposeBag: DisposeBag!
     private var comments: [String: (comment: CommentType, view: MultiCommentView)] = [:]
     private var waitingCommentsQueue: [CommentType] = []
+
+    init(oauthClient: OAuthClient) {
+        self.tweetSearchUseCase = TwitterStraemAPIUseCase(oauthClient: oauthClient)
+    }
 
     func search(_ search: String, screen: NSScreen) {
         disposeBag = DisposeBag()

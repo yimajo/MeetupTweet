@@ -14,9 +14,6 @@ import RxSwift
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    private(set) var oauthClient: OAuthClient?
-    let callBackHost = "meetup-tweet"
-
     func applicationDidFinishLaunching(_ notification: Notification) {
         
         NSAppleEventManager.shared().setEventHandler(self, andSelector:#selector(AppDelegate.handleGetURLEvent(_:withReplyEvent:)), forEventClass: AEEventClass(kInternetEventClass), andEventID: AEEventID(kAEGetURL))
@@ -33,62 +30,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func handleGetURLEvent(_ event: NSAppleEventDescriptor!, withReplyEvent: NSAppleEventDescriptor!) {
         if let urlString = event.paramDescriptor(forKeyword: AEKeyword(keyDirectObject))?.stringValue,
             let url = URL(string: urlString),
-            url.scheme == callBackHost {
+            url.scheme == TwitterAuth.callBackHost {
 
             OAuth1Swift.handle(url: url)
         }
-    }
-
-    func authorize(consumerKey: String, consumerSecret: String) -> Observable<Bool> {
-        
-        let oauthSwift = OAuth1Swift(
-            consumerKey:     consumerKey,
-            consumerSecret:  consumerSecret,
-            requestTokenUrl: "https://api.twitter.com/oauth/request_token",
-            authorizeUrl:    "https://api.twitter.com/oauth/authorize",
-            accessTokenUrl:  "https://api.twitter.com/oauth/access_token"
-        )
-
-        return Observable.create { [unowned self] observer in
-
-            let requestHandle = oauthSwift.authorize(withCallbackURL: "\(self.callBackHost)://", success: { credential, response, parameters in
-
-                UserDefaults.setToken(credential.oauthToken)
-                UserDefaults.setTokenSecret(credential.oauthTokenSecret)
-
-                self.oauthClient = OAuthClient(
-                    consumerKey: consumerKey,
-                    consumerSecret: consumerSecret,
-                    accessToken: credential.oauthToken,
-                    accessTokenSecret: credential.oauthTokenSecret
-                )
-                
-                observer.onNext(true)
-                observer.onCompleted()
-
-            }, failure: { error in
-                observer.onError(error)
-            })
-
-            return Disposables.create(with: requestHandle!.cancel)
-        }
-    }
-
-    func applyToken() {
-        guard let consumerKey = UserDefaults.consumerKey(),
-            let consumerSecret = UserDefaults.consumerSecret(),
-            let token = UserDefaults.token(),
-            let tokenSecret = UserDefaults.tokenSecret() else {
-
-            return
-        }
-
-        oauthClient = OAuthClient(
-            consumerKey: consumerKey,
-            consumerSecret: consumerSecret,
-            accessToken: token,
-            accessTokenSecret: tokenSecret
-        )
-
     }
 }

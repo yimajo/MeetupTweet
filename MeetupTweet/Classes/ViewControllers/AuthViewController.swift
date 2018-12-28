@@ -14,16 +14,18 @@ import TwitterAPI
 
 class AuthViewController: NSViewController {
 
+    let userDefaults = UserDefaults()
+
     @IBOutlet weak var consumerKeyTextFeild: NSTextField! {
         didSet {
-            if let consumerKey = UserDefaults.consumerKey() {
+            if let consumerKey = userDefaults.consumerKey() {
                 consumerKeyTextFeild.stringValue = consumerKey.trimmingCharacters(in: .whitespacesAndNewlines)
             }
         }
     }
     @IBOutlet weak var consumerSecretTextField: NSTextField! {
         didSet {
-            if let consumerSecret = UserDefaults.consumerSecret() {
+            if let consumerSecret = userDefaults.consumerSecret() {
                 consumerSecretTextField.stringValue = consumerSecret.trimmingCharacters(in: .whitespacesAndNewlines)
             }
         }
@@ -39,7 +41,9 @@ class AuthViewController: NSViewController {
         let authViewModel = AuthViewModel(
             consumerKey: consumerKeyTextFeild.rx.text.orEmpty.asObservable(),
             consumerSecret: consumerSecretTextField.rx.text.orEmpty.asObservable(),
-            authrorizeTap: authorizeButton.rx.tap.asObservable()
+            authrorizeTap: authorizeButton.rx.tap.asObservable(),
+            twitterAuth: TwitterAuth.shared,
+            userDefaults: userDefaults
         )
 
         authViewModel.validated
@@ -47,7 +51,7 @@ class AuthViewController: NSViewController {
             .disposed(by: disposeBag)
 
         authViewModel.authorized
-            .drive(onNext: { [unowned self] authorize in
+            .drive(onNext: { [unowned self] _ in
                 self.dismiss(nil)
             })
             .disposed(by: disposeBag)
@@ -83,7 +87,7 @@ private extension AuthViewController {
             switch error {
             case .requestError(error: _):
                 let title = "API Key, Secretに関するエラー"
-                let text = "存在しないAPI Key, Secretを入力しているか、もしくは、あなたのTwitter DeveloperのApp設定にてCallbackURLに\(AppDelegate.shared.callBackHost)://が追加されていない可能性があります。CallbackURLはブラウザ認証後にこのアプリを起動するためのURLスキーマです。"
+                let text = "存在しないAPI Key, Secretを入力しているか、もしくは、あなたのTwitter DeveloperのApp設定にてCallbackURLに\(TwitterAuth.callBackHost)://が追加されていない可能性があります。CallbackURLはブラウザ認証後にこのアプリを起動するためのURLスキーマです。"
 
                 return (title: title, text: text)
             default:
