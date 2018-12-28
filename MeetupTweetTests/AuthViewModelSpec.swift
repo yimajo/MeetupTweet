@@ -33,9 +33,14 @@ class AuthViewModelSpec: QuickSpec {
             var validationObserver: TestableObserver<Bool>!
             var authObserver: TestableObserver<Bool>!
 
+            var userDefaults: MeetupTweet.UserDefaults!
+
             context("入力が0文字の初期状態から1文字以上文字列になった場合") {
 
                 beforeEach {
+
+                    userDefaults = MeetupTweet.UserDefaults(suiteName: "test")
+
                     scheduler = TestScheduler(initialClock: 0)
                     consumerKey = scheduler.createHotObservable([
                         Recorded.next(0, ""),
@@ -65,7 +70,8 @@ class AuthViewModelSpec: QuickSpec {
                         let viewModel = AuthViewModel(consumerKey: consumerKey.asObservable(),
                                                       consumerSecret: consumerSecret.asObservable(),
                                                       authrorizeTap: authroizeTap.asObservable(),
-                                                      twitterAuth: mockAuth)
+                                                      twitterAuth: mockAuth,
+                                                      userDefaults: userDefaults)
 
                         validationObserver = scheduler.createObserver(Bool.self)
                         authObserver = scheduler.createObserver(Bool.self)
@@ -106,7 +112,8 @@ class AuthViewModelSpec: QuickSpec {
                         let viewModel = AuthViewModel(consumerKey: consumerKey.asObservable(),
                                                       consumerSecret: consumerSecret.asObservable(),
                                                       authrorizeTap: authroizeTap.asObservable(),
-                                                      twitterAuth: mockAuth)
+                                                      twitterAuth: mockAuth,
+                                                      userDefaults: userDefaults)
 
                         authObserver = scheduler.createObserver(Bool.self)
 

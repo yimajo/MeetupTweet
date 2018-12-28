@@ -15,35 +15,45 @@ struct UserDefaults {
     private static let tokenKeyName = "tokenKey"
     private static let tokenSecretName = "tokenSecret"
 
-    static func setConsumerKey(_ consumerKey: String?) {
-         Foundation.UserDefaults.standard.setValue(consumerKey, forKey: consumerKeyName)
-    }
-    
-    static func consumerKey() -> String? {
-        return Foundation.UserDefaults.standard.string(forKey: consumerKeyName)
-    }
-    
-    static func setConsumerSecret(_ consumerSecret: String?) {
-        Foundation.UserDefaults.standard.setValue(consumerSecret, forKey: consumerSecretName)
-    }
-    
-    static func consumerSecret() -> String? {
-        return Foundation.UserDefaults.standard.string(forKey: consumerSecretName)
+    private let defaults: Foundation.UserDefaults
+
+    init(defaults: Foundation.UserDefaults = Foundation.UserDefaults.standard) {
+        self.defaults = defaults
     }
 
-    static func setToken(_ token: String) {
-        Foundation.UserDefaults.standard.setValue(token, forKey: tokenKeyName)
+    init(suiteName: String) {
+        self.defaults = Foundation.UserDefaults(suiteName: suiteName)!
     }
 
-    static func setTokenSecret(_ tokenSecret: String) {
-        Foundation.UserDefaults.standard.setValue(tokenSecret, forKey: tokenSecretName)
+    func setConsumerKey(_ consumerKey: String?) {
+        defaults.setValue(consumerKey, forKey: UserDefaults.consumerKeyName)
     }
 
-    static func token() -> String? {
-        return Foundation.UserDefaults.standard.string(forKey: tokenKeyName)
+    func consumerKey() -> String? {
+        return defaults.string(forKey: UserDefaults.consumerKeyName)
     }
 
-    static func tokenSecret() -> String? {
-        return Foundation.UserDefaults.standard.string(forKey: tokenSecretName)
+    func setConsumerSecret(_ consumerSecret: String?) {
+        defaults.setValue(consumerSecret, forKey: UserDefaults.consumerSecretName)
+    }
+
+    func consumerSecret() -> String? {
+        return defaults.string(forKey: UserDefaults.consumerSecretName)
+    }
+
+    func setToken(_ token: String) {
+        defaults.setValue(token, forKey: UserDefaults.tokenKeyName)
+    }
+
+    func setTokenSecret(_ tokenSecret: String) {
+        defaults.setValue(tokenSecret, forKey: UserDefaults.tokenSecretName)
+    }
+
+    func token() -> String? {
+        return defaults.string(forKey: UserDefaults.tokenKeyName)
+    }
+
+    func tokenSecret() -> String? {
+        return defaults.string(forKey: UserDefaults.tokenSecretName)
     }
 }

@@ -63,7 +63,7 @@ class TweetSearchViewController: NSViewController {
             })
             .disposed(by: disposeBag)
 
-        TwitterAuth.shared.resumeTwitterAuth()
+        TwitterAuth.shared.resumeTwitterAuth(userDefaults: UserDefaults())
     }
 
     override func viewWillAppear() {

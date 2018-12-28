@@ -14,16 +14,18 @@ import TwitterAPI
 
 class AuthViewController: NSViewController {
 
+    let userDefaults = UserDefaults()
+
     @IBOutlet weak var consumerKeyTextFeild: NSTextField! {
         didSet {
-            if let consumerKey = UserDefaults.consumerKey() {
+            if let consumerKey = userDefaults.consumerKey() {
                 consumerKeyTextFeild.stringValue = consumerKey.trimmingCharacters(in: .whitespacesAndNewlines)
             }
         }
     }
     @IBOutlet weak var consumerSecretTextField: NSTextField! {
         didSet {
-            if let consumerSecret = UserDefaults.consumerSecret() {
+            if let consumerSecret = userDefaults.consumerSecret() {
                 consumerSecretTextField.stringValue = consumerSecret.trimmingCharacters(in: .whitespacesAndNewlines)
             }
         }
@@ -40,7 +42,8 @@ class AuthViewController: NSViewController {
             consumerKey: consumerKeyTextFeild.rx.text.orEmpty.asObservable(),
             consumerSecret: consumerSecretTextField.rx.text.orEmpty.asObservable(),
             authrorizeTap: authorizeButton.rx.tap.asObservable(),
-            twitterAuth: TwitterAuth.shared
+            twitterAuth: TwitterAuth.shared,
+            userDefaults: userDefaults
         )
 
         authViewModel.validated

@@ -22,7 +22,8 @@ class AuthViewModel {
     init(consumerKey: Observable<String>,
          consumerSecret: Observable<String>,
          authrorizeTap: Observable<()>,
-         twitterAuth: Auth) {
+         twitterAuth: Auth,
+         userDefaults: UserDefaults) {
         
         let validatedConsumerKey = consumerKey
             .map { 0 < $0.count }
@@ -48,7 +49,8 @@ class AuthViewModel {
         let result = authrorizeTap.withLatestFrom(apiKeyAndSecret)
             .do(onNext: { key, secret in
                 TwitterAPIKeysAndTokensStore.save(consumerKey: key,
-                                                  consumerSecret: secret)
+                                                  consumerSecret: secret,
+                                                  userDefaults: userDefaults)
             })
             .flatMapLatest { key, secret -> Observable<OAuthSwiftCredential> in
                 return twitterAuth.authorize(consumerKey: key, consumerSecret: secret)
@@ -59,10 +61,13 @@ class AuthViewModel {
         authorized = result
             .elements()
             .do(onNext: { credential in
-                TwitterAPIKeysAndTokensStore.save(credential: credential)
+                TwitterAPIKeysAndTokensStore.save(credential: credential,
+                                                  userDefaults: userDefaults)
             })
             .flatMapLatest { _ -> Observable<Bool>  in
-                if let oauthClient = TwitterAPIKeysAndTokensStore.resumeOAuthClient() {
+                if let oauthClient = TwitterAPIKeysAndTokensStore.resumeOAuthClient(
+                    userDefaults: userDefaults
+                ) {
                     twitterAuth.setOAuthClient(oauthClient: oauthClient)
 
                     return Observable.just(true)

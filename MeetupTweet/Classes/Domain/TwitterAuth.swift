@@ -55,30 +55,30 @@ class TwitterAuth: Auth {
         }
     }
 
-    func resumeTwitterAuth() {
+    func resumeTwitterAuth(userDefaults: UserDefaults) {
         if oauthClient == nil {
-            oauthClient = TwitterAPIKeysAndTokensStore.resumeOAuthClient()
+            oauthClient = TwitterAPIKeysAndTokensStore.resumeOAuthClient(userDefaults: userDefaults)
         }
     }
 }
 
 struct TwitterAPIKeysAndTokensStore {
 
-    static func save(consumerKey: String, consumerSecret: String) {
-        UserDefaults.setConsumerKey(consumerKey)
-        UserDefaults.setConsumerSecret(consumerSecret)
+    static func save(consumerKey: String, consumerSecret: String, userDefaults: UserDefaults) {
+        userDefaults.setConsumerKey(consumerKey)
+        userDefaults.setConsumerSecret(consumerSecret)
     }
 
-    static func save(credential: OAuthSwiftCredential) {
-        UserDefaults.setToken(credential.oauthToken)
-        UserDefaults.setTokenSecret(credential.oauthTokenSecret)
+    static func save(credential: OAuthSwiftCredential, userDefaults: UserDefaults) {
+        userDefaults.setToken(credential.oauthToken)
+        userDefaults.setTokenSecret(credential.oauthTokenSecret)
     }
 
-    static func resumeOAuthClient() -> OAuthClient? {
-        guard let consumerKey = UserDefaults.consumerKey(),
-            let consumerSecret = UserDefaults.consumerSecret(),
-            let token = UserDefaults.token(),
-            let tokenSecret = UserDefaults.tokenSecret(),
+    static func resumeOAuthClient(userDefaults: UserDefaults) -> OAuthClient? {
+        guard let consumerKey = userDefaults.consumerKey(),
+            let consumerSecret = userDefaults.consumerSecret(),
+            let token = userDefaults.token(),
+            let tokenSecret = userDefaults.tokenSecret(),
             !token.isEmpty, !tokenSecret.isEmpty else {
 
             return nil
