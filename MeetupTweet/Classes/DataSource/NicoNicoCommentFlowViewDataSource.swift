@@ -89,32 +89,33 @@ private extension NicoNicoCommentFlowWindowDataSource {
         let len = windowFrame.width
         let secondDuration = TimeInterval(len / v)
 
-        NSAnimationContext.runAnimationGroup { context in
+        NSAnimationContext.runAnimationGroup(
+            { context in
+                context.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+                context.duration = firstDuration
+                view.animator().frame = view.frame.offsetBy(dx: -view.frame.width, dy: 0)
 
-            context.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-            context.duration = firstDuration
-            view.animator().frame = view.frame.offsetBy(dx: -view.frame.width, dy: 0)
+            }, completionHandler: { [weak self] in
 
-        }, completionHandler: { [weak self] in
+                guard let `self` = self else { return }
 
-            guard let `self` = self else { return }
-
-            for (index, v) in self.commentViews.enumerated() {
-                if v == view {
-                    self.commentViews[index] = nil
-                    break;
+                for (index, v) in self.commentViews.enumerated() {
+                    if v == view {
+                        self.commentViews[index] = nil
+                        break;
+                    }
                 }
+
+                NSAnimationContext.runAnimationGroup({ context in
+                        context.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+                        context.duration = secondDuration
+                        view.animator().frame = view.frame.offsetBy(dx: -len, dy: 0)
+                        
+                    }, completionHandler: { [weak self] in
+                        self?.removeComment(comment)
+                })
             }
-
-            NSAnimationContext.runAnimationGroup({ context in
-                    context.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-                    context.duration = secondDuration
-                    view.animator().frame = view.frame.offsetBy(dx: -len, dy: 0)
-
-                }, completionHandler: { [weak self] in
-                    self?.removeComment(comment)
-            })
-        }
+        )
     }
     
     func makeCommentView(_ comment: CommentType, from window: NSWindow) -> CommentView {
