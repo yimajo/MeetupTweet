@@ -10,8 +10,8 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="c22-O7-iKe" customClass="CommentView" customModule="MeetupTweet" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="177" height="48"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <rect key="frame" x="0.0" y="0.0" width="1200" height="48"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1O4-6B-IcF">
                     <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
@@ -22,8 +22,9 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="photo" id="gj0-No-Vn6"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k25-4N-PgR">
-                    <rect key="frame" x="58" y="0.0" width="108" height="48"/>
+                    <rect key="frame" x="58" y="0.0" width="1131" height="48"/>
                     <constraints>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" priority="250" constant="1300" id="1hb-1s-1iN"/>
                         <constraint firstAttribute="height" constant="48" id="swE-VP-W3X"/>
                     </constraints>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Label" id="Ott-um-l5e">
@@ -45,7 +46,7 @@
                 <outlet property="imageView" destination="1O4-6B-IcF" id="xD4-4i-1gI"/>
                 <outlet property="messageTextField" destination="k25-4N-PgR" id="QYc-uZ-4aF"/>
             </connections>
-            <point key="canvasLocation" x="108.5" y="497"/>
+            <point key="canvasLocation" x="620" y="497"/>
         </customView>
     </objects>
 </document>
